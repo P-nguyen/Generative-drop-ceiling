@@ -1,0 +1,217 @@
+<dynWorkspace X="-274.154139194141" Y="25.2611261106704" zoom="0.6">
+  <dynElements>
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="671.088669950739" y="565.850049261084" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="f826a95d-ed01-432f-801f-688c03b0494d" nickname="String" x="421.51724137931" y="670.449939792009" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\Users\Pnguyen\Dropbox\00_Autodesk\Export files\hvac_dummymodel.sat" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="d9f7f48d-409d-46fc-b68f-e67f17fb6911" nickname="Python Script" x="1165.79931084241" y="405.973096979649" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+#class is needed for each point? 
+	#class info contains the point, and a boolean telling if it is still moveable
+class Point_Check:
+	def __init__(self, _point):
+		self.point = _point
+		self.boolean = False 
+		
+	def closest_geometry( self, geometry_list ):
+		old_distance = 50000.0
+		#
+		for obj in geometry_list:
+			closest_point = obj.get_closest_point(self.point)
+			distance = closest_point.distance_to(self.point)
+			if distance &lt; old_distance:
+				old_distance = distance
+		
+		return old_distance
+##########################################################################
+
+xlength = IN[0]
+ylength = IN[1]
+spacing = IN[2]
+reference_geo = IN[3]
+
+x_number = round(xlength/spacing)
+y_number = round(ylength/spacing)
+
+newx_spacing = xlength / x_number
+newy_spacing = ylength / y_number
+
+#create comprehensive list from [0,0,0] with all z at 0
+grid = [ [ (y,x) for y in range( int(y_number)+1) ] for x in range( int(x_number) + 1 ) ]
+#create grid spacing based on input and distances.
+#grid_points = []
+for i in range(int(x_number) + 1):
+	for j in range(int(y_number) + 1):
+		grid[i][j] = Point_Check(Point.by_coordinates(i*newx_spacing, j*newy_spacing, 50.0))
+		#grid_points.append( Point_Check(Point.by_coordinates(i*newx_spacing, j*newy_spacing, 0.0)) )
+#then iterate through the points until all the z's are no longer allowed to move.
+
+testpt = []
+count = 1
+
+while count &gt; 0:
+	count = 0
+	#while there are still points.
+	for i in range(int(x_number) + 1):
+		for j in range(int(y_number) + 1):
+			if grid[i][j].boolean == False:
+				check = grid[i][j].closest_geometry( reference_geo )
+				if check &lt; 12:
+					grid[i][j].boolean == True
+				else:
+					grid[i][j].point.set_z( grid[i][j].point.z() + 1)
+					count += 1
+
+if count == 0:
+	for i in range(int(x_number) ):
+		for j in range(int(y_number) ):
+			#testpt.append(grid[i][j].point)
+			pointlist = PointList([ grid[i][j].point, grid[i+1][j].point, grid[i+1][j+1].point, grid[i][j+1].point ])
+			testpt.append( Polygon.by_points( pointlist ) )
+#Assign your output to the OUT variable
+OUT = testpt #grid_points #grid_points[0].boolean</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" nickname="List" x="942.301773896601" y="404.866364631537" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+      <Input name="index2" />
+      <Input name="index3" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="08e0a668-cd70-4af6-ba14-998968c49451" nickname="Number Slider" x="544" y="451.585576454197" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="12" min="0" max="24" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="682c3474-c8d7-494c-afc5-338eabb72e1f" nickname="Number Slider" x="544" y="317.161931134" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="120" min="0" max="120" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="3488d2da-18a9-4478-859a-f61cc58b444e" nickname="Number Slider" x="544" y="387.447645419715" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="180" min="0" max="180" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="879f130b-4b18-4bf1-99c8-c72374acd007" nickname="Watch" x="1526.32366771159" y="440.894826591033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" nickname="Draw" x="1342.62949693984" y="352.307508583371" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="46d7262f-2df9-4051-bce9-e46e7502d001" nickname="Python Script" x="1274.92342523377" y="620.366422849182" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+reference_geo = IN
+
+def closest_geometry( point, geometry_list ):
+	old_distance = 50000.0
+	#
+	for obj in geometry_list:
+		closest_point = point.get_closest_point(obj)
+		distance = closest_point.distance_to(point)
+		if distance &lt; old_distance:
+			old_distance = distance
+	
+	return old_distance
+##################################
+#Assign your output to the OUT variable
+
+point = Point.by_coordinates(0,0,0)
+
+#dist = closest_geometry( point, reference_geo )
+cpt = reference_geo[0].get_closest_point( point )
+
+OUT = cpt</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="94f14d88-5bca-49e1-b8b5-f98121a86574" nickname="Watch" x="1495.71611434543" y="1056.56641936607" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3522b832-82ed-4774-86f1-023b0b5510cd" nickname="Draw" x="1603.85117181669" y="961.726227795194" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="f835262c-2b63-4d41-86b3-c8614f17fe2c" nickname="List" x="1452.2567585671" y="973.307243867244" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="c93543dd-2f6b-499c-9a1b-1293d77fd7f1" nickname="Number" x="1084.60544666062" y="249.6152372991" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.Point3DNode type="Dynamo.Nodes.Point3DNode" guid="3441b494-998f-47be-9e91-c3766f7c5fcf" nickname="Point" x="1195.36406735027" y="167.270409712893" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="54c8b011-adf4-47c3-8cae-87fed4a1ce22" nickname="Python Script" x="1165.10965567" y="484.134016519879" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+#class is needed for each point? 
+	#class info contains the point, and a boolean telling if it is still moveable
+class Point_Check:
+	def __init__(self, _point):
+		self.point = _point
+		self.boolean = False 
+		
+	def closest_geometry( self, geometry_list ):
+		old_distance = 50000.0
+		#
+		for obj in geometry_list:
+			closest_point = obj.get_closest_point(self.point)
+			distance = closest_point.distance_to(self.point)
+			if distance &lt; old_distance:
+				old_distance = distance
+		
+		return old_distance
+##########################################################################
+
+xlength = IN[0]
+ylength = IN[1]
+spacing = IN[2]
+reference_geo = IN[3]
+
+x_number = round(xlength/spacing)
+y_number = round(ylength/spacing)
+
+newx_spacing = xlength / x_number
+newy_spacing = ylength / y_number
+
+#create comprehensive list from [0,0,0] with all z at 0
+grid = [ [ (y,x) for y in range( int(y_number)+1) ] for x in range( int(x_number) + 1 ) ]
+#create grid spacing based on input and distances.
+grid_points = []
+for i in range(int(x_number) + 1):
+	for j in range(int(y_number) + 1):
+		#grid[i][j] = Point.by_coordinates(i*newx_spacing, j*newy_spacing, 0.0)
+		grid_points.append( Point_Check(Point.by_coordinates(i*newx_spacing, j*newy_spacing, 0.0)) )
+#then iterate through the points until all the z's are no longer allowed to move.
+
+testpt = []
+count = 1
+
+while count &gt; 0:
+	count = 0
+	#while there are still points.
+	for pt in grid_points:
+		if pt.boolean == False:
+			check = pt.closest_geometry( reference_geo )
+			if check &lt; 12:
+				pt.boolean == True
+			else:
+				pt.point.set_z( pt.point.z() + 1)
+				crap = 10
+				count += 1
+	#check pt with obj 
+	#if obj is not within 6 inches then move
+if count == 0:
+	for pt in grid_points:
+		testpt.append(pt.point)
+
+#Assign your output to the OUT variable
+OUT = testpt #grid_points #grid_points[0].boolean</Script>
+    </Dynamo.Nodes.dynPython>
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="194bde2f-c1b6-4997-8be9-39cc5584fa18" start_index="0" end="9f96011a-2119-4375-a7b8-3dbe6b801c57" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="194bde2f-c1b6-4997-8be9-39cc5584fa18" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="3" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="194bde2f-c1b6-4997-8be9-39cc5584fa18" start_index="0" end="46d7262f-2df9-4051-bce9-e46e7502d001" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f826a95d-ed01-432f-801f-688c03b0494d" start_index="0" end="194bde2f-c1b6-4997-8be9-39cc5584fa18" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="d9f7f48d-409d-46fc-b68f-e67f17fb6911" start_index="0" end="879f130b-4b18-4bf1-99c8-c72374acd007" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="d9f7f48d-409d-46fc-b68f-e67f17fb6911" start_index="0" end="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" start_index="0" end="d9f7f48d-409d-46fc-b68f-e67f17fb6911" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="08e0a668-cd70-4af6-ba14-998968c49451" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="2" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="682c3474-c8d7-494c-afc5-338eabb72e1f" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3488d2da-18a9-4478-859a-f61cc58b444e" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="46d7262f-2df9-4051-bce9-e46e7502d001" start_index="0" end="94f14d88-5bca-49e1-b8b5-f98121a86574" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="46d7262f-2df9-4051-bce9-e46e7502d001" start_index="0" end="f835262c-2b63-4d41-86b3-c8614f17fe2c" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f835262c-2b63-4d41-86b3-c8614f17fe2c" start_index="0" end="3522b832-82ed-4774-86f1-023b0b5510cd" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c93543dd-2f6b-499c-9a1b-1293d77fd7f1" start_index="0" end="3441b494-998f-47be-9e91-c3766f7c5fcf" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c93543dd-2f6b-499c-9a1b-1293d77fd7f1" start_index="0" end="3441b494-998f-47be-9e91-c3766f7c5fcf" end_index="2" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c93543dd-2f6b-499c-9a1b-1293d77fd7f1" start_index="0" end="3441b494-998f-47be-9e91-c3766f7c5fcf" end_index="1" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

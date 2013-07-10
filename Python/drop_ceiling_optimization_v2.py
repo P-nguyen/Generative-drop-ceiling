@@ -46,24 +46,24 @@ class Point_Check:
 			test_point.set_z(closest_point.z())
 			
 			distance = closest_point.distance_to(self.point)
-			if distance < 48:
+			if distance > 48:
+				continue
+			if closest_point.z() < lowest_z:
 				self.stored_geometry.append(obj)
-				if closest_point.z() < lowest_z:
-					lowest_z = closest_point.z()
+				lowest_z = closest_point.z()
 		
-		self.point.set_z(lowest_z)
+		self.point.set_z( lowest_z - 2 )
 		return 
 	
 	def point_adjustment(self):
 		closest_point = self.closest_geometry(self.stored_geometry)
 		distance = closest_point.distance_to(self.point)
 		
-		while distance < 12 or distance > 14:			
+		while (distance < 12) or (distance > 14):			
 			if distance < 12:
 				self.point.set_z( self.point.z() - 1)
 			if distance > 14: 
 				self.point.set_z( self.point.z() + 1)
-			
 			#closest_point = self.closest_geometry(self.stored_geometry)
 			distance = closest_point.distance_to(self.point)
 			#then i have to check the new distance.
@@ -110,7 +110,7 @@ while count > 0:
 for i in range(int(x_number) + 1):
 		for j in range(int(y_number) + 1):
 			grid[i][j].objs_by_proximity( reference_geo )
-			grid[i][j].point_adjustment()
+			#grid[i][j].point_adjustment()
 			
 if count == 1:
 	for i in range(int(x_number) ):

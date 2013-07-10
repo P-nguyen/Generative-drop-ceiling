@@ -1,8 +1,8 @@
-<dynWorkspace X="-480.426717190856" Y="0.729106406237207" zoom="0.6">
+<dynWorkspace X="-768.447703733051" Y="-462.45747624215" zoom="1.5">
   <dynElements>
     <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="672.008210180624" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="d9f7f48d-409d-46fc-b68f-e67f17fb6911" nickname="Python Script" x="1165.79931084241" y="405.973096979649" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="d9f7f48d-409d-46fc-b68f-e67f17fb6911" nickname="Python Script" x="1705.79931084241" y="677.401668408221" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -78,17 +78,17 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
       <Input name="index3" />
     </Dynamo.Nodes.dynNewList>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="08e0a668-cd70-4af6-ba14-998968c49451" nickname="Number Slider" x="544" y="451.585576454197" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.Double value="24" min="0" max="24" />
+      <System.Double value="100" min="0" max="200" />
     </Dynamo.Nodes.dynDoubleSliderInput>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="682c3474-c8d7-494c-afc5-338eabb72e1f" nickname="Number Slider" x="544" y="317.161931134" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.Double value="120" min="0" max="120" />
+      <System.Double value="722.900919305417" min="0" max="1020" />
     </Dynamo.Nodes.dynDoubleSliderInput>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="3488d2da-18a9-4478-859a-f61cc58b444e" nickname="Number Slider" x="544" y="387.447645419715" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.Double value="180" min="0" max="180" />
+      <System.Double value="748.437180796734" min="0" max="1500" />
     </Dynamo.Nodes.dynDoubleSliderInput>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="879f130b-4b18-4bf1-99c8-c72374acd007" nickname="Watch" x="1474.13975966561" y="189.40057371747" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" nickname="Draw" x="1296.65248544559" y="293.456933870727" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="46d7262f-2df9-4051-bce9-e46e7502d001" nickname="Python Script" x="1274.92342523377" y="685.194009056079" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="879f130b-4b18-4bf1-99c8-c72374acd007" nickname="Watch" x="1569.8540453799" y="186.543430860327" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" nickname="Draw" x="1389.50962830273" y="273.456933870727" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="46d7262f-2df9-4051-bce9-e46e7502d001" nickname="Python Script" x="1573.4948538052" y="775.194009056079" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -114,16 +114,16 @@ cpt = reference_geo[0].get_closest_point( point )
 
 OUT = cpt</Script>
     </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="94f14d88-5bca-49e1-b8b5-f98121a86574" nickname="Watch" x="1495.71611434543" y="1056.56641936607" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3522b832-82ed-4774-86f1-023b0b5510cd" nickname="Draw" x="1603.85117181669" y="961.726227795194" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="f835262c-2b63-4d41-86b3-c8614f17fe2c" nickname="List" x="1452.2567585671" y="973.307243867244" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="94f14d88-5bca-49e1-b8b5-f98121a86574" nickname="Watch" x="1602.85897148829" y="936.56641936607" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3522b832-82ed-4774-86f1-023b0b5510cd" nickname="Draw" x="1710.99402895955" y="841.726227795194" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="f835262c-2b63-4d41-86b3-c8614f17fe2c" nickname="List" x="1559.39961570996" y="853.307243867244" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Input name="index0" />
     </Dynamo.Nodes.dynNewList>
     <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="c93543dd-2f6b-499c-9a1b-1293d77fd7f1" nickname="Number" x="1088.28360758016" y="71.2244327013988" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.Double value="0" />
     </Dynamo.Nodes.dynDoubleInput>
     <Dynamo.Nodes.Point3DNode type="Dynamo.Nodes.Point3DNode" guid="3441b494-998f-47be-9e91-c3766f7c5fcf" nickname="Point" x="1199.04222826981" y="0" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="54c8b011-adf4-47c3-8cae-87fed4a1ce22" nickname="Python Script" x="1165.10965567" y="484.134016519879" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="54c8b011-adf4-47c3-8cae-87fed4a1ce22" nickname="Python Script" x="1705.10965567" y="755.562587948451" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -194,10 +194,10 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
     <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="5e734de0-160b-47e6-9052-1e85c392cae3" nickname="Python Script From String" x="1157.67069176035" y="189.362490964975" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="1a22f08b-9f3a-4696-97e8-b894dd912677" nickname="Read File" x="986.176438886786" y="189.822261079917" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="9a2b7b23-2597-4966-8cfe-72ab8f4dc061" nickname="File Path" x="737.440806702879" y="190.28203119486" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.String value="C:\Dev\Generative_drop_ceiling\Python\drop_ceiling_optimization_v2.py" />
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\drop_ceiling_optimization_v2.py" />
     </Dynamo.Nodes.dynStringFilename>
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c2e2fd61-b3d7-48dc-a728-2404591207cc" nickname="File Path" x="377.210921645408" y="571.891226597159" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.String value="C:\Dev\Generative_drop_ceiling\Media\hvac_dummymodel.sat" />
+      <System.String value="C:\dev\Generative-drop-ceiling\Media\dummymodel2.sat" />
     </Dynamo.Nodes.dynStringFilename>
   </dynElements>
   <dynConnectors>

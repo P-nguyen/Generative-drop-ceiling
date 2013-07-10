@@ -110,7 +110,7 @@ while count > 0:
 for i in range(int(x_number) + 1):
 		for j in range(int(y_number) + 1):
 			grid[i][j].objs_by_proximity( reference_geo )
-			grid[i][j].point_adjustment()
+			#grid[i][j].point_adjustment()
 			
 if count == 1:
 	for i in range(int(x_number) ):
@@ -118,5 +118,6 @@ if count == 1:
 			#testpt.append(grid[i][j].point)
 			pointlist = PointList([ grid[i][j].point, grid[i+1][j].point, grid[i+1][j+1].point, grid[i][j+1].point ])
 			testpt.append( Polygon.by_points( pointlist ) )
+			
 #Assign your output to the OUT variable
 OUT = testpt #grid_points #grid_points[0].boolean

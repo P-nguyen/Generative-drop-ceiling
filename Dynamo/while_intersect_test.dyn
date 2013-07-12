@@ -1,0 +1,90 @@
+<dynWorkspace X="25.3517241379305" Y="-20.1344105090312" zoom="0.6">
+  <dynElements>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="7f56fdfa-5949-4ac2-90fa-c96a3314362c" nickname="Python Script" x="220.172413793103" y="219.761379310345" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+
+pt1 = Point.by_coordinates(0.0,0.0,0.0)
+
+pt2 = Point.by_coordinates(0.0,10.0,0.0)
+
+pt3 = Point.by_coordinates(10.0,10.0,0.0)
+pt4 = Point.by_coordinates(10.0,0.0,0.0)
+
+
+poly = Polygon.by_points(PointList([pt1,pt2,pt3,pt4]))
+
+pt1 = Point.by_coordinates(1.0,0.0,10.0)
+poly.update_vertices(PointList([pt1,pt2,pt3,pt4]))
+#Assign your output to the OUT variable
+OUT = poly</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f55c784-23b4-407c-a1eb-02ec788fc72c" nickname="Watch" x="434.911330049261" y="94.6382266009852" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="f8f706c8-74cc-4e56-9229-5ff27c1e14de" nickname="Draw" x="546.162561576355" y="336.490443349754" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="2bbd6341-de3e-4bcd-9542-cb5c22363288" nickname="Number" x="125" y="228.864827586207" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="860590f0-9f6b-4495-9a01-1f6c9b9304dd" nickname="List" x="385.773399014779" y="342.166874657909" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="8022d1bd-c2fe-4838-bea1-362213895daf" nickname="Python Script" x="178.417077175699" y="425.989534756431" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+
+def does_intersect(geometry, newpolygon):
+	# Geometry.does_intersect(Geometry)
+	# four pieces of ceiling geometry
+	geo1 = geometry
+
+	is_invalid = geo1.does_intersect(newpolygon)
+	return is_invalid
+		
+def adjust_point(geometry, newpolygon, ptlist, pt1,pt2,pt3,pt4):
+	valid = does_intersect(geometry, newpolygon)
+	while valid == True:
+		pt4.set_z( pt4.z() - 1)
+		newptlist = (PointList([pt1,pt2,pt3,pt4]))
+		newpolygon.update_vertices(newptlist)
+		valid = does_intersect(geometry, newpolygon)
+		#move the top_point down until it clears.
+	return [valid, newpolygon] 
+
+	
+surface = IN
+
+pt1 = Point.by_coordinates(0.0,0.0,-2.0)
+pt2 = Point.by_coordinates(0.0,10.0,-2.0)
+pt3 = Point.by_coordinates(10.0,10.0,-2.0)
+pt4 = Point.by_coordinates(10.0,0.0,5.0)
+
+ptlist = PointList([pt1,pt2,pt3,pt4])
+newpolygon = Polygon.by_points(ptlist)
+
+test = adjust_point(surface, newpolygon, ptlist, pt1,pt2,pt3,pt4)
+
+#Assign your output to the OUT variable
+OUT = test</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="586e2a2a-9d06-465d-b8de-22de073e31f2" nickname="Number" x="37.6108374384236" y="434.579113300493" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="bb8d59a3-e0da-4481-8592-bf708496a0fe" nickname="Watch" x="381.413793103448" y="502.914088669951" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="6cbcca4c-f2ed-488b-88d2-0dc1526a37dd" nickname="Draw" x="431.975369458128" y="654.125911330049" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="1489f328-294f-46a3-a61d-918de9de5636" nickname="List" x="271.586206896552" y="659.802342638205" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+    </Dynamo.Nodes.dynNewList>
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="7f56fdfa-5949-4ac2-90fa-c96a3314362c" start_index="0" end="9f55c784-23b4-407c-a1eb-02ec788fc72c" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7f56fdfa-5949-4ac2-90fa-c96a3314362c" start_index="0" end="860590f0-9f6b-4495-9a01-1f6c9b9304dd" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7f56fdfa-5949-4ac2-90fa-c96a3314362c" start_index="0" end="8022d1bd-c2fe-4838-bea1-362213895daf" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="2bbd6341-de3e-4bcd-9542-cb5c22363288" start_index="0" end="7f56fdfa-5949-4ac2-90fa-c96a3314362c" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="860590f0-9f6b-4495-9a01-1f6c9b9304dd" start_index="0" end="f8f706c8-74cc-4e56-9229-5ff27c1e14de" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="8022d1bd-c2fe-4838-bea1-362213895daf" start_index="0" end="bb8d59a3-e0da-4481-8592-bf708496a0fe" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="8022d1bd-c2fe-4838-bea1-362213895daf" start_index="0" end="1489f328-294f-46a3-a61d-918de9de5636" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="1489f328-294f-46a3-a61d-918de9de5636" start_index="0" end="6cbcca4c-f2ed-488b-88d2-0dc1526a37dd" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

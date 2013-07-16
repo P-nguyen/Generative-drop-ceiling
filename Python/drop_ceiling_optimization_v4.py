@@ -16,17 +16,27 @@ class PointCheck:
 
 		
 	def set_point_within_proximity( self, geometry_list ):	
-		
-		for obj in geometry_list:
-			self.closest_geometry_point = obj.get_closest_point(self.point)
-			dist = closest_point.distance_to(self.point)
+		old_distance = None
+		test_point = self.point
+		for object in geometry_list:
+			nearby_geometry_point = object.get_closest_point(self.point)
+			test_point.set_z(nearby_geometry_point.z())
+			dist = nearby_geometry_point.distance_to(test_point)
 			
-			if self.closest_geometry_distance > 48:
-				continue
-			if dist >= self.closest_geometry_distance:
+			if old_distance == None:
+				self.closest_geometry_point = nearby_geometry_point
+				old_distance = dist
+			if dist >= old_distance:
 				continue
 			
-			self.point.set_z( self.closest_geometry_point.z() )
+			if dist == 0 and len(geometry_list) == 1:
+				self.point.set_z( self.closest_geometry_point.z() )
+				continue
+			
+			if dist != 0:	
+				old_distance = dist
+				self.point.set_z( self.closest_geometry_point.z() )
+			
 		return 
 	
 	
@@ -43,13 +53,19 @@ class PointCheck:
 				self.closest_geometry_distance = dist
 				continue
 
+			if dist <= 200:
+				self.stored_geometry.append(object)
+
 			if dist >= self.closest_geometry_distance:
 				continue
 			
+
 			self.closest_geometry_distance = dist
 			self.closest_geometry = object
 			self.closest_geometry_point = object_point
 			
+		self.set_point_within_proximity( self.stored_geometry ) #refines the point.
+		
 		return #closest_geometry
 	
 	def set_top_point(self):
@@ -178,20 +194,20 @@ output_debug_new = []
 
 for i in range(int(x_number) ):
  	for j in range(int(y_number) ):
- 		Panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
- 		grid[i][j].top_point = Panel.adjust_point()
- 		output_debug_new.append( Panel.polygon)
+ 		panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
+ 		#output_debug_new.append(grid[i][j].top_point)
+ 		panel.adjust_point()
+ 		#grid[i][j].top_point = panel.adjust_point()
+ 		#output_debug_new.append( panel.polygon)
 
-"""	
+
 #create panels.
 for i in range(int(x_number) ):
  	for j in range(int(y_number) ):
- 		output_debug_new.append(Polygon.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i+1][j+1].top_point, grid[i][j+1].top_point])))
-"""
+ 		new_polygon_pointlist = PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i+1][j+1].top_point, grid[i][j+1].top_point])
+ 		output_debug_new.append(Polygon.by_points(new_polygon_pointlist))
+
 
 #Assign your output to the OUT variable
-#OUT = testpt #grid_points #grid_points[0].boolean
-
-
 OUT = [output_debug_geometry, output_debug_new]
 

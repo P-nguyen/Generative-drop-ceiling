@@ -1,4 +1,4 @@
-<dynWorkspace X="-369.706742204156" Y="79.886185563478" zoom="0.5">
+<dynWorkspace X="-382.641194093263" Y="-41.3889122991964" zoom="0.6">
   <dynElements>
     <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="672.008210180624" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
@@ -194,7 +194,7 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
     <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="5e734de0-160b-47e6-9052-1e85c392cae3" nickname="Python Script From String" x="1157.67069176035" y="189.362490964975" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="1a22f08b-9f3a-4696-97e8-b894dd912677" nickname="Read File" x="986.176438886786" y="189.822261079917" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="9a2b7b23-2597-4966-8cfe-72ab8f4dc061" nickname="File Path" x="737.440806702879" y="190.28203119486" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.String value="C:\Dev\Generative_drop_ceiling\Python\drop_ceiling_optimization_v2.py" />
+      <System.String value="C:\Dev\Generative_drop_ceiling\Python\drop_ceiling_optimization_v4.py" />
     </Dynamo.Nodes.dynStringFilename>
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c2e2fd61-b3d7-48dc-a728-2404591207cc" nickname="File Path" x="377.210921645408" y="571.891226597159" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\Dev\Generative_drop_ceiling\Media\dummymodel2.sat" />

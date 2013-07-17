@@ -1,0 +1,58 @@
+<dynWorkspace X="-138.445598845599" Y="82.0363636363637" zoom="1">
+  <dynElements>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="3b26d28c-bdaf-465a-a740-cede05aaef50" nickname="Python Script" x="247.795147705078" y="212.52" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>import sys
+path = 'C:\\dev\\Dynamo\\bin\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+pt1 = []
+x = 5
+
+for i in range(5):
+	pt1.append(Point.by_coordinates( x * i, 0.0, 0.0))
+	
+
+pt2 = pt1[0:2]
+
+pt1.extend(pt2)
+
+def cull_duplicates( object_list ):
+    seen = set()
+    seen_add = seen.add
+    return [ x for x in object_list if x not in seen and not seen_add(x)]
+#test = f7([1,1,2,2,3,3,4,4,5,5,6])
+
+test = cull_duplicates(pt1)
+"""   
+test = pt2
+for i in range(len(test)):
+	for j in range(len(pt1)):
+		if test[i] == pt1[j]:
+			continue
+		 
+		test.append( pt1[j] )
+"""
+while test:
+	test.pop()
+#Assign your output to the OUT variable
+OUT = test</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="7c13c74a-f816-43d3-8fe7-ac92bc5478a6" nickname="Number" x="113.395147705078" y="210.12" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="439712f5-1bf2-4251-9e98-b8d4ab1161fa" nickname="Watch" x="397.484036593967" y="217.231111111111" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="a9732698-faf2-48bd-a448-755672b8294c" nickname="Draw" x="389.402710665528" y="98.2538528138527" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="3b26d28c-bdaf-465a-a740-cede05aaef50" start_index="0" end="439712f5-1bf2-4251-9e98-b8d4ab1161fa" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3b26d28c-bdaf-465a-a740-cede05aaef50" start_index="0" end="a9732698-faf2-48bd-a448-755672b8294c" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7c13c74a-f816-43d3-8fe7-ac92bc5478a6" start_index="0" end="3b26d28c-bdaf-465a-a740-cede05aaef50" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

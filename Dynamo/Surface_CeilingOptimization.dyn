@@ -1,4 +1,4 @@
-<dynWorkspace X="-264.284428126368" Y="-3.05631814591652" zoom="0.7">
+<dynWorkspace X="-463.193958784125" Y="-88.6208888930715" zoom="0.9">
   <dynElements>
     <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="672.008210180624" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
@@ -78,7 +78,7 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
       <Input name="index3" />
     </Dynamo.Nodes.dynNewList>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="08e0a668-cd70-4af6-ba14-998968c49451" nickname="Number Slider" x="544" y="451.585576454197" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.Double value="100" min="0" max="200" />
+      <System.Double value="200" min="0" max="200" />
     </Dynamo.Nodes.dynDoubleSliderInput>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="682c3474-c8d7-494c-afc5-338eabb72e1f" nickname="Number Slider" x="544" y="317.161931134" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.Double value="722.900919305417" min="0" max="1020" />
@@ -86,7 +86,7 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="3488d2da-18a9-4478-859a-f61cc58b444e" nickname="Number Slider" x="544" y="387.447645419715" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.Double value="748.437180796734" min="0" max="1500" />
     </Dynamo.Nodes.dynDoubleSliderInput>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="879f130b-4b18-4bf1-99c8-c72374acd007" nickname="Watch" x="1569.8540453799" y="185.755253520426" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="879f130b-4b18-4bf1-99c8-c72374acd007" nickname="Watch" x="1254.31782604368" y="385.809221774394" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" nickname="Draw" x="1389.50962830273" y="273.456933870727" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="46d7262f-2df9-4051-bce9-e46e7502d001" nickname="Python Script" x="1573.4948538052" y="775.194009056079" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.

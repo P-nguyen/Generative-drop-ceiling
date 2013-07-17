@@ -15,6 +15,7 @@ class PointCheck:
 	def __init__(self, _point):
 		self.point = _point
 		self.stored_geometry = []
+		self.stored_points = []
 		self.closest_geometry = None
 		self.closest_geometry_distance = None
 		#self.closest_geometry_point = None
@@ -34,7 +35,8 @@ class PointCheck:
 				continue
 			
 			#self.stored_geometry.append([test_point,dist])
-			self.stored_geometry.append(test_point)
+			self.stored_geometry(object)
+			self.stored_points.append(test_point)
 			"""
 			if lowest_z == None:
 				self.closest_geometry_distance = dist
@@ -48,6 +50,19 @@ class PointCheck:
 		return 
 	
 	
+	# some changes
+	
+	
+	def geometry_interset(self, geometry):
+		
+		return
+	
+	def check_intersect (self):
+		for ptlist in self.stored_points:
+			for pt in ptlist:
+				Line.by_start_point_end_point(self.point, pt)
+				Geometry.intersect(self.stored_geometry)
+				
 	def set_closest_geometry( self, geometry_list ):  #this one only finds the closest point. we need one that finds the proximitiy.
 		
 		self.objects_within_proximity(geometry_list)

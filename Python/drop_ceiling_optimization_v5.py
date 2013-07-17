@@ -168,12 +168,9 @@ output_debug_new = []
 
 for i in range(int(x_number) ):
 	for j in range(int(y_number) ):
-		if i == 0 and j ==0:
-			panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
-			#output_debug_new.append(grid[i][j].top_point)
-			panel.adjust_point()
-			#grid[i][j].top_point = panel.adjust_point()
-			output_debug_new.append( panel.polygon)
+		panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
+		#panel.adjust_point()
+		output_debug_new.append( panel.polygon)
 
 """
 #create panels.

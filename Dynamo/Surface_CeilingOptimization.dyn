@@ -1,4 +1,4 @@
-<dynWorkspace X="-463.193958784125" Y="-88.6208888930715" zoom="0.9">
+<dynWorkspace X="-466.507449680209" Y="34.841300407186" zoom="0.7">
   <dynElements>
     <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="672.008210180624" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
@@ -199,6 +199,10 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c2e2fd61-b3d7-48dc-a728-2404591207cc" nickname="File Path" x="377.210921645408" y="571.891226597159" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Media\dummymodel2.sat" />
     </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.ExportSATNode type="Dynamo.Nodes.ExportSATNode" guid="12bf1755-082b-4069-969e-7e89b5d823c8" nickname="Export To SAT" x="1652.36389731799" y="153.890205767512" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="0962513d-a752-42b7-9dcc-efcfa0f20980" nickname="String" x="1442.7179962647" y="145.82671370402" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="testgeo" />
+    </Dynamo.Nodes.dynStringInput>
   </dynElements>
   <dynConnectors>
     <Dynamo.Connectors.dynConnectorModel start="194bde2f-c1b6-4997-8be9-39cc5584fa18" start_index="0" end="9f96011a-2119-4375-a7b8-3dbe6b801c57" end_index="0" portType="0" />
@@ -207,11 +211,13 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
     <Dynamo.Connectors.dynConnectorModel start="08e0a668-cd70-4af6-ba14-998968c49451" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="2" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="682c3474-c8d7-494c-afc5-338eabb72e1f" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="3488d2da-18a9-4478-859a-f61cc58b444e" start_index="0" end="3f0c7e14-f4c4-4e40-81c3-d62f20c330f9" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" start_index="0" end="12bf1755-082b-4069-969e-7e89b5d823c8" end_index="1" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="5e734de0-160b-47e6-9052-1e85c392cae3" start_index="0" end="e0e28e34-238b-4ba7-b450-8ff7b9ed2ca8" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="5e734de0-160b-47e6-9052-1e85c392cae3" start_index="0" end="879f130b-4b18-4bf1-99c8-c72374acd007" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="1a22f08b-9f3a-4696-97e8-b894dd912677" start_index="0" end="5e734de0-160b-47e6-9052-1e85c392cae3" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="9a2b7b23-2597-4966-8cfe-72ab8f4dc061" start_index="0" end="1a22f08b-9f3a-4696-97e8-b894dd912677" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="c2e2fd61-b3d7-48dc-a728-2404591207cc" start_index="0" end="194bde2f-c1b6-4997-8be9-39cc5584fa18" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="0962513d-a752-42b7-9dcc-efcfa0f20980" start_index="0" end="12bf1755-082b-4069-969e-7e89b5d823c8" end_index="0" portType="0" />
   </dynConnectors>
   <dynNotes />
 </dynWorkspace>

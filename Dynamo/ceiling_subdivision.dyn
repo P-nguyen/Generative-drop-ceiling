@@ -1,0 +1,30 @@
+<dynWorkspace X="-494.092981925741" Y="-352.920269134384" zoom="0.7">
+  <dynElements>
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="17ffc8f2-8251-41ad-9519-f8b49e46133e" nickname="Import SAT" x="1488.43228197898" y="716.112427989734" isVisible="false" isUpstreamVisible="false" lacing="Longest" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="64ac7225-89a1-48ee-8c9c-44050182cfe5" nickname="File Path" x="1221.00371055041" y="716.112427989734" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Media\testgeo.sat" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c1edf820-31e5-4dd3-974a-942b081ca354" nickname="File Path" x="1256.68625023295" y="618.794967672274" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Subdivide.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" nickname="Python Script From String" x="1750.52752007422" y="634.160047037353" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="a89e1643-be8f-4936-9eab-108b3e46ad0e" nickname="Watch" x="2060.74974229644" y="577.652110529417" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" nickname="Read Text File" x="1512.68625023295" y="618.794967672274" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="190f7f15-62fc-44e1-9caa-7cd08d66bf67" nickname="Watch" x="1710.71799626469" y="923.175920053226" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="c14484bd-0b11-4aef-9dd5-34e036329fcb" nickname="Watch 3D" x="1786.74340668056" y="857.905146382453" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="bfa108d8-f8cf-4fbc-89ee-3ac7d318432a" nickname="Watch 3D" x="2222.07674001389" y="457.349590826898" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3378017e-cf1e-4f18-9348-a13d43c09e0e" nickname="Draw" x="1854.66074727708" y="479.72181304912" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="17ffc8f2-8251-41ad-9519-f8b49e46133e" start_index="0" end="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="17ffc8f2-8251-41ad-9519-f8b49e46133e" start_index="0" end="190f7f15-62fc-44e1-9caa-7cd08d66bf67" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="17ffc8f2-8251-41ad-9519-f8b49e46133e" start_index="0" end="c14484bd-0b11-4aef-9dd5-34e036329fcb" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="64ac7225-89a1-48ee-8c9c-44050182cfe5" start_index="0" end="17ffc8f2-8251-41ad-9519-f8b49e46133e" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c1edf820-31e5-4dd3-974a-942b081ca354" start_index="0" end="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" start_index="0" end="a89e1643-be8f-4936-9eab-108b3e46ad0e" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" start_index="0" end="3378017e-cf1e-4f18-9348-a13d43c09e0e" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" start_index="0" end="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3378017e-cf1e-4f18-9348-a13d43c09e0e" start_index="0" end="bfa108d8-f8cf-4fbc-89ee-3ac7d318432a" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

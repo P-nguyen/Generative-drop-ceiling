@@ -181,4 +181,4 @@ for i in range(int(x_number) ):
 """
 
 #Assign your output to the OUT variable
-OUT = [output_debug_geometry, output_debug_new]
+OUT = output_debug_new #[output_debug_geometry, output_debug_new]

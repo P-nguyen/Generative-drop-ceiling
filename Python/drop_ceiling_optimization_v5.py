@@ -5,6 +5,10 @@ import clr
 clr.AddReference('LibGNet')
 from Autodesk.LibG import *
 
+# General TODO:
+## Remove commented-out code. Every line of code should server a purpose, and every function should be "finished"
+
+
 from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
@@ -18,8 +22,9 @@ class PointCheck:
 		self.stored_points = []
 		self.top_point = None
 		#self.point_direction = None #possible will need to give the point a direction of movement.
-
-		
+	
+	# PATRICK NOTE:	
+	# TODO: change to cuboid intersection, rather than radius
 	def objects_within_proximity( self, geometry_list ):	#stores whatever ceiling objects are with in proximity
 		lowest_z = None
 		
@@ -125,7 +130,8 @@ class Check_SurfacePanel_intersection:
 				index_to_move = i
 			 
 		return index_to_move
-	
+	# PATRICK NOTE:
+	# TODO: replace number with Enum, see below
 	def does_intersect(self, number):
 
 		for object in self.intersecting_geometry:
@@ -143,6 +149,11 @@ class Check_SurfacePanel_intersection:
 	
 	
 	#create boolean for up or down. SO if it starts out as false, them move it up point.? if true move down points?
+	# PATRICK NOTE:
+	# TODO: replace bool / number with Enum, E.G.:
+	# class MovementDirection:
+        #	Up, Down, NotMoving = range(3)
+	# and use: MovementDirection.Up instead or "1" or "0"
 	def adjust_point(self):
 		
 		self.find_intersecting_geometry_list()
@@ -151,6 +162,11 @@ class Check_SurfacePanel_intersection:
 		if not self.index_points:
 			return
 		
+		# PATRICK NOTE:
+		# This doesn't seem like an ideal solution. Incrementing by only 1 could take a really long time in certain 
+		# circumstances. Ideally you could establish an upper and lower bound, then progress between those bounds
+		# by halving each time, or something similar. By halving the distance each time, you could potentially search
+		# distances to millions of billions of units in 21 steps. In computer science this is called "log(n)" performance
 		while self.is_invalid == True:
 			for index in self.index_points:
 				self.point_checks[index].top_point.set_z(self.point_checks[index].top_point.z() - 1)
@@ -159,7 +175,6 @@ class Check_SurfacePanel_intersection:
 			self.does_intersect(0)
 			
 		return #self.point_checks[0].top_point
-
 
 
 #########################################################

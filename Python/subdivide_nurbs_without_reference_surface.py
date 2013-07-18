@@ -109,23 +109,12 @@ def subdivide_surface( reference_surf, _pointlist ):
 
 	return [new_surfaces, side]
 
-def output_curves( _FinalSrfs ):
-	crvs = []
-	for srf in _FinalSrfs:
-		pts = corner_points(srf)
-		crvs.append([
-			Line.by_start_point_end_point(pts[0], pts[1]),
-				Line.by_start_point_end_point(pts[3], pts[2])
-		])
-		
-	return crvs
-
 ##########################################
 iterations = 1
 
-reference_surface = IN[0]
+
 input_surfaces = []
-input_surfaces.extend(IN[1])
+input_surfaces.extend(IN)
 
 
 new_surfaces = []
@@ -140,7 +129,7 @@ for obj in input_surfaces:
 for i in range(len(input_surfaces)):
 	#new_surfaces.extend(subdivide_surface( input_surfaces[i], surface_points[i] ))
 	#new_surfaces.extend( subdivide_surface( reference_surface, surface_points[i] )[0] )
-	temp_surfaces = subdivide_surface( reference_surface, surface_points[i] )
+	temp_surfaces = subdivide_surface( input_surfaces[i], surface_points[i] )
 	new_surfaces.extend( temp_surfaces[0] )
 	new_sides.extend( temp_surfaces[1] )
 	
@@ -155,9 +144,6 @@ for j in range(iterations):
 		
 		new_surfaces = recursive_list
 """
-
-#test_curves = output_curves( new_surfaces )
-
 
 #Assign your output to the OUT variable
 OUT = [ new_surfaces, new_sides ]

@@ -1,0 +1,560 @@
+<dynWorkspace X="-493.827214784747" Y="-191.795386305378" zoom="0.5">
+  <dynElements>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="299fb944-1679-4082-bb92-0b00c8d93b9d" nickname="Python Script" x="272.21569705141" y="440.297480739132" isVisible="false" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+x = IN[0]
+y = IN[1]
+
+p1 = Point.by_coordinates(0, 0, x)
+p2 = Point.by_coordinates(3, 0, 0)
+p3 = Point.by_coordinates(3, 3, y)
+p4 = Point.by_coordinates(0, 3, 0)
+
+line = []
+line.append(Line.by_start_point_end_point (p1,p2))
+line.append(Line.by_start_point_end_point(p3,p4))
+
+
+OUT = line</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="0734f89b-f3cc-4d96-8711-db3db41cbd03" nickname="List" x="82.9602485761588" y="632.637693419794" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="6672bd39-7005-451d-ac5f-005ca8bf8480" nickname="Number Slider" x="0" y="830.347404625532" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="3" min="0" max="10" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="97fb0eba-b818-4b39-a1f8-3b5f4ab00bd6" nickname="Number Slider" x="0" y="765.947404625532" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="5.46975546975541" min="0" max="10" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.Point3DNode type="Dynamo.Nodes.Point3DNode" guid="3c14e088-09ed-45c0-ae2a-9448b0a91ffd" nickname="Point" x="184.178569674843" y="207.174333511098" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="7347a19a-898c-4cca-9183-0f6bfdcc8487" nickname="Number" x="52.2939387252261" y="201.315891161742" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.LoftNode type="Dynamo.Nodes.LoftNode" guid="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" nickname="Loft" x="468.190680631016" y="621.736302431541" isVisible="false" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="32166b93-7b4e-43cf-8ea7-8666b0505d97" nickname="List" x="691.226915242827" y="690.771026753127" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+      <Input name="index2" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="6d00406a-35c0-4584-88d8-a004ebe90a7d" nickname="Number Slider" x="429.991292025608" y="947.756928435055" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="2" min="0" max="8" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="e7b8361b-eb5f-4203-85d2-f49ad7a813fb" nickname="Number Slider" x="434.324625358942" y="882.899785577911" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="2" min="0" max="8" />
+    </Dynamo.Nodes.dynDoubleSliderInput>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="4a219140-b816-4005-b44c-a9a3023874bb" nickname="Python Script" x="1589.74676721789" y="432.719862337995" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+def corner_points(surf):
+	"""
+	ptlist = [0, 0, 0, 0]
+	ptlist[0] = surf.point_at_parameter(0.0, 0.0)
+	ptlist[1] = surf.point_at_parameter(1.0, 0.0)
+	ptlist[2] = surf.point_at_parameter(1.0, 1.0)
+	ptlist[3] = surf.point_at_parameter(0.0, 1.0)
+	"""
+	polyvert = surf.vertices()
+	
+	ptlist = []
+	for i in range(polyvert.Count):
+		ptlist.append(polyvert[i])
+		
+	return ptlist
+
+
+def get_midpoint(pt1,pt2):
+	
+	midPt = [0,0,0]
+	
+	midPt[0] = (pt1.x() + pt2.x()) /2
+	midPt[1] = (pt1.y() + pt2.y()) /2
+	midPt[2] = (pt1.z() + pt2.z()) /2
+	
+	Final_MidPoint = Point.by_coordinates(midPt[0], midPt[1], midPt[2])
+	return Final_MidPoint
+
+def add_vector( point, vector, magnitude ):
+	vector.normalize()
+	
+	newpoint = [0,0,0]
+	newpoint[0] = point.x() + (vector.x() * magnitude)
+	newpoint[1] = point.y() + (vector.y() * magnitude)
+	newpoint[2] = point.z() + (vector.z() * magnitude)
+	
+	finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
+	return finalpt
+
+#not being used
+"""
+def rotate_points( ptlist ):
+	count = 0
+	for pt in ptlist:
+		if count == 0:
+			oldZ = pt.z()
+			index = count
+		if pt.z() &lt;= oldZ:
+			#lpt = pt
+			oldZ = pt.z()
+			index = count
+		count += 1
+
+	#index becomes num of rotation.
+	if index &gt; 0:
+		for i in range(index):
+			last = ptlist.pop()
+			ptlist.insert(0,last)
+	
+
+	newlist	= [ ptlist[0], ptlist[1], ptlist[2], ptlist[3] ]
+
+	return (newlist)
+
+def planarize_surface (ptlist):
+	plane = Plane.by_three_points(ptlist[1], ptlist[2] , ptlist[3])
+	ptlist[0] = plane.get_closest_point(ptlist[0])
+	
+	new_pointlist = PointList( [ ptlist[0], ptlist[1], ptlist[2] , ptlist[3] ] )
+	
+	return new_pointlist
+"""
+
+#needs to be feed correctly
+def subdivide_surface( reference_surf, _pointlist ):
+	#_pointlist = rotate_points( _pointlist )
+
+	_pointlist.append(_pointlist[0])
+	midpts = [0,0,0,0,0]
+	for i in range(4):
+		midpts[i] = get_midpoint(_pointlist[i], _pointlist[i+1] )
+	
+	midpts[4] = get_midpoint(midpts[0],midpts[2])
+	
+	
+	#lift points
+	
+	liftpts = []
+	liftmidpts = []
+
+	mag = -0.25
+        
+	for j in range(5):
+	#i might have to replace Surface with srf.normalblahblah
+		vec = reference_surf.normal_at_point( _pointlist[j] )
+		liftpts.append(add_vector( _pointlist[j], vec , mag ))
+		#liftpts.append(_pointlist[j])
+		vec = reference_surf.normal_at_point( midpts[j] )
+		#liftmidpts.append( midpt[j])
+		liftmidpts.append(add_vector( midpts[j], vec, mag ))
+
+	new_surfaces = []
+	
+	# non lift points
+	ptlist = PointList( [  midpts[0], _pointlist[1],  midpts[1],  midpts[4] ] )
+	new_surfaces.append(Polygon.by_vertices( ptlist))
+	# end of non lift points
+
+	ptlist = PointList([ liftpts[0], liftmidpts[0], liftmidpts[4], liftmidpts[3] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+
+	ptlist = PointList([ liftmidpts[3], liftmidpts[4], liftmidpts[2], liftpts[3] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+	
+	ptlist = PointList([ liftmidpts[4], liftmidpts[1], liftpts[2], liftmidpts[2] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+	
+
+	side = []
+
+	ptlist = PointList([ midpts[4], midpts[0], liftmidpts[0], liftmidpts[4] ])
+	side.append( Polygon.by_vertices( ptlist ))
+	
+	ptlist = PointList([ midpts[1], midpts[4], liftmidpts[4], liftmidpts[1] ])
+	side.append( Polygon.by_vertices( ptlist ))
+
+	return [new_surfaces, side]
+
+def output_curves( _FinalSrfs ):
+	crvs = []
+	for srf in _FinalSrfs:
+		pts = corner_points(srf)
+		crvs.append([
+			Line.by_start_point_end_point(pts[0], pts[1]),
+				Line.by_start_point_end_point(pts[3], pts[2])
+		])
+		
+	return crvs
+
+##########################################
+iterations = 1
+
+reference_surface = IN[0]
+input_surfaces = []
+input_surfaces.extend(IN[1])
+
+
+new_surfaces = []
+new_sides = []
+surface_points = []
+
+
+for obj in input_surfaces:
+	surface_points.append(corner_points(obj))
+	
+	
+for i in range(len(input_surfaces)):
+	#new_surfaces.extend(subdivide_surface( input_surfaces[i], surface_points[i] ))
+	#new_surfaces.extend( subdivide_surface( reference_surface, surface_points[i] )[0] )
+	temp_surfaces = subdivide_surface( reference_surface, surface_points[i] )
+	new_surfaces.extend( temp_surfaces[0] )
+	new_sides.extend( temp_surfaces[1] )
+	
+"""
+
+for j in range(iterations):
+	recursive_list = []
+	
+	for surface in new_surfaces:
+		pts = surface_points( surface )
+		recursive_list.extend( subdivide_surface( reference_surface, pts ))
+		
+		new_surfaces = recursive_list
+"""
+
+#test_curves = output_curves( new_surfaces )
+
+
+#Assign your output to the OUT variable
+#OUT = test_curves
+
+OUT = [ new_surfaces, new_sides ]
+</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="23554d9c-a5f5-4781-8e12-c96fad8ab7be" nickname="Watch" x="2564.6678813841" y="1496.49298864389" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="2fc238a9-7dd2-409b-b30f-f0c46fc03d6a" nickname="Python Script From String" x="2499.15076577912" y="1317.22217508855" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="832f414c-8c11-445c-a039-5df2973e4fa5" nickname="Read File" x="2483.20483561063" y="1181.6459797492" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c530599e-34d4-45e3-acf8-73e9d9faae0e" nickname="File Path" x="2245.91475151084" y="1184.04235599701" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="No file selected." />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="f96f6dd7-c51a-45e6-92e4-d2491a65b1ef" nickname="Watch 3D" x="1071.6902873225" y="1177.45773536852" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="f0e5387a-6926-48f8-8dc1-2825a1987d60" nickname="Draw" x="831.827913476036" y="1176.95581630999" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="5edb1a35-50e5-43c1-a68d-f83458a91126" nickname="Python Script From String" x="1023.50543085044" y="261.546787994522" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="bf37c4da-c541-46b2-bd9c-aa28cc1fc833" nickname="File Path" x="563.249463884309" y="279.195185878304" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="No file selected." />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="3c89eccd-775e-41da-96af-0e4de35355aa" nickname="Read File" x="818.772202546497" y="274.335921999474" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="ecbcb572-0496-43a1-b50d-ef467f7b8489" nickname="List" x="1362.02305330255" y="622.363081129889" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="7118ecf6-5506-44f5-8272-8a43a947a04b" nickname="Python Script" x="972.168923957329" y="442.141500077944" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+import math
+
+srf = IN[0]
+xdiv = IN[1]
+ydiv = IN[2]
+pt = []
+
+size = xdiv
+
+x = 1/ xdiv
+y = 1/ ydiv
+
+xdiv = math.ceil(xdiv)
+ydiv = math.ceil(ydiv)
+
+
+def lowest_point(ptlist):
+	count = 0
+	for pt in ptlist:
+		if count == 0:
+			oldZ = pt.z()
+			index = count
+		if pt.z() &lt;= oldZ:
+			#lpt = pt
+			oldZ = pt.z()
+			index = count
+		count += 1
+	return index
+	
+def get_midpt(pt1,pt2):
+	
+	midPt = [0,0,0]
+	
+	midPt[0] = (pt1.x() + pt2.x()) /2
+	midPt[1] = (pt1.y() + pt2.y()) /2
+	midPt[2] = (pt1.z() + pt2.z()) /2
+	
+	Final_MidPoint = Point.by_coordinates(midPt[0], midPt[1], midPt[2])
+	return Final_MidPoint
+
+pt = [[ (i,j) for j in range(int(ydiv)+1)] for i in range(int(xdiv)+1)]
+
+for i in range(int(xdiv)+1):
+	for j in range(int(ydiv)+1):
+		pt[i][j] = Surface.point_at_parameter(srf, i*x, j*y)
+	
+collection = []
+#sides = []
+#for ptcoor in pt:
+#	collection.append([ptcoor.x(), ptcoor.y(), ptcoor.z()])
+
+#sqares
+
+for i in range( int(xdiv) ):
+	for j in range( int(ydiv) ):
+		#0,0 - 1,0 and 0,1 - 1,1
+		ptlist = PointList( [ pt[i][j], pt[i+1][j], pt[i+1][j+1], pt[i][j+1] ] )
+		#check = lowestPT(ptlist)
+
+                #point_list = PointList( [ ptlist[0], ptlist[1], ptlist[2], ptlist[3] ])
+                collection.append(Polygon.by_vertices(ptlist))
+				
+#Assign your output to the OUT variable
+OUT = collection#[collection,sides]
+</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="d8927c7b-2b57-48b5-b53e-19d84aeb001c" nickname="Watch" x="1377.27348009279" y="805.985776753028" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="62d86fad-05a5-43be-a1e8-e5152777777d" nickname="Watch" x="1666.96515697149" y="866.7421991802" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="56bc500e-471e-4f1d-ab87-0c3573572d2d" nickname="Python Script" x="1353.67535999133" y="932.326482557337" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+reference_surface = []
+reference_surface.extend(IN[1])
+
+#Assign your output to the OUT variable
+OUT = reference_surface</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="ac984b02-4a71-4739-b4ab-8e02624ff3d0" nickname="Watch" x="1484.54620736552" y="973.131519898771" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="e7c54f8a-4edd-4714-b34c-8b0cfe74fbd1" nickname="Watch" x="998.317815068162" y="759.759175767806" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="a30f964a-9023-49df-9d3d-d248613ea6c6" nickname="Draw" x="1883.60692488054" y="432.180501119769" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="9cd8e4ce-4ff4-43be-a990-19ca200d3e2a" nickname="Watch 3D" x="2078.73522573376" y="433.545266783993" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="ddf5306c-51b2-4182-a9c1-fe349c1efbd7" nickname="Python Script" x="2371.76187395023" y="1039.8607490375" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+def corner_points(surf):
+	"""
+	ptlist = [0, 0, 0, 0]
+	ptlist[0] = surf.point_at_parameter(0.0, 0.0)
+	ptlist[1] = surf.point_at_parameter(1.0, 0.0)
+	ptlist[2] = surf.point_at_parameter(1.0, 1.0)
+	ptlist[3] = surf.point_at_parameter(0.0, 1.0)
+	"""
+	polyvert = surf.vertices()
+	
+	ptlist = []
+	for i in range(polyvert.Count):
+		ptlist.append(polyvert[i])
+		
+	return ptlist
+
+
+def get_midpoint(pt1,pt2):
+	
+	midPt = [0,0,0]
+	
+	midPt[0] = (pt1.x() + pt2.x()) /2
+	midPt[1] = (pt1.y() + pt2.y()) /2
+	midPt[2] = (pt1.z() + pt2.z()) /2
+	
+	Final_MidPoint = Point.by_coordinates(midPt[0], midPt[1], midPt[2])
+	return Final_MidPoint
+
+def add_vector( point, vector, magnitude ):
+	vector.normalize()
+	
+	newpoint = [0,0,0]
+	newpoint[0] = point.x() + (vector.x() * magnitude)
+	newpoint[1] = point.y() + (vector.y() * magnitude)
+	newpoint[2] = point.z() + (vector.z() * magnitude)
+	
+	finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
+	return finalpt
+
+#needs to be feed correctly
+def subdivide_surface( reference_surf, _pointlist ):
+	_pointlist.append(_pointlist[0])
+	midpts = [0,0,0,0,0]
+	for i in range(4):
+		midpts[i] = get_midpoint(_pointlist[i], _pointlist[i+1] )
+	
+	midpts[4] = get_midpoint(midpts[0],midpts[2])
+	
+	#lift points
+	
+	liftpts = []
+	liftmidpts = []
+
+	mag = -0.25
+        
+	for j in range(5):
+	#i might have to replace Surface with srf.normalblahblah
+		vec = reference_surf.normal_at_point( _pointlist[j] )
+		liftpts.append(add_vector( _pointlist[j], vec , mag ))
+		#liftpts.append(_pointlist[j])
+		vec = reference_surf.normal_at_point( midpts[j] )
+		#liftmidpts.append( midpt[j])
+		liftmidpts.append(add_vector( midpts[j], vec, mag ))
+
+
+	new_surfaces = []
+	
+	ptlist = PointList( [  midpts[0], _pointlist[1],  midpts[1],  midpts[4] ] )
+	new_surfaces.append(Polygon.by_vertices( ptlist))
+	
+
+	ptlist = PointList([ liftpts[0], liftmidpts[0], liftmidpts[4], liftmidpts[3] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+
+	ptlist = PointList([ liftmidpts[3], liftmidpts[4], liftmidpts[2], liftpts[3] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+	
+	ptlist = PointList([ liftmidpts[4], liftmidpts[1], liftpts[2], liftmidpts[2] ])
+	new_surfaces.append( Polygon.by_vertices( ptlist))
+
+	side = []
+
+	ptlist = PointList([ midpts[4], midpts[0], liftmidpts[0], liftmidpts[4] ])
+	side.append( Polygon.by_vertices( ptlist ))
+	
+	ptlist = PointList([ midpts[1], midpts[4], liftmidpts[4], liftmidpts[1] ])
+	side.append( Polygon.by_vertices( ptlist ))
+
+	return [new_surfaces, side]
+
+def output_curves( _FinalSrfs ):
+	crvs = []
+	for srf in _FinalSrfs:
+		pts = corner_points(srf)
+		crvs.append([
+			Line.by_start_point_end_point(pts[0], pts[1]),
+				Line.by_start_point_end_point(pts[3], pts[2])
+		])
+		
+	return crvs
+
+##########################################
+iterations = 1
+
+reference_surface = IN[0]
+input_surfaces = []
+input_surfaces.extend(IN[1][0])
+new_sides = []
+new_sides.extend(IN[1][1])
+
+new_surfaces = []
+surface_points = []
+
+
+for obj in input_surfaces:
+	surface_points.append(corner_points(obj))
+	
+	
+for i in range(len(input_surfaces)):
+	#new_surfaces.extend(subdivide_surface( input_surfaces[i], surface_points[i] ))
+	#new_surfaces.extend( subdivide_surface( reference_surface, surface_points[i] )[0] )
+	temp_surfaces = subdivide_surface( reference_surface, surface_points[i] )
+	new_surfaces.extend( temp_surfaces[0] )
+	new_sides.extend( temp_surfaces[1] )
+	
+"""
+
+for j in range(iterations):
+	recursive_list = []
+	
+	for surface in new_surfaces:
+		pts = surface_points( surface )
+		recursive_list.extend( subdivide_surface( reference_surface, pts ))
+		
+		new_surfaces = recursive_list
+"""
+
+#test_curves = output_curves( new_surfaces )
+
+
+#Assign your output to the OUT variable
+#OUT = test_curves
+
+OUT = [ new_surfaces, new_sides ]
+</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="0a56bf96-660a-404e-b662-d02b79a9171e" nickname="List" x="2017.17576266216" y="811.399534331859" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="1480926e-32c6-4443-839a-85f583b94877" nickname="Draw" x="2488.48968350123" y="877.546018361148" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="837b8a23-2442-470f-9d4b-ae43a172db7e" nickname="Watch 3D" x="2677.0655342637" y="854.275575313938" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="ccb37e09-7306-46ea-8aea-8e36c712c0df" nickname="Python Script" x="1592.36331850382" y="283.554101461035" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+def lowest_point(ptlist):
+	count = 0
+	for pt in ptlist:
+		if count == 0:
+			oldZ = pt.z()
+			index = count
+		if pt.z() &lt;= oldZ:
+			#lpt = pt
+			oldZ = pt.z()
+			index = count
+		count += 1
+	return index
+
+		check = lowestPT(ptlist)
+		
+		#check[1] becomes num of rotation.
+		if check &gt; 0:
+			for k in range(check):
+				last = ptlist.pop()
+				ptlist.insert(0,last)
+			
+		plane = Plane.by_three_points(ptlist[1], ptlist[2] , ptlist[3])
+
+		newpt = plane.get_closest_point(ptlist[0])
+		
+#Assign your output to the OUT variable
+OUT = 0</Script>
+    </Dynamo.Nodes.dynPython>
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="299fb944-1679-4082-bb92-0b00c8d93b9d" start_index="0" end="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="0734f89b-f3cc-4d96-8711-db3db41cbd03" start_index="0" end="299fb944-1679-4082-bb92-0b00c8d93b9d" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="6672bd39-7005-451d-ac5f-005ca8bf8480" start_index="0" end="0734f89b-f3cc-4d96-8711-db3db41cbd03" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="97fb0eba-b818-4b39-a1f8-3b5f4ab00bd6" start_index="0" end="0734f89b-f3cc-4d96-8711-db3db41cbd03" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7347a19a-898c-4cca-9183-0f6bfdcc8487" start_index="0" end="3c14e088-09ed-45c0-ae2a-9448b0a91ffd" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7347a19a-898c-4cca-9183-0f6bfdcc8487" start_index="0" end="3c14e088-09ed-45c0-ae2a-9448b0a91ffd" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7347a19a-898c-4cca-9183-0f6bfdcc8487" start_index="0" end="3c14e088-09ed-45c0-ae2a-9448b0a91ffd" end_index="2" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" start_index="0" end="32166b93-7b4e-43cf-8ea7-8666b0505d97" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" start_index="0" end="ecbcb572-0496-43a1-b50d-ef467f7b8489" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" start_index="0" end="0a56bf96-660a-404e-b662-d02b79a9171e" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="32166b93-7b4e-43cf-8ea7-8666b0505d97" start_index="0" end="7118ecf6-5506-44f5-8272-8a43a947a04b" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="32166b93-7b4e-43cf-8ea7-8666b0505d97" start_index="0" end="e7c54f8a-4edd-4714-b34c-8b0cfe74fbd1" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="6d00406a-35c0-4584-88d8-a004ebe90a7d" start_index="0" end="32166b93-7b4e-43cf-8ea7-8666b0505d97" end_index="2" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="e7b8361b-eb5f-4203-85d2-f49ad7a813fb" start_index="0" end="32166b93-7b4e-43cf-8ea7-8666b0505d97" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="4a219140-b816-4005-b44c-a9a3023874bb" start_index="0" end="62d86fad-05a5-43be-a1e8-e5152777777d" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="2fc238a9-7dd2-409b-b30f-f0c46fc03d6a" start_index="0" end="23554d9c-a5f5-4781-8e12-c96fad8ab7be" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="832f414c-8c11-445c-a039-5df2973e4fa5" start_index="0" end="2fc238a9-7dd2-409b-b30f-f0c46fc03d6a" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c530599e-34d4-45e3-acf8-73e9d9faae0e" start_index="0" end="832f414c-8c11-445c-a039-5df2973e4fa5" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f0e5387a-6926-48f8-8dc1-2825a1987d60" start_index="0" end="f96f6dd7-c51a-45e6-92e4-d2491a65b1ef" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="bf37c4da-c541-46b2-bd9c-aa28cc1fc833" start_index="0" end="3c89eccd-775e-41da-96af-0e4de35355aa" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3c89eccd-775e-41da-96af-0e4de35355aa" start_index="0" end="5edb1a35-50e5-43c1-a68d-f83458a91126" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="ecbcb572-0496-43a1-b50d-ef467f7b8489" start_index="0" end="4a219140-b816-4005-b44c-a9a3023874bb" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7118ecf6-5506-44f5-8272-8a43a947a04b" start_index="0" end="ecbcb572-0496-43a1-b50d-ef467f7b8489" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7118ecf6-5506-44f5-8272-8a43a947a04b" start_index="0" end="f0e5387a-6926-48f8-8dc1-2825a1987d60" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="62d86fad-05a5-43be-a1e8-e5152777777d" start_index="0" end="a30f964a-9023-49df-9d3d-d248613ea6c6" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="62d86fad-05a5-43be-a1e8-e5152777777d" start_index="0" end="0a56bf96-660a-404e-b662-d02b79a9171e" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="a30f964a-9023-49df-9d3d-d248613ea6c6" start_index="0" end="9cd8e4ce-4ff4-43be-a990-19ca200d3e2a" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="ddf5306c-51b2-4182-a9c1-fe349c1efbd7" start_index="0" end="1480926e-32c6-4443-839a-85f583b94877" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="1480926e-32c6-4443-839a-85f583b94877" start_index="0" end="837b8a23-2442-470f-9d4b-ae43a172db7e" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

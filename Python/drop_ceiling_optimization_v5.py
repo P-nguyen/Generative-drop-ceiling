@@ -189,7 +189,7 @@ for i in range(int(x_number) ):
 		output_debug_new.append( panel.polygon)
 
 
-f = open("Test_Point_list", "w")
+f = open("Test_Point_list.txt", "w")
 
 bspline_surfacelist = []
 for i in range(int(x_number)):
@@ -197,13 +197,18 @@ for i in range(int(x_number)):
 		#bspline_pointlist.append(grid[i][j].top_point)
 		#to get surfaces
 		#bspline_surfacelist.append(BSplineSurface.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i][j+1].top_point, grid[i+1][j+1].top_point]), 2, 2))
-		
+		"""
 		f.write( "[" + str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) + "]" + "," + 
-				"[" + str(grid[i+1][j].top_point.x()) + "," + str(grid[i+1][j].top_point.y()) + "," + str(grid[i+1][j].top_point.z()) + "]" + "," + 
-				"[" + str(grid[i+1][j+1].top_point.x()) + "," + str(grid[i+1][j+1].top_point.y()) + "," +str(grid[i+1][j+1].top_point.z()) + "]" + "," +
-				"[" + str(grid[i][j+1].top_point.x()) + ","+ str(grid[i][j+1].top_point.y()) + ","+ str(grid[i][j+1].top_point.z()) + "]"
-				+ '\n')
-		
+			"[" + str(grid[i+1][j].top_point.x()) + "," + str(grid[i+1][j].top_point.y()) + "," + str(grid[i+1][j].top_point.z()) + "]" + "," + 
+			"[" + str(grid[i+1][j+1].top_point.x()) + "," + str(grid[i+1][j+1].top_point.y()) + "," +str(grid[i+1][j+1].top_point.z()) + "]" + "," +
+			"[" + str(grid[i][j+1].top_point.x()) + ","+ str(grid[i][j+1].top_point.y()) + ","+ str(grid[i][j+1].top_point.z()) + "]"
+			+ '\n')
+		"""
+		f.write( str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) )
+		if j != (y_number - 1):
+			f.write("/")
+	if i != (x_number - 1):
+		f.write("\n")
 f.close()
 #output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
 

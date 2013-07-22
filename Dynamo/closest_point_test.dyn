@@ -1,0 +1,20 @@
+<dynWorkspace X="-985.020087498793" Y="-302.152941798941" zoom="0.8">
+  <dynElements>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="ccdefd97-b0de-4cd3-9770-1cae2a66a252" nickname="Number" x="1484.39404400484" y="911.26826058201" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="fdc863e2-dfa9-42c1-9bc3-c4b361d4a357" nickname="Read Text File" x="1601.89404400484" y="771.26826058201" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="68735b09-6e29-431e-b554-c9583637b68a" nickname="File Path" x="1335.64404400484" y="755.01826058201" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\closest_point_test.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="da9883f2-4563-4d60-af43-33f06905a364" nickname="Python Script From String" x="1770.64404400484" y="890.01826058201" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="2a9da0c4-e527-4307-897b-106f6375ac5a" nickname="Watch" x="2013.14404400484" y="897.51826058201" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="ccdefd97-b0de-4cd3-9770-1cae2a66a252" start_index="0" end="da9883f2-4563-4d60-af43-33f06905a364" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="fdc863e2-dfa9-42c1-9bc3-c4b361d4a357" start_index="0" end="da9883f2-4563-4d60-af43-33f06905a364" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="68735b09-6e29-431e-b554-c9583637b68a" start_index="0" end="fdc863e2-dfa9-42c1-9bc3-c4b361d4a357" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="da9883f2-4563-4d60-af43-33f06905a364" start_index="0" end="2a9da0c4-e527-4307-897b-106f6375ac5a" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

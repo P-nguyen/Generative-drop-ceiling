@@ -5,7 +5,7 @@ sys.path.append(path)
 import clr
 clr.AddReference('LibGNet')
 # be sure to include this so you have code completion
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Cuboid,CoordinateSystem
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Cuboid,CoordinateSystem,Plane,Vector
 from Autodesk.LibG import *
 
 start_offset_x = 75
@@ -23,17 +23,23 @@ y_number = round(ylength/spacing)
 newx_spacing = xlength / x_number
 newy_spacing = ylength / y_number
 
-reference_geo = IN
+reference_geo = []
+
+reference_geo.extend(IN[1])
+reference_geo.extend(IN[2])
+reference_geo.extend(IN[3])
+reference_geo.extend(IN[4])
+
+
+base_plane = Plane.by_origin_normal(Point.by_coordinates(0, 0, 0), Vector.by_coordinates(0, 0, 1))
 
 class GridNode:
 	def __init__(self, start_point):
 		self.start_point = start_point
-		line_end = Point.by_coordinates(start_point.x(), start_point.y(), start_point.z() + max_vertical)
-		self.vertical_line = Line.by_start_point_end_point(start_point, line_end)
 		
 		self.set_nearby_objects()
 		
-		self.set_lowest_intersect()
+		self.set_lowest_point()
 		
 	# finds and sets the objects this GridNode should look at when
 	# performing intersection tests
@@ -53,35 +59,31 @@ class GridNode:
 			
 		self.nearby_objects = nearby_objects
 		
-	def set_lowest_intersect(self):
-		lowest_intersection = None
+	def set_lowest_point(self):
+		lowest_point = None
 		
 		for geo in self.nearby_objects:
-			if geo.does_intersect(self.vertical_line) == False:
+			
+			closest_point = geo.get_closest_point(base_plane)
+			
+			if closest_point == None:
 				continue
 			
-			point_intersections = geo.intersect(self.vertical_line)
+			if lowest_point == None:
+				lowest_point = closest_point
+				continue
 			
-			for p_intersect in point_intersections:
-				# since this is a line, we know the intersection will be a point
-				point = Point.cast(p_intersect)
-				
-				# the intersection should be a point, but abort just in case something goes wrong
-				if point == None:
-					continue;
+			if closest_point.z() > lowest_point.z():
+				continue
 			
-				if lowest_intersection == None:
-					lowest_intersection = point
-					continue
-				
-				# ignore the point if it's higher than our current lowest
-				if point.z() > lowest_intersection.z():
-					continue
-				
-				lowest_intersection = point
-				
-			# note that these won't show up in the OpenGL viewer
-			self.lowest_intersection = lowest_intersection
+			lowest_point = closest_point
+			
+		self.lowest_point = lowest_point
+		
+		if lowest_point == None:
+			self.low_point = self.start_point
+		else:
+			self.low_point = Point.by_coordinates(self.start_point.x(), self.start_point.y(), lowest_point.z())
 			
 class GridQuad:
 	def __init__(self, node_1, node_2, node_3, node_4):
@@ -89,6 +91,10 @@ class GridQuad:
 		self.node_2 = node_2
 		self.node_3 = node_3
 		self.node_4 = node_4
+		
+		self.polygon_point_list = PointList([self.node_1.low_point, self.node_2.low_point, self.node_3.low_point, self.node_4.low_point])
+		
+		self.set_lowest_point()
 		
 		nearby_objects = []
 		
@@ -101,10 +107,66 @@ class GridQuad:
 		
 		self.create_polygon()
 		
-	def create_polygon(self):
-		points = [self.node_1.lowest_intersection, self.node_2.lowest_intersection, self.node_3.lowest_intersection, self.node_4.lowest_intersection]
-		self.polygon = Polygon.by_points(PointList(points))
+	def set_lowest_point(self):
+		self.lowest_point = self.node_1.lowest_point
 		
+		pts = [self.node_2.lowest_point, self.node_3.lowest_point, self.node_4.lowest_point]
+		
+		for pt in pts:
+			if pt.z() > self.lowest_point.z():
+				continue
+			self.lowest_point = pt
+		
+	def create_polygon(self):
+		self.polygon = Polygon.by_points(self.polygon_point_list)
+		
+	def update_polygon(self):
+		self.polygon.update_vertices(self.polygon_point_list)
+		
+	def intersects_nearby_objects(self):
+		for geo in self.nearby_objects:
+			if geo.does_intersect(self.polygon):
+				return True
+		return False
+		
+	def make_more_planar(self):
+		node_1 = self.node_1
+		node_2 = self.node_2
+		node_3 = self.node_3
+		node_4 = self.node_4
+		
+		plane = Plane.by_three_points(node_1.low_point, node_2.low_point, node_3.low_point)
+		
+		project_point = plane.get_closest_point(node_4.low_point)
+		
+		dif_x = project_point.x() - node_4.low_point.x()
+		dif_y = project_point.y() - node_4.low_point.y()
+		dif_z = project_point.z() - node_4.low_point.z()
+		
+		dif_x /= 2.0
+		dif_y /= 2.0
+		dif_z /= 2.0
+		
+		new_x = node_4.low_point.x() + dif_x
+		new_y = node_4.low_point.y() + dif_y
+		new_z = node_4.low_point.z() + dif_z
+		
+		node_4.low_point.set_x(new_x)
+		node_4.low_point.set_y(new_y)
+		node_4.low_point.set_z(new_z)
+		
+		self.update_polygon()
+		
+		if self.intersects_nearby_objects() == False:
+			return
+		
+		dif_z = self.lowest_point.z() - node_4.low_point.z()
+		
+		dif_z /= 2.0
+		
+		new_z = node_4.low_point.z() + dif_z
+		
+		node_4.low_point.set_z(new_z)
 		
 		
 grid = [ [ (y, x) for y in range( int(y_number) + 1) ] for x in range(int(x_number) + 1) ]
@@ -118,6 +180,17 @@ grid_nodes = [ [ (y, x) for y in range(int(y_number)) ] for x in range(int(x_num
 for i in range(int(x_number)):
 	for j in range(int(y_number)):
 		grid_nodes[i][j] = GridQuad(grid[i][j], grid[i + 1][j], grid[i + 1][j + 1], grid[i][j + 1])
+ 
+ 
+num_iterations = 50
+ 
+for n in range(num_iterations):
+	for i in range(int(x_number)):
+		for j in range(int(y_number)):
+			grid_nodes[i][j].make_more_planar()
+ 			
+for i in range(int(x_number)):
+	for j in range(int(y_number)):
+		grid_nodes[i][j].create_polygon()
 
-				 
 OUT = None

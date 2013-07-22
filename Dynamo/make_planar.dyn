@@ -1,0 +1,40 @@
+<dynWorkspace X="-1452.77268322603" Y="-698.37201058201" zoom="1">
+  <dynElements>
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c7c7c3dc-837b-4c38-bc20-82031898e5de" nickname="File Path" x="631.189592149522" y="660.250555555556" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Media\dummymodel2.sat" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="19d4a0f1-da41-467e-8088-e6dee246319d" nickname="Import SAT" x="938.522925482855" y="659.250555555556" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" nickname="Python Script From String" x="1306.05070326063" y="881.611666666667" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="9147260c-607d-4835-aa21-9f012a1eebe8" nickname="Read Text File" x="974.343583001031" y="881.56490079365" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="b354b169-9bb3-4782-b3aa-454297cf3cd5" nickname="File Path" x="650.712814519435" y="882.193492063492" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\make_planar.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="cb0b8b69-d520-4cd1-8c6e-168aae1bde28" nickname="Watch" x="1272.3794811861" y="1429.41571428572" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="46aa7265-94ad-4bf8-ae0f-237e2e0872e5" nickname="Draw" x="1809.04884357216" y="752.8258994709" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="18e23c8b-9e73-4d85-a163-625790b41130" nickname="Watch" x="1815.04884357217" y="914.159232804233" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynGetFromList type="Dynamo.Nodes.dynGetFromList" guid="8e266c66-eb28-45cd-b8f4-d28e353ecd45" nickname="Get From List" x="1583.3821769055" y="772.992566137566" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="568e7a5b-511b-4012-9e8e-1291af83ba18" nickname="Draw" x="1797.3821769055" y="1291.15923280423" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynGetFromList type="Dynamo.Nodes.dynGetFromList" guid="013f470a-4217-43fb-9e3e-279e22ff2dfa" nickname="Get From List" x="1537.27106579439" y="1070.77034391534" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="bc3d503b-5fca-4eb2-a6f5-328050b31c0c" nickname="Number" x="1446.71551023883" y="775.770343915344" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="787997f3-82b1-48fb-8083-12e9fdd6664c" nickname="Number" x="1362.27106579439" y="1134.65923280423" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="1" />
+    </Dynamo.Nodes.dynDoubleInput>
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="c7c7c3dc-837b-4c38-bc20-82031898e5de" start_index="0" end="19d4a0f1-da41-467e-8088-e6dee246319d" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="19d4a0f1-da41-467e-8088-e6dee246319d" start_index="0" end="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" start_index="0" end="18e23c8b-9e73-4d85-a163-625790b41130" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" start_index="0" end="013f470a-4217-43fb-9e3e-279e22ff2dfa" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" start_index="0" end="8e266c66-eb28-45cd-b8f4-d28e353ecd45" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="9147260c-607d-4835-aa21-9f012a1eebe8" start_index="0" end="48bc0cc9-aa29-4eb1-9ea8-3bd6e0c2ae0f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="9147260c-607d-4835-aa21-9f012a1eebe8" start_index="0" end="cb0b8b69-d520-4cd1-8c6e-168aae1bde28" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="b354b169-9bb3-4782-b3aa-454297cf3cd5" start_index="0" end="9147260c-607d-4835-aa21-9f012a1eebe8" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="8e266c66-eb28-45cd-b8f4-d28e353ecd45" start_index="0" end="46aa7265-94ad-4bf8-ae0f-237e2e0872e5" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="013f470a-4217-43fb-9e3e-279e22ff2dfa" start_index="0" end="568e7a5b-511b-4012-9e8e-1291af83ba18" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="bc3d503b-5fca-4eb2-a6f5-328050b31c0c" start_index="0" end="8e266c66-eb28-45cd-b8f4-d28e353ecd45" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="787997f3-82b1-48fb-8083-12e9fdd6664c" start_index="0" end="013f470a-4217-43fb-9e3e-279e22ff2dfa" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

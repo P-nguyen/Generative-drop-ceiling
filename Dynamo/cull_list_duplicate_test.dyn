@@ -1,4 +1,4 @@
-<dynWorkspace X="-138.445598845599" Y="82.0363636363637" zoom="1">
+<dynWorkspace X="-4.38961546564343" Y="72.1638308358309" zoom="0.8">
   <dynElements>
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="3b26d28c-bdaf-465a-a740-cede05aaef50" nickname="Python Script" x="247.795147705078" y="212.52" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>import sys
@@ -38,8 +38,8 @@ for i in range(len(test)):
 		 
 		test.append( pt1[j] )
 """
-while test:
-	test.pop()
+#while test:
+#	test.pop()
 #Assign your output to the OUT variable
 OUT = test</Script>
     </Dynamo.Nodes.dynPython>

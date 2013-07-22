@@ -181,11 +181,38 @@ class Check_SurfacePanel_intersection:
 
 output_debug_new = []		
 
+
 for i in range(int(x_number) ):
 	for j in range(int(y_number) ):
 		panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
 		#panel.adjust_point()
 		output_debug_new.append( panel.polygon)
+
+
+f = open("Test_Point_list.txt", "w")
+
+bspline_surfacelist = []
+for i in range(int(x_number)):
+	for j in range(int(y_number)):
+		#bspline_pointlist.append(grid[i][j].top_point)
+		#to get surfaces
+		#bspline_surfacelist.append(BSplineSurface.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i][j+1].top_point, grid[i+1][j+1].top_point]), 2, 2))
+		"""
+		f.write( "[" + str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) + "]" + "," + 
+			"[" + str(grid[i+1][j].top_point.x()) + "," + str(grid[i+1][j].top_point.y()) + "," + str(grid[i+1][j].top_point.z()) + "]" + "," + 
+			"[" + str(grid[i+1][j+1].top_point.x()) + "," + str(grid[i+1][j+1].top_point.y()) + "," +str(grid[i+1][j+1].top_point.z()) + "]" + "," +
+			"[" + str(grid[i][j+1].top_point.x()) + ","+ str(grid[i][j+1].top_point.y()) + ","+ str(grid[i][j+1].top_point.z()) + "]"
+			+ '\n')
+		"""
+		f.write( str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) )
+		if j != (y_number - 1):
+			f.write("/")
+	if i != (x_number - 1):
+		f.write("\n")
+f.close()
+#output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
+
+
 
 """
 #create panels.
@@ -196,4 +223,4 @@ for i in range(int(x_number) ):
 """
 
 #Assign your output to the OUT variable
-OUT = [output_debug_geometry, output_debug_new]
+OUT =  bspline_surfacelist #output_debug_new#[output_debug_geometry, output_debug_new]

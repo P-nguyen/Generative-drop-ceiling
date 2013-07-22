@@ -1,7 +1,15 @@
-<dynWorkspace X="-493.827214784747" Y="-191.795386305378" zoom="0.5">
+<dynWorkspace X="-67.4554488020238" Y="75.542577740583" zoom="0.3">
   <dynElements>
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="299fb944-1679-4082-bb92-0b00c8d93b9d" nickname="Python Script" x="272.21569705141" y="440.297480739132" isVisible="false" isUpstreamVisible="true" lacing="Disabled">
-      <Script>#The input to this node will be stored in the IN variable.
+      <Script>import sys
+path = 'C:\\dev\\Dynamo\\bin\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
+#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
 x = IN[0]
@@ -46,7 +54,15 @@ OUT = line</Script>
       <System.Double value="2" min="0" max="8" />
     </Dynamo.Nodes.dynDoubleSliderInput>
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="4a219140-b816-4005-b44c-a9a3023874bb" nickname="Python Script" x="1589.74676721789" y="432.719862337995" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <Script>#The input to this node will be stored in the IN variable.
+      <Script>import sys
+path = 'C:\\dev\\Dynamo\\bin\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
+#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
 def corner_points(surf):
@@ -251,7 +267,15 @@ OUT = [ new_surfaces, new_sides ]
       <Input name="index1" />
     </Dynamo.Nodes.dynNewList>
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="7118ecf6-5506-44f5-8272-8a43a947a04b" nickname="Python Script" x="972.168923957329" y="442.141500077944" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <Script>#The input to this node will be stored in the IN variable.
+      <Script>import sys
+path = 'C:\\dev\\Dynamo\\bin\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
+#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
 import math
@@ -524,9 +548,11 @@ def lowest_point(ptlist):
 #Assign your output to the OUT variable
 OUT = 0</Script>
     </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="8d009ee2-0d73-4b3d-9ff9-8d8c88a8d736" nickname="Watch" x="490.543539541282" y="431.594582134565" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
   </dynElements>
   <dynConnectors>
     <Dynamo.Connectors.dynConnectorModel start="299fb944-1679-4082-bb92-0b00c8d93b9d" start_index="0" end="7e8b0ff3-a825-4644-9d6a-64903b2fb3ff" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="299fb944-1679-4082-bb92-0b00c8d93b9d" start_index="0" end="8d009ee2-0d73-4b3d-9ff9-8d8c88a8d736" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="0734f89b-f3cc-4d96-8711-db3db41cbd03" start_index="0" end="299fb944-1679-4082-bb92-0b00c8d93b9d" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="6672bd39-7005-451d-ac5f-005ca8bf8480" start_index="0" end="0734f89b-f3cc-4d96-8711-db3db41cbd03" end_index="1" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="97fb0eba-b818-4b39-a1f8-3b5f4ab00bd6" start_index="0" end="0734f89b-f3cc-4d96-8711-db3db41cbd03" end_index="0" portType="0" />

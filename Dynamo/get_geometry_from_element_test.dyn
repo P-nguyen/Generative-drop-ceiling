@@ -1,0 +1,30 @@
+<dynWorkspace X="-405.543652117695" Y="-240.619195286196" zoom="0.7">
+  <dynElements>
+    <Dynamo.Nodes.dynModelElementSelection type="Dynamo.Nodes.dynModelElementSelection" guid="da4d9a26-b2b7-49b0-bd66-9754cd49cd7d" nickname="Select Model Element" x="541.439592149523" y="654.972777777778" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <instance id="e464e2c6-1c9c-4328-88d2-2b8f788256a5-000077a5" />
+    </Dynamo.Nodes.dynModelElementSelection>
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="bb7b0e27-d914-44cc-95ef-0ebffa98b97a" nickname="File Path" x="372.094943414922" y="544.914206349206" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\get_geometry_transaction_test.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="f93bd000-3f74-48dc-8a7b-3c1f9449fbe0" nickname="Python Script From String" x="858.761610081588" y="633.803095238095" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="c2864f95-369a-4b2c-acb2-596243d24ac1" nickname="Read Text File" x="622.094943414922" y="547.136428571429" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="d3d639f3-1ab6-482d-bd44-9a46f8992f09" nickname="File Path" x="749.872721192702" y="402.691984126984" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\get_geometry_transaction_test_2.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="a1048e41-9f03-4957-90e9-1c0a7571222c" nickname="Python Script From String" x="1224.31716563715" y="617.453888888889" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="7a806cfd-4bae-4a5a-85b8-1256ebfbdbd6" nickname="Read Text File" x="1012.09494341492" y="403.803095238095" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="ab245836-0cff-4d86-94ce-a03e4f4499aa" nickname="Watch" x="1528.12668944667" y="615.231666666666" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="7a0cb449-2c16-47b9-9f5f-d968e55c86d8" nickname="Watch" x="1217.91257117539" y="849.258374218375" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Connectors.dynConnectorModel start="da4d9a26-b2b7-49b0-bd66-9754cd49cd7d" start_index="0" end="f93bd000-3f74-48dc-8a7b-3c1f9449fbe0" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="bb7b0e27-d914-44cc-95ef-0ebffa98b97a" start_index="0" end="c2864f95-369a-4b2c-acb2-596243d24ac1" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f93bd000-3f74-48dc-8a7b-3c1f9449fbe0" start_index="0" end="a1048e41-9f03-4957-90e9-1c0a7571222c" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f93bd000-3f74-48dc-8a7b-3c1f9449fbe0" start_index="0" end="7a0cb449-2c16-47b9-9f5f-d968e55c86d8" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="c2864f95-369a-4b2c-acb2-596243d24ac1" start_index="0" end="f93bd000-3f74-48dc-8a7b-3c1f9449fbe0" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="d3d639f3-1ab6-482d-bd44-9a46f8992f09" start_index="0" end="7a806cfd-4bae-4a5a-85b8-1256ebfbdbd6" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="a1048e41-9f03-4957-90e9-1c0a7571222c" start_index="0" end="ab245836-0cff-4d86-94ce-a03e4f4499aa" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="7a806cfd-4bae-4a5a-85b8-1256ebfbdbd6" start_index="0" end="a1048e41-9f03-4957-90e9-1c0a7571222c" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

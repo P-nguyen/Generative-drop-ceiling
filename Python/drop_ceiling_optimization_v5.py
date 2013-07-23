@@ -33,7 +33,7 @@ class PointCheck:
 			test_point = Point.by_coordinates(self.point.x(), self.point.y(), object_point.z())
 			dist = test_point.distance_to(object_point)
 			
-			if dist > 120: #half of IN spacing.
+			if dist > 60: #half of IN spacing.
 				continue
 			
 			self.stored_geometry.append(object)
@@ -189,11 +189,11 @@ for i in range(int(x_number) ):
 		output_debug_new.append( panel.polygon)
 
 
-f = open("Test_Point_list.txt", "w")
+f = open("Test_Point_list2.txt", "w")
 
 bspline_surfacelist = []
-for i in range(int(x_number)):
-	for j in range(int(y_number)):
+for i in range(int(x_number)+1):
+	for j in range(int(y_number)+1):
 		#bspline_pointlist.append(grid[i][j].top_point)
 		#to get surfaces
 		#bspline_surfacelist.append(BSplineSurface.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i][j+1].top_point, grid[i+1][j+1].top_point]), 2, 2))
@@ -205,22 +205,22 @@ for i in range(int(x_number)):
 			+ '\n')
 		"""
 		f.write( str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) )
-		if j != (y_number - 1):
+		if j != (y_number):
 			f.write("/")
-	if i != (x_number - 1):
+	if i != (x_number):
 		f.write("\n")
 f.close()
 #output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
 
 
 
-"""
+
 #create panels.
 for i in range(int(x_number) ):
  	for j in range(int(y_number) ):
  		new_polygon_pointlist = PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i+1][j+1].top_point, grid[i][j+1].top_point])
  		output_debug_new.append(Polygon.by_points(new_polygon_pointlist))
-"""
+
 
 #Assign your output to the OUT variable
-OUT =  bspline_surfacelist #output_debug_new#[output_debug_geometry, output_debug_new]
+OUT =  output_debug_new #bspline_surfacelist #output_debug_new#[output_debug_geometry, output_debug_new]

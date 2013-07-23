@@ -1,6 +1,6 @@
-<dynWorkspace X="-588.301311641967" Y="-167.820354888782" zoom="0.5">
+<dynWorkspace X="-131.297954462816" Y="-138.564496844295" zoom="0.7">
   <dynElements>
-    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="672.008210180624" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="194bde2f-c1b6-4997-8be9-39cc5584fa18" nickname="Import SAT" x="675.436781609195" y="568.608669950739" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9f96011a-2119-4375-a7b8-3dbe6b801c57" nickname="Watch" x="962.047805642633" y="659.929309349654" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="d9f7f48d-409d-46fc-b68f-e67f17fb6911" nickname="Python Script" x="2089.79931084241" y="1081.40166840822" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
@@ -78,7 +78,7 @@ OUT = testpt #grid_points #grid_points[0].boolean</Script>
       <Input name="index3" />
     </Dynamo.Nodes.dynNewList>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="08e0a668-cd70-4af6-ba14-998968c49451" nickname="Number Slider" x="544" y="451.585576454197" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.Double value="200" min="0" max="200" />
+      <System.Double value="100" min="0" max="200" />
     </Dynamo.Nodes.dynDoubleSliderInput>
     <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="682c3474-c8d7-494c-afc5-338eabb72e1f" nickname="Number Slider" x="544" y="317.161931134" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.Double value="722.900919305417" min="0" max="1020" />

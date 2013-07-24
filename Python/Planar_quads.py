@@ -91,23 +91,45 @@ def planar_quads( gridlist, point_indexs ):
     tolerence = tolerence / len(new_points)
     
     return [final_point, tolerence ]
-    
+
+
+####Main####
+cuttoff_tolerance = 1
 planar_process = False
+
 while planar_process == False:
     planar_process = True
     for i in range(len(grid)):
         for j in range(len(grid[0])):
-            
-            test = planar_quads(grid, [i,j])
-            grid[i][j] = test[0]
-            if test[1] >= 1:
+            grid[i][j], tolerance = planar_quads(grid, [i,j])
+
+            if tolerence >= cuttoff_tolerance:
                 planar_process = False
             
+#create new grid of points that are correctly offset from the original pointlist.
+for i in range(len(grid)):
+     for j in range(len(grid[0])):
 
 output_debug_new = []
 for i in range(len(grid)-1 ):
      for j in range(len(grid[0])-1 ):
          new_polygon_pointlist = PointList([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
          output_debug_new.append(Polygon.by_points(new_polygon_pointlist))
+
+
+
+################################################################################################################
+#output txt file.
+f = open("planarQuad_textfile.txt", "w")
+
+for i in range(len(grid)):
+    for j in range(len(grid[0])):
+        f.write( str(grid[i][j].x()) + "," + str(grid[i][j].y()) + "," + str(grid[i][j].z()) )
+        if j != (len(grid[0])-1):
+            f.write("/")
+    if i != (len(grid)-1):
+        f.write("\n")
+f.close()
+################################################################################################################
 
 OUT = output_debug_new

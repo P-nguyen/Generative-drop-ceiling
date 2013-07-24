@@ -1,30 +1,30 @@
-<dynWorkspace X="-3065.05615780483" Y="-414.493928117231" zoom="1">
+<dynWorkspace X="-3154.95915484097" Y="-753.677158682127" zoom="0.9">
   <dynElements>
-    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="17ffc8f2-8251-41ad-9519-f8b49e46133e" nickname="Import SAT" x="1495.09894864565" y="1255.89020576751" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="64ac7225-89a1-48ee-8c9c-44050182cfe5" nickname="File Path" x="1217.44815499486" y="1256.33465021196" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <System.String value="C:\dev\Generative-drop-ceiling\Media\testgeo_surfaces" />
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="17ffc8f2-8251-41ad-9519-f8b49e46133e" nickname="Import SAT" x="1567.09894864565" y="2479.89020576751" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="64ac7225-89a1-48ee-8c9c-44050182cfe5" nickname="File Path" x="1306.59101213772" y="2484.90607878339" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Media\Export_Planar_quads.sat" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c1edf820-31e5-4dd3-974a-942b081ca354" nickname="File Path" x="2641.68625023295" y="723.128301005607" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="c1edf820-31e5-4dd3-974a-942b081ca354" nickname="File Path" x="3116.35291689962" y="1003.12830100561" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Python\subdivide_nurbs_without_reference_surface.py" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" nickname="Python Script From String" x="3093.52752007422" y="724.82671370402" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="a89e1643-be8f-4936-9eab-108b3e46ad0e" nickname="Watch" x="3262.52752007422" y="809.652110529417" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" nickname="Read Text File" x="2897.68625023295" y="723.128301005607" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="190f7f15-62fc-44e1-9caa-7cd08d66bf67" nickname="Watch" x="1750.71799626469" y="1255.84258671989" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="c14484bd-0b11-4aef-9dd5-34e036329fcb" nickname="Watch 3D" x="1905.67674001389" y="1074.23847971579" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="bfa108d8-f8cf-4fbc-89ee-3ac7d318432a" nickname="Watch 3D" x="3741.73388287103" y="473.616257493565" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3378017e-cf1e-4f18-9348-a13d43c09e0e" nickname="Draw" x="3353.86074727708" y="551.188479715787" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
-    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="05b26f88-9244-43f7-bee7-daf1b80a3b28" nickname="Import SAT" x="1532.03228197898" y="836.334650211956" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="2f06573b-8553-4588-81ae-f1e3a56216cc" nickname="File Path" x="1266.91482166152" y="835.623539100845" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" nickname="Python Script From String" x="3562.4799010266" y="1109.96957084688" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="a89e1643-be8f-4936-9eab-108b3e46ad0e" nickname="Watch" x="3588.4505969973" y="1303.49826437557" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" nickname="Read Text File" x="3372.35291689962" y="1013.41401529132" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="190f7f15-62fc-44e1-9caa-7cd08d66bf67" nickname="Watch" x="1804.05132959802" y="2485.17592005322" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="c14484bd-0b11-4aef-9dd5-34e036329fcb" nickname="Watch 3D" x="2112.07674001389" y="2480.63847971579" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="bfa108d8-f8cf-4fbc-89ee-3ac7d318432a" nickname="Watch 3D" x="4057.73388287103" y="1020.3854882628" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="3378017e-cf1e-4f18-9348-a13d43c09e0e" nickname="Draw" x="3833.86074727708" y="1016.96625749356" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
+    <Dynamo.Nodes.ImportSATNode type="Dynamo.Nodes.ImportSATNode" guid="05b26f88-9244-43f7-bee7-daf1b80a3b28" nickname="Import SAT" x="1451.0799010266" y="346.429888307194" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="2f06573b-8553-4588-81ae-f1e3a56216cc" nickname="File Path" x="1175.67672642342" y="351.433062910369" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Media\testgeo_srf" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="d0a6dc47-e717-4723-9e48-c28f2dad2142" nickname="Watch" x="1757.78466293136" y="901.975920053226" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="e40dac75-3776-4d0f-b077-48f013223286" nickname="Watch 3D" x="2030.34340668056" y="835.105146382453" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="8b1b3e08-0151-4732-b42b-42370765cdd6" nickname="List" x="2932.96832462218" y="1049.39652167383" isVisible="true" isUpstreamVisible="false" lacing="Disabled">
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="d0a6dc47-e717-4723-9e48-c28f2dad2142" nickname="Watch" x="1538.75435990106" y="458.097132174438" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="e40dac75-3776-4d0f-b077-48f013223286" nickname="Watch 3D" x="1918.87674001389" y="192.97181304912" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="8b1b3e08-0151-4732-b42b-42370765cdd6" nickname="List" x="2774.30165795551" y="178.463188340497" isVisible="true" isUpstreamVisible="false" lacing="Disabled">
       <Input name="index0" />
       <Input name="index1" />
     </Dynamo.Nodes.dynNewList>
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="8981e0c7-c7cf-499e-a3e0-8d6d5a0d8e79" nickname="Python Script" x="1424.03595966908" y="1732.0124554343" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="8981e0c7-c7cf-499e-a3e0-8d6d5a0d8e79" nickname="Python Script" x="1446.43595966908" y="1309.6124554343" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>import sys
 path = 'C:\\dev\\Dynamo\\bin\\Release'
 sys.path.append(path)
@@ -38,19 +38,21 @@ from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 dataEnteringNode = IN
 
 def corner_points(surf):
-	
+	"""
 	ptlist = [0, 0, 0, 0]
 	ptlist[0] = surf.point_at_parameter(0.0, 0.0)
 	ptlist[1] = surf.point_at_parameter(1.0, 0.0)
 	ptlist[2] = surf.point_at_parameter(1.0, 1.0)
 	ptlist[3] = surf.point_at_parameter(0.0, 1.0)
+	
 	"""
 	polyvert = surf.vertices()
 	
 	ptlist = []
 	for i in range(polyvert.Count):
 		ptlist.append(polyvert[i])
-	"""	
+	
+	
 	return ptlist
 	
 pts = []
@@ -61,11 +63,11 @@ for surfaces in IN:
 #Assign your output to the OUT variable
 OUT = pts</Script>
     </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="67b345fc-ed2d-4bb6-83b1-373b4e26788a" nickname="Draw" x="1572.66183537825" y="1729.50451892636" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="8e6b827d-57ba-4ff4-a6a2-2b167c2f8d98" nickname="Watch 3D" x="2028.34340668056" y="1730.57181304912" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="87e25698-5fe0-4750-a935-fcf43f99f24a" nickname="Watch" x="1751.51799626469" y="1728.64258671989" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="1e54bdfa-bc7f-4580-abb3-b4aa5ebb5c0a" nickname="Watch" x="2669.35399718712" y="1032.84477866663" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="14c91a65-d34b-4261-af48-bacfdc86eb8a" nickname="Python Script" x="2540.25594365154" y="1035.44557231742" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="67b345fc-ed2d-4bb6-83b1-373b4e26788a" nickname="Draw" x="1595.06183537825" y="1307.10451892636" isVisible="true" isUpstreamVisible="false" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="8e6b827d-57ba-4ff4-a6a2-2b167c2f8d98" nickname="Watch 3D" x="2099.88626382342" y="1306.64800352531" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="87e25698-5fe0-4750-a935-fcf43f99f24a" nickname="Watch" x="1773.91799626469" y="1306.24258671989" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="1e54bdfa-bc7f-4580-abb3-b4aa5ebb5c0a" nickname="Watch" x="2510.68733052045" y="161.911445333297" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="14c91a65-d34b-4261-af48-bacfdc86eb8a" nickname="Python Script" x="2381.58927698487" y="164.512238984087" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>import sys
 path = 'C:\\dev\\Dynamo\\bin\\Release'
 sys.path.append(path)
@@ -83,7 +85,7 @@ srf = IN[0]
 #Assign your output to the OUT variable
 OUT = srf</Script>
     </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="e7278b2d-75af-48e9-b5c9-1b3a59297999" nickname="Python Script" x="2600.95997758387" y="1269.44479579755" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="e7278b2d-75af-48e9-b5c9-1b3a59297999" nickname="Python Script" x="2599.62664425054" y="2482.77812913088" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -92,10 +94,21 @@ input_surfaces.extend(IN)
 #Assign your output to the OUT variable
 OUT = input_surfaces</Script>
     </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="1194f93b-ccbe-406d-b3a7-c83d923c42ac" nickname="Watch" x="2735.62664425054" y="1271.22257357533" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="1194f93b-ccbe-406d-b3a7-c83d923c42ac" nickname="Watch" x="2803.62664425054" y="2659.22257357533" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="1ebdf722-2cff-42e5-a335-dd35a48b813f" nickname="File Path" x="1184.12804147671" y="952.502874726174" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Media\planarQuad_textfile.txt" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="682bce06-2d17-4509-a03a-168c9a87c57c" nickname="Read Text File" x="1429.81375576242" y="952.960017583317" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="87122d60-ba70-4c17-86bf-57a0d427af17" nickname="File Path" x="1178.79470814338" y="847.169541392841" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Read_txtfile_from_pointlist_to_polygon.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="be8224aa-0678-4ce6-bb3a-b887b9a15261" nickname="Read Text File" x="1424.48042242909" y="847.626684249983" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" nickname="Python Script From String" x="1677.50773558885" y="846.829382662682" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="1d40853a-196d-4227-af6c-db2eba013576" nickname="Watch" x="1862.61884669996" y="850.305573138873" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="4473bf22-5785-45a5-9db3-2c8fc8c9b12e" nickname="Watch 3D" x="2185.14340668056" y="850.105146382453" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="b04c4cff-bf8c-4ef0-bbbb-c02293f63f3d" nickname="Draw" x="1866.62844742215" y="756.939555822854" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
   </dynElements>
   <dynConnectors>
-    <Dynamo.Connectors.dynConnectorModel start="17ffc8f2-8251-41ad-9519-f8b49e46133e" start_index="0" end="8981e0c7-c7cf-499e-a3e0-8d6d5a0d8e79" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="17ffc8f2-8251-41ad-9519-f8b49e46133e" start_index="0" end="190f7f15-62fc-44e1-9caa-7cd08d66bf67" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="64ac7225-89a1-48ee-8c9c-44050182cfe5" start_index="0" end="17ffc8f2-8251-41ad-9519-f8b49e46133e" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="c1edf820-31e5-4dd3-974a-942b081ca354" start_index="0" end="fc1dc1c7-e4ad-4bc7-a277-c111921ef5e0" end_index="0" portType="0" />
@@ -105,9 +118,8 @@ OUT = input_surfaces</Script>
     <Dynamo.Connectors.dynConnectorModel start="190f7f15-62fc-44e1-9caa-7cd08d66bf67" start_index="0" end="c14484bd-0b11-4aef-9dd5-34e036329fcb" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="c14484bd-0b11-4aef-9dd5-34e036329fcb" start_index="0" end="e7278b2d-75af-48e9-b5c9-1b3a59297999" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="3378017e-cf1e-4f18-9348-a13d43c09e0e" start_index="0" end="bfa108d8-f8cf-4fbc-89ee-3ac7d318432a" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="05b26f88-9244-43f7-bee7-daf1b80a3b28" start_index="0" end="d0a6dc47-e717-4723-9e48-c28f2dad2142" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="05b26f88-9244-43f7-bee7-daf1b80a3b28" start_index="0" end="e40dac75-3776-4d0f-b077-48f013223286" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="2f06573b-8553-4588-81ae-f1e3a56216cc" start_index="0" end="05b26f88-9244-43f7-bee7-daf1b80a3b28" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="05b26f88-9244-43f7-bee7-daf1b80a3b28" start_index="0" end="d0a6dc47-e717-4723-9e48-c28f2dad2142" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="e40dac75-3776-4d0f-b077-48f013223286" start_index="0" end="14c91a65-d34b-4261-af48-bacfdc86eb8a" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="8981e0c7-c7cf-499e-a3e0-8d6d5a0d8e79" start_index="0" end="67b345fc-ed2d-4bb6-83b1-373b4e26788a" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="67b345fc-ed2d-4bb6-83b1-373b4e26788a" start_index="0" end="87e25698-5fe0-4750-a935-fcf43f99f24a" end_index="0" portType="0" />
@@ -115,7 +127,15 @@ OUT = input_surfaces</Script>
     <Dynamo.Connectors.dynConnectorModel start="1e54bdfa-bc7f-4580-abb3-b4aa5ebb5c0a" start_index="0" end="8b1b3e08-0151-4732-b42b-42370765cdd6" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="14c91a65-d34b-4261-af48-bacfdc86eb8a" start_index="0" end="1e54bdfa-bc7f-4580-abb3-b4aa5ebb5c0a" end_index="0" portType="0" />
     <Dynamo.Connectors.dynConnectorModel start="e7278b2d-75af-48e9-b5c9-1b3a59297999" start_index="0" end="1194f93b-ccbe-406d-b3a7-c83d923c42ac" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="1194f93b-ccbe-406d-b3a7-c83d923c42ac" start_index="0" end="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="1ebdf722-2cff-42e5-a335-dd35a48b813f" start_index="0" end="682bce06-2d17-4509-a03a-168c9a87c57c" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="682bce06-2d17-4509-a03a-168c9a87c57c" start_index="0" end="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="87122d60-ba70-4c17-86bf-57a0d427af17" start_index="0" end="be8224aa-0678-4ce6-bb3a-b887b9a15261" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="be8224aa-0678-4ce6-bb3a-b887b9a15261" start_index="0" end="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" start_index="0" end="1d40853a-196d-4227-af6c-db2eba013576" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" start_index="0" end="b04c4cff-bf8c-4ef0-bbbb-c02293f63f3d" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="597aafc4-9b82-4896-b77c-9d4e1e63bc5f" start_index="0" end="8981e0c7-c7cf-499e-a3e0-8d6d5a0d8e79" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="4473bf22-5785-45a5-9db3-2c8fc8c9b12e" start_index="0" end="cd3cfd32-a63a-49ed-a6a0-2f06bb3bf46f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="b04c4cff-bf8c-4ef0-bbbb-c02293f63f3d" start_index="0" end="4473bf22-5785-45a5-9db3-2c8fc8c9b12e" end_index="0" portType="0" />
   </dynConnectors>
   <dynNotes />
 </dynWorkspace>

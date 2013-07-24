@@ -1,4 +1,4 @@
-<dynWorkspace X="-1282.7039548779" Y="-345.140011861156" zoom="0.5">
+<dynWorkspace X="-1448.01206234476" Y="-127.205038542414" zoom="0.6">
   <dynElements>
     <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="89904999-7c86-4d95-8721-7f87e265fcb3" nickname="Python Script From String" x="1038.21332952326" y="724.447272727273" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="0e3ae19e-5ded-487d-8cbf-af869352b209" nickname="File Path" x="540.4" y="728.12" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
@@ -18,8 +18,8 @@
       <System.String value="C:\dev\Generative-drop-ceiling\Python\Planar_quads.py" />
     </Dynamo.Nodes.dynStringFilename>
     <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="a33482ab-592f-49b0-bc43-c2d2ee621cab" nickname="Read Text File" x="2019.79514770508" y="499.52" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="2f5461a1-c083-4054-8d10-2bf0476769fd" nickname="Watch" x="2461.50232353217" y="554.352108399537" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="491ee33e-9a1b-4430-8e34-408d649b5fc5" nickname="Watch 3D" x="2982.21075682401" y="546.248580361439" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="2f5461a1-c083-4054-8d10-2bf0476769fd" nickname="Watch" x="2455.48414171399" y="553.115744763173" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="491ee33e-9a1b-4430-8e34-408d649b5fc5" nickname="Watch 3D" x="3018.5184491317" y="545.633195746054" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
     <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="c5676f48-14e2-4eb6-b63b-71ba34ac75cc" nickname="Draw" x="2784.92772874098" y="549.550167663026" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
     <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="cdeb6aa8-e39f-4f78-95c1-95e5a7057308" nickname="File Path" x="463.761460428134" y="1115.02769566413" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Media\dummymodel2.sat" />

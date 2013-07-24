@@ -112,6 +112,8 @@ def offset_point( gridlist, point_indexs, offset_length ):
     
     new_planes = []
     #then make the planes that surround it
+    #scale up surface, then;
+    #surface.thicken(double thickness, bool both_sides=false) const
     
     #plane 1
     try:

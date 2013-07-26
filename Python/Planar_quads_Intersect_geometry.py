@@ -94,7 +94,7 @@ def planar_quads( gridlist, point_indexs ):
     
     return [final_point, tolerence ]
 
-def add_vector( point, vector, magnitude ):
+def move_point_byvector( point, vector, magnitude ):
     vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
     vector_copy.normalize()
        
@@ -106,63 +106,120 @@ def add_vector( point, vector, magnitude ):
     finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
     return finalpt
 
-def offset_point( gridlist, point_indexs, offset_length ):
+def add_two_vectors( vector_1,vector_2 ):
+    
+    vector_1.set_x( (vector_1.x() + vector_2.x()) / 2 )
+    vector_1.set_y( (vector_1.y() + vector_2.y()) / 2 )
+    vector_1.set_z( (vector_1.z() + vector_2.z()) / 2 )
+    
+    final_vec = vector_1
+    
+    return final_vec
+
+def enlarge_polygon( polygon ):
+    vertex_list = []
+    for point in polygon.vertices():
+        vertex_list.append(point)
+    vertex_list.extend(vertex_list)
+    
+    point = []    
+    for i in range(4):
+        vectorx = vertex_list[i].x() - vertex_list[i+2].x() 
+        vectory = vertex_list[i].y() - vertex_list[i+2].y()
+        vectorz = vertex_list[i].z() - vertex_list[i+2].z()
+    
+        vectest = Vector.from_xyz(vectorx, vectory, vectorz)
+        vectest.normalize()
+        
+        point.append(move_point_byvector( vertex_list[i], vectest, 15 ))
+        
+    Ptlist = PointList([ point[0], point[1], point[2], point[3] ])    
+    new_polygon = Polygon.by_points(Ptlist)
+    
+    return new_polygon
+
+def find_panel(solids, centroid):
+    v_point = Point.by_coordinates(centroid.x(), centroid.y(), (centroid.z()+ 20))
+    line =  Line.by_start_point_end_point(centroid, v_point)
+    
+    final_solid = None
+    for obj in solids:
+        check = line.does_intersect(obj)
+        if check == True:
+            final_solid = obj
+            
+    return final_solid
+            
+    
+def intersect_plane( polygons, point_indexs ):
     i = point_indexs[0]
     j = point_indexs[1]
+    large_polygon = enlarge_polygon(polygons[i][j])
+    solid = large_polygon.thicken(10)
     
-    new_planes = []
-    #then make the planes that surround it
-    #scale up surface, then;
-    #surface.thicken(double thickness, bool both_sides=false) const
+    poly_points = polygons[i][j].vertices()
+    center_norm = polygons[i][j].normal_at_parameter (0.5, 0.5)
+    cutting_planes = []
     
-    #plane 1
-    try:
-        plane = Plane.by_three_points( gridlist[i][j], gridlist[i][j-1], gridlist[i-1][j] )
-    except ValueError:
-        plane = None
-    if plane:
-        new_planes.append( plane.normal() )
-        
-    #plane 2
-    #if i < len(gridlist) and j > 0: #grid[i+1][j-1]:
-    try:
-        plane = Plane.by_three_points( gridlist[i][j], gridlist[i+1][j], gridlist[i][j-1] )
-    except ValueError:
-        plane = None
-    if plane:
-        new_planes.append( plane.normal() )
-        
-    #plane 3 
-    #if i < len(gridlist) and j < len(gridlist[0]):  #grid[i+1][j+1]:
-    try:
-        plane = Plane.by_three_points( gridlist[i][j], gridlist[i][j+1], gridlist[i+1][j] )  
-    except ValueError:
-        plane = None
-    if plane:
-        new_planes.append( plane.normal() )
-    #plane 4
-    try:
-        plane = Plane.by_three_points( gridlist[i][j], gridlist[i-1][j], gridlist[i][j+1] )
-    except ValueError:
-        plane = None
-    if plane:
-        new_planes.append( plane.normal() )
-        
-    offset_vector = None
-    for obj_normal in new_planes:
-        if offset_vector == None:
-            offset_vector = obj_normal
-            continue
-        offset_vector.set_x(offset_vector.x() + obj_normal.x())
-        offset_vector.set_y(offset_vector.y() + obj_normal.y())
-        offset_vector.set_z(offset_vector.z() + obj_normal.z())
-        
-    offset_vector.set_x(offset_vector.x() / len(new_planes))
-    offset_vector.set_y(offset_vector.y() / len(new_planes))
-    offset_vector.set_z(offset_vector.z() / len(new_planes))
+    #points = []
+    #poly1
+    if j-1 >= 0: 
+        adjacent_norm = polygons[i][j-1].normal_at_parameter (0.5, 0.5)
+
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[1], edge_normal, 10 )
+        cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
+    else:
+        vertical_point = Point.by_coordinates(poly_points[1].x(), poly_points[1].y(), poly_points[1].z())
+        vertical_point.set_z(vertical_point.z() + 100)
+        cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
+    #cutting_planes.append(Polygon.by_points(PointList([poly_points[0], poly_points[1], vertical_point])))
+    #points.append([poly_points[0], poly_points[1], vertical_point])
     
-    final_point = add_vector( gridlist[i][j], offset_vector, offset_length )
-    return final_point
+    #poly2    
+    if i+1 <= len(polygons)-1:
+        adjacent_norm = polygons[i+1][j].normal_at_parameter (0.5, 0.5)
+        
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[2], edge_normal, 10 )
+        cutting_planes.append(Plane.by_three_points( poly_points[1], poly_points[2], vertical_point ))
+    else:
+        vertical_point = Point.by_coordinates(poly_points[2].x(), poly_points[2].y(), poly_points[2].z())
+        vertical_point.set_z(vertical_point.z() + 10)
+        cutting_planes.append(Plane.by_three_points( poly_points[1], poly_points[2], vertical_point ))
+    #cutting_planes.append(Polygon.by_points(PointList([poly_points[1], poly_points[2], vertical_point])))
+    
+    #poly3 
+    if j+1 <= len(polygons[0])-1:
+        adjacent_norm = polygons[i][j+1].normal_at_parameter (0.5, 0.5)
+        
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[3], edge_normal, 10 )
+        cutting_planes.append(Plane.by_three_points( poly_points[2], poly_points[3], vertical_point ))
+    else:
+        vertical_point = Point.by_coordinates(poly_points[3].x(), poly_points[3].y(), poly_points[3].z())
+        vertical_point.set_z(vertical_point.z() + 10)
+        cutting_planes.append(Plane.by_three_points( poly_points[2], poly_points[3], vertical_point ))
+    #cutting_planes.append(Polygon.by_points(PointList([poly_points[2], poly_points[3], vertical_point])))
+        
+    #poly4 
+    if i-1 >= 0:
+        adjacent_norm = polygons[i-1][j].normal_at_parameter (0.5, 0.5)
+
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[0], edge_normal, 10 )
+        cutting_planes.append(Plane.by_three_points( poly_points[3], poly_points[0], vertical_point ))       
+    else:
+        vertical_point = Point.by_coordinates(poly_points[0].x(), poly_points[0].y(), poly_points[0].z())
+        vertical_point.set_z(vertical_point.z() + 10)
+        cutting_planes.append(Plane.by_three_points( poly_points[3], poly_points[0], vertical_point ))
+    #cutting_planes.append(Polygon.by_points(PointList([poly_points[3], poly_points[0], vertical_point])))
+                          
+    planelist = PlaneList([ cutting_planes[0],cutting_planes[1],cutting_planes[2],cutting_planes[3] ])
+    test = solid.slice_with_planes(planelist,True)
+    centroid = polygons[i][j].point_at_parameter (0.5, 0.5)
+    
+    return find_panel(test, centroid)
 
 ####Main####
 cuttoff_tolerance = 1
@@ -176,20 +233,21 @@ while planar_process == False:
 
             if tolerance >= cuttoff_tolerance:
                 planar_process = False
-            
-debug_offsetpoints = []
-#create new grid of points that are correctly offset from the original pointlist.
-for i in range(len(grid)):
-     for j in range(len(grid[0])):
-         debug_offsetpoints.append(offset_point( grid, [i,j], 10.0 ) )
-         
-output_debug_new = []
+                     
+polygon_list = [ [ (y,x) for y in range( len(grid[0])-1) ] for x in range( len(grid)-1  ) ]
 for i in range(len(grid)-1 ):
      for j in range(len(grid[0])-1 ):
          new_polygon_pointlist = PointList([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
-         output_debug_new.append(Polygon.by_points(new_polygon_pointlist))
+         polygon_list[i][j] = Polygon.by_points(new_polygon_pointlist)
 
 
+debug_planes = []
+
+#create new grid of points that are correctly offset from the original pointlist.
+for i in range(len(polygon_list)):
+    for j in range(len(polygon_list[0])):
+       #debug_planes.extend( intersect_plane( polygon_list, [i,j] ) )
+       debug_planes.append( intersect_plane( polygon_list, [i,j] ) )
 
 ################################################################################################################
 #output txt file.
@@ -205,4 +263,4 @@ for i in range(len(grid)):
 f.close()
 ################################################################################################################
 
-OUT = output_debug_new ,debug_offsetpoints
+OUT = debug_planes #polygon_list ,debug_planes

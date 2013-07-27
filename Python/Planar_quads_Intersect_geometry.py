@@ -107,12 +107,14 @@ def move_point_byvector( point, vector, magnitude ):
     return finalpt
 
 def add_two_vectors( vector_1,vector_2 ):
+    vector_1.normalize()
+    vector_2.normalize()
     
-    vector_1.set_x( (vector_1.x() + vector_2.x()) / 2 )
-    vector_1.set_y( (vector_1.y() + vector_2.y()) / 2 )
-    vector_1.set_z( (vector_1.z() + vector_2.z()) / 2 )
+    vec_x = (vector_1.x() + vector_2.x()) / 2 
+    vec_y = (vector_1.y() + vector_2.y()) / 2 
+    vec_z = (vector_1.z() + vector_2.z()) / 2 
     
-    final_vec = vector_1
+    final_vec = Vector.from_xyz( vec_x, vec_y, vec_z )
     
     return final_vec
 
@@ -171,7 +173,7 @@ def intersect_plane( polygons, point_indexs ):
         cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
     else:
         vertical_point = Point.by_coordinates(poly_points[1].x(), poly_points[1].y(), poly_points[1].z())
-        vertical_point.set_z(vertical_point.z() + 100)
+        vertical_point.set_z(vertical_point.z() + 10)
         cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
     #cutting_planes.append(Polygon.by_points(PointList([poly_points[0], poly_points[1], vertical_point])))
     #points.append([poly_points[0], poly_points[1], vertical_point])
@@ -222,7 +224,7 @@ def intersect_plane( polygons, point_indexs ):
     return find_panel(test, centroid)
 
 ####Main####
-cuttoff_tolerance = 1
+cuttoff_tolerance = .5
 planar_process = False
 
 while planar_process == False:

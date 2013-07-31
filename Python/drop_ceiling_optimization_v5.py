@@ -21,7 +21,6 @@ class PointCheck:
 		self.stored_geometry = []
 		self.stored_points = []
 		self.top_point = None
-		#self.point_direction = None #possible will need to give the point a direction of movement.
 	
 	# PATRICK NOTE:	
 	# TODO: change to cuboid intersection, rather than radius
@@ -58,6 +57,7 @@ xlength = IN[0]
 ylength = IN[1]
 spacing = IN[2]
 reference_geo = IN[3]
+#get geometery from get_geo.
 
 x_number = round(xlength/spacing)
 y_number = round(ylength/spacing)
@@ -194,16 +194,6 @@ f = open("Test_Point_list2.txt", "w")
 bspline_surfacelist = []
 for i in range(int(x_number)+1):
 	for j in range(int(y_number)+1):
-		#bspline_pointlist.append(grid[i][j].top_point)
-		#to get surfaces
-		#bspline_surfacelist.append(BSplineSurface.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i][j+1].top_point, grid[i+1][j+1].top_point]), 2, 2))
-		"""
-		f.write( "[" + str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) + "]" + "," + 
-			"[" + str(grid[i+1][j].top_point.x()) + "," + str(grid[i+1][j].top_point.y()) + "," + str(grid[i+1][j].top_point.z()) + "]" + "," + 
-			"[" + str(grid[i+1][j+1].top_point.x()) + "," + str(grid[i+1][j+1].top_point.y()) + "," +str(grid[i+1][j+1].top_point.z()) + "]" + "," +
-			"[" + str(grid[i][j+1].top_point.x()) + ","+ str(grid[i][j+1].top_point.y()) + ","+ str(grid[i][j+1].top_point.z()) + "]"
-			+ '\n')
-		"""
 		f.write( str(grid[i][j].top_point.x()) + "," + str(grid[i][j].top_point.y()) + "," + str(grid[i][j].top_point.z()) )
 		if j != (y_number):
 			f.write("/")
@@ -211,8 +201,6 @@ for i in range(int(x_number)+1):
 		f.write("\n")
 f.close()
 #output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
-
-
 
 
 #create panels.

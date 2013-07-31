@@ -1,6 +1,8 @@
 dataEnteringNode = IN
 #The input to this node will be stored in the IN variable.
-test = []
+#run sorter to get the geometry out into specific list, so supply/returns [0], columns [1], lights [2] and everythinelse [3]
+#potentially run 4 different get_geometery_transaction scripts and plug them into a list for the drop_ceiling_opt
+
 objects = IN
 
 air_vents = []
@@ -24,15 +26,18 @@ def get_solid( revit_object ):
 for obj in objects:
 	name = obj.Category.Name
 	if "Air Terminals" in name:
-		air_vents.append( name )
+		#air_vents.append( name )
+		air_vents.append( obj )
 	elif "Column" in name:
-		column.append(name)
+		#column.append(name)
+		column.append(obj)
 	elif "Light" and "Fix" in name:
-		light_fixtures.append(name)
+		#light_fixtures.append(name)
+		light_fixtures.append(obj)
 	else:
-		standard_geometry.append(name)
-	#GetOriginalGeometry(Options())
-	#.get_Geometry(Options())
+		#standard_geometry.append(name)
+		standard_geometry.append(obj)
+
 
 
 #Assign your output to the OUT variable

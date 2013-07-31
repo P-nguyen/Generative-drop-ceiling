@@ -1,5 +1,5 @@
 ﻿import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
+path = 'C:\\Users\\Pnguyen\\Desktop\\DYNAMO\\Release'
 sys.path.append(path)
 import clr
 clr.AddReference('LibGNet')
@@ -18,7 +18,7 @@ def create_surface(max, min):
     ptlist = PointList([p1,p2,p4,p3])
     surface = BSplineSurface.by_points(ptlist, 2,2)
     
-    return surface
+    return ptlist
 
 for elem in elements:
     

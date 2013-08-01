@@ -1,5 +1,5 @@
 ﻿import sys
-path = 'C:\\Users\\Pnguyen\\Desktop\\DYNAMO\\Release'
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
 sys.path.append(path)
 import clr
 clr.AddReference('LibGNet')
@@ -7,7 +7,7 @@ from Autodesk.LibG import *
 
 from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 
-elements = IN
+elements = IN[3]
 surfaces = []
 
 def create_surface(max, min):
@@ -18,12 +18,12 @@ def create_surface(max, min):
     ptlist = PointList([p1,p2,p4,p3])
     surface = BSplineSurface.by_points(ptlist, 2,2)
     
-    return ptlist
+    return surface
 
 for elem in elements:
     
-    trans = DynTransaction()
-    trans.Start()
+    #trans = DynTransaction()
+    #trans.Start()
      
     opt = Options()
     
@@ -33,7 +33,7 @@ for elem in elements:
     
     geometry_element = elem.get_BoundingBox(view)
     
-    trans.Commit()
+    #trans.Commit()
     
     max = geometry_element.Max
     min = geometry_element.Min

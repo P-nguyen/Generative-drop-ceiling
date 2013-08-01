@@ -32,7 +32,7 @@ class PointCheck:
 			test_point = Point.by_coordinates(self.point.x(), self.point.y(), object_point.z())
 			dist = test_point.distance_to(object_point)
 			
-			if dist > 60: #half of IN spacing.
+			if dist > 5: #half of IN spacing.
 				continue
 			
 			self.stored_geometry.append(object)
@@ -53,14 +53,26 @@ class PointCheck:
 
 ##########################################################################
 
+min_point = IN[0][0] #min point & also start point
+max_point = IN[0][1] #max point
+
+panel_sizing = IN[1] # Panel Sizing
+reference_geo = []
+reference_geo.extend(IN[2]) #standard geom to avoid.
+reference_geo.append(IN[0][2]) #top_surface
+
+"""
 xlength = IN[0]
 ylength = IN[1]
 spacing = IN[2]
 reference_geo = IN[3]
+"""
+xlength = max_point.x() - min_point.x()
+ylength = max_point.y() - min_point.y()
 #get geometery from get_geo.
 
-x_number = round(xlength/spacing)
-y_number = round(ylength/spacing)
+x_number = round(xlength/panel_sizing)
+y_number = round(ylength/panel_sizing)
 
 newx_spacing = xlength / x_number
 newy_spacing = ylength / y_number
@@ -71,7 +83,7 @@ output_debug_geometry = []
 
 for i in range(int(x_number) + 1):
 	for j in range(int(y_number) + 1):
-		grid[i][j] = PointCheck(Point.by_coordinates(i*newx_spacing, j*newy_spacing, 0.0))
+		grid[i][j] = PointCheck(Point.by_coordinates((i*newx_spacing)+ min_point.x(), (j*newy_spacing) + min_point.y() , 0.0))
 
 for i in range(int(x_number) + 1):
 	for j in range(int(y_number) + 1):
@@ -188,7 +200,7 @@ for i in range(int(x_number) ):
 		#panel.adjust_point()
 		output_debug_new.append( panel.polygon)
 
-
+"""
 f = open("Test_Point_list2.txt", "w")
 
 bspline_surfacelist = []
@@ -201,7 +213,7 @@ for i in range(int(x_number)+1):
 		f.write("\n")
 f.close()
 #output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
-
+"""
 
 #create panels.
 for i in range(int(x_number) ):

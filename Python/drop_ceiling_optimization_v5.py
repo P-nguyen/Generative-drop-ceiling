@@ -1,5 +1,5 @@
 import sys
-path = 'C:\\dev\\Dynamo\\bin\\Release'
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
 sys.path.append(path)
 import clr
 clr.AddReference('LibGNet')
@@ -16,10 +16,11 @@ dataEnteringNode = IN
 #class is needed for each point? 
 	#class info contains the point, and a boolean telling if it is still moveable
 class PointCheck:
-	def __init__(self, _point):
+	def __init__(self, _point, _panel_size):
 		self.point = _point
 		self.stored_geometry = []
 		self.stored_points = []
+		self.panel_size = _panel_size
 		self.top_point = None
 	
 	# PATRICK NOTE:	
@@ -32,7 +33,7 @@ class PointCheck:
 			test_point = Point.by_coordinates(self.point.x(), self.point.y(), object_point.z())
 			dist = test_point.distance_to(object_point)
 			
-			if dist > 5: #half of IN spacing.
+			if dist > (self.panel_size/2): #half of IN spacing.
 				continue
 			
 			self.stored_geometry.append(object)
@@ -83,7 +84,7 @@ output_debug_geometry = []
 
 for i in range(int(x_number) + 1):
 	for j in range(int(y_number) + 1):
-		grid[i][j] = PointCheck(Point.by_coordinates((i*newx_spacing)+ min_point.x(), (j*newy_spacing) + min_point.y() , 0.0))
+		grid[i][j] = PointCheck(Point.by_coordinates((i*newx_spacing)+ min_point.x(), (j*newy_spacing) + min_point.y() , 0.0) , panel_sizing )
 
 for i in range(int(x_number) + 1):
 	for j in range(int(y_number) + 1):
@@ -200,8 +201,8 @@ for i in range(int(x_number) ):
 		#panel.adjust_point()
 		output_debug_new.append( panel.polygon)
 
-"""
-f = open("Test_Point_list2.txt", "w")
+
+f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test_Point_list2.txt", "w")
 
 bspline_surfacelist = []
 for i in range(int(x_number)+1):
@@ -213,7 +214,7 @@ for i in range(int(x_number)+1):
 		f.write("\n")
 f.close()
 #output_debug_new.append( BSplineSurface.by_points(PointList(bspline_pointlist), int(x_number) +1, int(y_number) +1) )
-"""
+
 
 #create panels.
 for i in range(int(x_number) ):

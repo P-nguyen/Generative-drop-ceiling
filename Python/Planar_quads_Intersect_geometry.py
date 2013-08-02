@@ -1,5 +1,5 @@
 import sys
-path = 'C:\\dev\\Dynamo\\bin\\Release'
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
 sys.path.append(path)
 import clr
 clr.AddReference('LibGNet')
@@ -153,11 +153,11 @@ def find_panel(solids, centroid):
     return final_solid
             
     
-def intersect_plane( polygons, point_indexs ):
+def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     i = point_indexs[0]
     j = point_indexs[1]
     large_polygon = enlarge_polygon(polygons[i][j])
-    solid = large_polygon.thicken(10)
+    solid = large_polygon.thicken(panel_thickness)
     
     poly_points = polygons[i][j].vertices()
     center_norm = polygons[i][j].normal_at_parameter (0.5, 0.5)
@@ -224,7 +224,8 @@ def intersect_plane( polygons, point_indexs ):
     return find_panel(test, centroid)
 
 ####Main####
-cuttoff_tolerance = .5
+cuttoff_tolerance = .04
+panel_thickness = .5
 planar_process = False
 
 while planar_process == False:
@@ -243,17 +244,17 @@ for i in range(len(grid)-1 ):
          polygon_list[i][j] = Polygon.by_points(new_polygon_pointlist)
 
 
-debug_planes = []
+debug_solids = []
 
 #create new grid of points that are correctly offset from the original pointlist.
 for i in range(len(polygon_list)):
     for j in range(len(polygon_list[0])):
        #debug_planes.extend( intersect_plane( polygon_list, [i,j] ) )
-       debug_planes.append( intersect_plane( polygon_list, [i,j] ) )
+       debug_solids.append( intersect_plane_to_solid( polygon_list, [i,j], panel_thickness ) )
 
 ################################################################################################################
 #output txt file.
-f = open("planarQuad_textfile.txt", "w")
+f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile.txt", "w")
 
 for i in range(len(grid)):
     for j in range(len(grid[0])):
@@ -265,4 +266,4 @@ for i in range(len(grid)):
 f.close()
 ################################################################################################################
 
-OUT = polygon_list# ,debug_planes
+OUT = debug_solids#polygon_list# ,debug_planes

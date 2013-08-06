@@ -11,10 +11,11 @@ from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector,Solid
 
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
+
 input_solids = IN
+rand = Random()
 
-
-def create_polygon(face): 
+def create_surface(face): 
 	face_points = []
 	vertices = face.get_vertices()
 	
@@ -22,9 +23,6 @@ def create_polygon(face):
 		face_points.append(v.get_point_geometry() )
 	ptlist = PointList([face_points[0],face_points[1],face_points[3],face_points[2]])
 	return BSplineSurface.by_points(ptlist,2,2)
-
-##########################################################################################################
-#### making grid to boolean from solid
 
 def move_point_byvector( point, vector, magnitude ):
     vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
@@ -53,7 +51,7 @@ def enlarge_polygon( polygon ):
         vectest = Vector.from_xyz(vectorx, vectory, vectorz)
         vectest.normalize()
         
-        point.append(move_point_byvector( vertex_list[i], vectest, 2 ))
+        point.append(move_point_byvector( vertex_list[i], vectest, 3 ))
         
     Ptlist = PointList([ point[0], point[1], point[2], point[3] ])    
     new_polygon = Polygon.by_points(Ptlist)
@@ -72,7 +70,49 @@ def find_panel(solids, centroid):
             
     return final_solid   
 
+def panel_thickness(surface_1, surface_2):
+	pt1 = surface_1.point_at_parameter ( 0.5,0.5 )
+	pt2 = surface_2.point_at_parameter ( 0.5,0.5 )
+	thickness = pt1.distance_to(pt2)
+	return thickness
 
+def controlled_random_thickness( total_thickness, random ):
+	rand_num = (random.Next() % 1000000) / 1000000.0
+	if 0.0 <= rand_num <= 0.35:
+		final_thickness = 0.0
+		
+	if 0.35 < rand_num <= 0.75:
+		final_thickness = total_thickness * 0.25
+		
+	if 0.75 < rand_num <= 0.9:
+		final_thickness = total_thickness * 0.5
+		
+	if 0.9 < rand_num <= 1.0:
+		final_thickness = total_thickness * 0.75
+		# cut through panel.
+
+	return final_thickness
+
+def subdivide_panel( pointlist, random ):
+	rand_num = (random.Next() % 1000000) / 1000000.0
+	panels = []
+	
+	if 0 <= rand_num <= 0.5:
+		panel = Polygon.by_points(pointlist)
+		panels.append(panel)
+	else:
+		ptlist = PointList([pointlist[3],pointlist[2],pointlist[0],pointlist[1]])
+		panel = BSplineSurface.by_points(ptlist,2,2)
+		grid_spacing = 1.0/2
+		points  = [ [ (y,x) for y in range(3) ] for x in range(3) ]
+		for i in range(3):
+			for j in range(3):
+				points[i][j] = panel.point_at_parameter ( grid_spacing * i , grid_spacing * j )
+		for k in range(2):
+			for l in range(2):
+				panels.append(Polygon.by_points(PointList([points[k][l], points[k+1][l], points[k+1][l+1], points[k][l+1]])))
+			  
+	return panels
 ##########################################################################################################
 #### create points off of bottom surface
 final_solid_list = []
@@ -93,9 +133,12 @@ for solid in input_solids:
 		
 	final_sort_list = sorted(clean_list, key = lambda x: x[1], reverse = True)
 	
-	#top_surface = create_polygon(final_sort_list[0][0])
-	bottom_surface = create_polygon(final_sort_list[1][0])
-
+	#top srf is used to find the thickness of the panel.
+	top_surface = create_surface(final_sort_list[0][0])
+	bottom_surface = create_surface(final_sort_list[1][0])
+	
+	thickness = panel_thickness(top_surface, bottom_surface)
+	
 	div_number = 3.0
 	grid_spacing = 1.0/div_number
 	
@@ -105,21 +148,33 @@ for solid in input_solids:
 		for j in range(int(div_number) + 1):
 			surf_point = bottom_surface.point_at_parameter ( grid_spacing * i , grid_spacing * j )
 			vec = bottom_surface.normal_at_parameter ( grid_spacing * i, grid_spacing * j)
-			bottom_grid[i][j] = move_point_byvector( surf_point, vec, 5 )
+			bottom_grid[i][j] = move_point_byvector( surf_point, vec, (thickness/3) )
 			
 	final_solid = solid
+	panels = []
+	debug_solids = []
 	#Thickend_panel = []
-	rand = Random()
 	for i in range(int(div_number) ):
 		for j in range(int(div_number) ):
-			panel = Polygon.by_points(PointList([bottom_grid[i][j], bottom_grid[i+1][j], bottom_grid[i+1][j+1], bottom_grid[i][j+1]]))
-			panel = enlarge_polygon( panel )
+			#panels = Polygon.by_points(PointList([bottom_grid[i][j], bottom_grid[i+1][j], bottom_grid[i+1][j+1], bottom_grid[i][j+1]])) 
+			panels = subdivide_panel( PointList([bottom_grid[i][j], bottom_grid[i+1][j], bottom_grid[i+1][j+1], bottom_grid[i][j+1]]), rand )
+			#insert subdivision check here.
 			
-			rand_num = (rand.Next() % 1000000) / 1000000.0
-			Thickend_panel = panel.thicken(rand_num * 15)
-			final_solid = final_solid.subtract_from(Thickend_panel, True, True, True)	
-			final_solid = final_solid[0]
-
+			for panel in panels: 
+				thickness_value = controlled_random_thickness( thickness + ( thickness/3 ), rand )
+				if thickness_value == 0.0:
+					continue
+				if len(panels) > 1:
+					thickness_value = thickness_value + (thickness/6)
+					
+				panel = enlarge_polygon( panel )
+				
+				Thickend_panel = panel.thicken(thickness_value)
+				
+				final_solid = final_solid.subtract_from(Thickend_panel, True, True, True)	
+				final_solid = final_solid[0]
+				#debug_solids.append( Thickend_panel)
+				
 	final_solid_list.append(final_solid)
 #Assign your output to the OUT variable
 OUT =  final_solid_list

@@ -31,7 +31,11 @@ def planar_quads( gridlist, point_indexs ):
     if plane:
         closest_point = plane.get_closest_point(gridlist[i][j])
         new_points.append(closest_point)
-        point_distances.append(gridlist[i][j].distance_to(closest_point))
+        try:
+            dist = gridlist[i][j].distance_to(closest_point)
+        except Exception:
+            dist = 0
+        point_distances.append(dist)
         #plane1_normal = plane1.normal()
         
     #plane 2
@@ -43,7 +47,11 @@ def planar_quads( gridlist, point_indexs ):
     if plane:
         closest_point = plane.get_closest_point(gridlist[i][j])
         new_points.append(closest_point)
-        point_distances.append(gridlist[i][j].distance_to(closest_point))
+        try:
+            dist = gridlist[i][j].distance_to(closest_point)
+        except Exception:
+            dist = 0
+        point_distances.append(dist)
         
     #plane 3 
     #if i < len(gridlist) and j < len(gridlist[0]):  #grid[i+1][j+1]:
@@ -54,7 +62,11 @@ def planar_quads( gridlist, point_indexs ):
     if plane:
         closest_point = plane.get_closest_point(gridlist[i][j])
         new_points.append(closest_point)
-        point_distances.append(gridlist[i][j].distance_to(closest_point))
+        try:
+            dist = gridlist[i][j].distance_to(closest_point)
+        except Exception:
+            dist = 0
+        point_distances.append(dist)
     #plane 4
     #if i > 0 and j < len(gridlist[0]): #grid[i-1][j+1]:
     try:
@@ -64,7 +76,11 @@ def planar_quads( gridlist, point_indexs ):
     if plane:
         closest_point = plane.get_closest_point(gridlist[i][j])
         new_points.append(closest_point)
-        point_distances.append(gridlist[i][j].distance_to(closest_point))
+        try:
+            dist = gridlist[i][j].distance_to(closest_point)
+        except Exception:
+            dist = 0
+        point_distances.append(dist)
     
     
     new_points.append(gridlist[i][j])
@@ -225,7 +241,7 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
 
 ####Main####
 cuttoff_tolerance = .04
-panel_thickness = .5
+panel_thickness = 0.166
 planar_process = False
 
 while planar_process == False:
@@ -254,7 +270,7 @@ for i in range(len(polygon_list)):
 
 ################################################################################################################
 #output txt file.
-f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile.txt", "w")
+f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile2.txt", "w")
 
 for i in range(len(grid)):
     for j in range(len(grid[0])):

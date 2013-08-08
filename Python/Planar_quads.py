@@ -191,7 +191,7 @@ for i in range(len(grid)-1 ):
 
 ################################################################################################################
 #output txt file.
-f = open("planarQuad_textfile.txt", "w")
+f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile2.txt", "w")
 
 for i in range(len(grid)):
     for j in range(len(grid[0])):

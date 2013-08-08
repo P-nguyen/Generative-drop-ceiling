@@ -202,7 +202,7 @@ for i in range(int(x_number) ):
 		output_debug_new.append( panel.polygon)
 
 
-f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test_Point_list2.txt", "w")
+f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test_Point_list3.txt", "w")
 
 bspline_surfacelist = []
 for i in range(int(x_number)+1):

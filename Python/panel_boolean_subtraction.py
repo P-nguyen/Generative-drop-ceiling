@@ -116,6 +116,7 @@ def subdivide_panel( pointlist, random ):
 ##########################################################################################################
 #### create points off of bottom surface
 final_solid_list = []
+count = 0
 
 for solid in input_solids:
 	
@@ -152,7 +153,7 @@ for solid in input_solids:
 			
 	final_solid = solid
 	panels = []
-	debug_solids = []
+	#debug_solids = []
 	#Thickend_panel = []
 	for i in range(int(div_number) ):
 		for j in range(int(div_number) ):
@@ -171,10 +172,26 @@ for solid in input_solids:
 				
 				Thickend_panel = panel.thicken(thickness_value)
 				
-				final_solid = final_solid.subtract_from(Thickend_panel, True, True, True)	
-				final_solid = final_solid[0]
+				try:
+					final_solid = final_solid.subtract_from(Thickend_panel, True, True, True)	
+					final_solid = final_solid[0]
+				except:
+					continue
+				#debug.append(final_solid)
 				#debug_solids.append( Thickend_panel)
-				
+	
 	final_solid_list.append(final_solid)
+	
+	count += 1
+	if count >= 27:
+		break
+
+
+debug = []
+
+for item in final_solid_list:
+	if item:
+		debug.append(item)
+	
 #Assign your output to the OUT variable
-OUT =  final_solid_list
+OUT =  debug

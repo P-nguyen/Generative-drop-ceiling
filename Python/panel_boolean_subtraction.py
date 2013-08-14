@@ -51,7 +51,7 @@ def enlarge_polygon( polygon ):
         vectest = Vector.from_xyz(vectorx, vectory, vectorz)
         vectest.normalize()
         
-        point.append(move_point_byvector( vertex_list[i], vectest, 3 ))
+        point.append(move_point_byvector( vertex_list[i], vectest, .125 ))
         
     Ptlist = PointList([ point[0], point[1], point[2], point[3] ])    
     new_polygon = Polygon.by_points(Ptlist)
@@ -144,12 +144,13 @@ for solid in input_solids:
 	grid_spacing = 1.0/div_number
 	
 	bottom_grid  = [ [ (y,x) for y in range( int(div_number)+1) ] for x in range( int(div_number) + 1 ) ]
-	
+	debug_points = []
 	for i in range(int(div_number) + 1):
 		for j in range(int(div_number) + 1):
 			surf_point = bottom_surface.point_at_parameter ( grid_spacing * i , grid_spacing * j )
 			vec = bottom_surface.normal_at_parameter ( grid_spacing * i, grid_spacing * j)
 			bottom_grid[i][j] = move_point_byvector( surf_point, vec, (thickness/3) )
+			debug_points.append(bottom_grid[i][j])
 			
 	final_solid = solid
 	panels = []
@@ -171,9 +172,11 @@ for solid in input_solids:
 				panel = enlarge_polygon( panel )
 				
 				Thickend_panel = panel.thicken(thickness_value)
-				
 				try:
-					final_solid = final_solid.subtract_from(Thickend_panel, True, True, True)	
+					final_solid = final_solid.subtract_from(Thickend_panel, False, False, False)
+				except:
+					continue
+				try:	
 					final_solid = final_solid[0]
 				except:
 					continue
@@ -183,15 +186,9 @@ for solid in input_solids:
 	final_solid_list.append(final_solid)
 	
 	count += 1
-	if count >= 27:
+	if count >= 150:
 		break
 
-
-debug = []
-
-for item in final_solid_list:
-	if item:
-		debug.append(item)
 	
 #Assign your output to the OUT variable
-OUT =  debug
+OUT =  final_solid_list

@@ -1,33 +1,18 @@
-<dynWorkspace X="-688.051287796149" Y="-517.826719066516" zoom="0.7" Description="" Category="" Name="Home">
+<dynWorkspace X="-247.154611745592" Y="-6.90914583194626" zoom="0.2" Description="" Category="" Name="Home">
   <dynElements>
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="87f494e4-4f3c-41c5-9399-e5aa14fcfd05" nickname="File Path" x="750.128481038411" y="891.119999999999" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="fe59648c-481b-4b13-820d-5d6d595fd210" nickname="File Path" x="1216.12848103841" y="917.119999999999" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Python\get_geometry_transaction_test.py" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="fa7fa544-4f11-412e-b33c-a7cc28037f70" nickname="Read Text File" x="990.12848103841" y="891.119999999999" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="80551657-a7c9-413d-a75a-43f46747eaa7" nickname="Python Script From String" x="1177.2427667527" y="896.834285714285" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="771ce68e-c859-4f6e-ba54-72fc7c1172c7" nickname="Watch" x="1856.78562389556" y="778.834285714285" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="1a601220-aaa3-4c6f-bdaa-2997becbb33a" nickname="Draw" x="1356.96028733026" y="777.691428571428" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="39e8e1a8-5b48-4bff-8a3b-a66835225a46" nickname="Python Script From String" x="66.195147705077" y="995.453333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="7191a169-8bcb-49a3-880e-ae82f31a4731" nickname="File Path" x="-346.604852294922" y="995.453333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="e1d92fc7-f5bb-4b99-9549-9e70a6eae560" nickname="Read Text File" x="1456.12848103841" y="917.119999999999" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="8082cb1d-74d3-440f-9eb2-34a6a047471f" nickname="Python Script From String" x="1643.2427667527" y="922.834285714285" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="060421f5-d03b-43ef-9278-a14b7db3925f" nickname="Watch" x="2322.78562389556" y="804.834285714285" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="1972529a-2339-44fe-a6b8-573c8c725048" nickname="Python Script From String" x="532.195147705077" y="1021.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="3b1bf47d-0939-4300-b8ff-14bf08479324" nickname="File Path" x="119.395147705078" y="1021.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Python\revit_geometry_sorter.py" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="414b7ba0-127e-47c3-99c3-cf5e20032f22" nickname="Read Text File" x="-99.404852294923" y="995.453333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="a2a3d9f5-45f4-448c-8460-a8f3a04e8c61" nickname="Watch" x="222.728481038411" y="995.453333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynMultipleCurvesBySelection type="Dynamo.Nodes.dynMultipleCurvesBySelection" guid="feb41d94-d5ae-4643-bafc-1863f94ad9ff" nickname="Select Elements" x="-224.533333333333" y="1126.38666666666" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d53f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d540" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d541" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d542" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d543" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d544" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d545" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d546" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d547" />
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="f6bb2b88-4cba-4275-ba56-b5e0b3bf8848" nickname="Read Text File" x="366.595147705077" y="1021.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="80d4337e-9160-434f-bea1-ddc32d53cf1b" nickname="Watch" x="688.728481038411" y="1021.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynMultipleCurvesBySelection type="Dynamo.Nodes.dynMultipleCurvesBySelection" guid="956e40db-7a67-464a-ad4c-fa1878e288a5" nickname="Select Elements" x="241.466666666667" y="1152.38666666666" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d548" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d549" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d54a" />
@@ -36,42 +21,8 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d54d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d54e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d54f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d550" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d551" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d552" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d553" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d554" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d555" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d556" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d557" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d558" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d559" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d55f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d560" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d561" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d562" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d563" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d564" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002d565" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db16" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db17" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db18" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db19" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db1f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db20" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db21" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db22" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db23" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db24" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db25" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db26" />
@@ -86,42 +37,7 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db2f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db30" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db31" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db32" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db33" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db34" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db35" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db36" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db37" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db38" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db39" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db3f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db40" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db41" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db42" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db43" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db44" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db45" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db46" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db47" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db48" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db49" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db4f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db50" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db51" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db52" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db53" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db54" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db55" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db56" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db57" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db58" />
@@ -132,88 +48,19 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db5d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db5e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db5f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db60" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db61" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db62" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db63" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db64" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db65" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db66" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db67" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db68" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db69" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db6f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db70" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db71" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db72" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db73" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db74" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db75" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db76" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db77" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db78" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db79" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db7f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db80" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db81" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db82" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db83" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db84" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db85" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db86" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db87" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db88" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db89" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8b" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db8f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db90" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db91" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db92" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db93" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db94" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db95" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db96" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db97" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db98" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db99" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002db9f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba1" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba4" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba5" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dba9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbaa" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbab" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbac" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbad" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbae" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbaf" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb1" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb2" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb3" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb4" />
@@ -221,75 +68,23 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb6" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbb9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbba" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbbb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbbc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbbd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbbe" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbbf" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc0" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc1" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc2" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbc9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbca" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbcb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbcc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbcd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbce" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd0" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd1" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd2" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd6" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbd9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbda" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbdb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbdc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbdd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbde" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbdf" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe1" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe2" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe3" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe4" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbe9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbea" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbeb" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbec" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbed" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbee" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbef" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbf9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbfa" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbfb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbfc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbfd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbfe" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dbff" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc00" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc01" />
@@ -298,71 +93,17 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc04" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc05" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc06" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc07" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc08" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc09" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc0f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc10" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc11" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc12" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc13" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc14" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc15" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc16" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc17" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc18" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc19" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc1f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc20" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc21" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc22" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc23" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc24" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc25" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc26" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc27" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc28" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc29" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc2f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc30" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc31" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc32" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc33" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc34" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc35" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc36" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc37" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc38" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc39" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc3f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc40" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc41" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc42" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc43" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc44" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc45" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc46" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc47" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc48" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc49" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc4a" />
@@ -375,57 +116,18 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc51" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc52" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc53" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc54" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc55" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc56" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc57" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc58" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc59" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5a" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5b" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc5f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc60" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc61" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc62" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc63" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc64" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc65" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc66" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc67" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc68" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc69" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc6f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc70" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc71" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc72" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc73" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc74" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc75" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc76" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc77" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc78" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc79" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc7f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc80" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc81" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc82" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc83" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc84" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc85" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc86" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc87" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc88" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc89" />
@@ -433,62 +135,8 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc8b" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc8c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc8d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc8e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc8f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc90" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc91" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc92" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc93" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc94" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc95" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc96" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc97" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc98" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc99" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9a" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dc9f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dca9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcaa" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcab" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcac" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcad" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcae" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcaf" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcb9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcba" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcbb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcbc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcbd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcbe" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcbf" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc5" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc6" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcc8" />
@@ -511,130 +159,16 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcd9" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcda" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcdb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcdc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcdd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcde" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcdf" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce8" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dce9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcea" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dceb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcec" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dced" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcee" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcef" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcf9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcfa" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcfb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcfc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcfd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcfe" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dcff" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd00" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd01" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd02" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd03" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd04" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd05" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd06" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd07" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd08" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd09" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd0f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd10" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd11" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd12" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd13" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd14" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd15" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd16" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd17" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd18" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd19" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd1f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd20" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd21" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd22" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd23" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd24" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd25" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd26" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd27" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd28" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd29" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd2f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd30" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd31" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd32" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd33" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd34" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd35" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd36" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd37" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd38" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd39" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd3f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd40" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd41" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd42" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd43" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd44" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd45" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd46" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd47" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd48" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd49" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4a" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd4f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd50" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd51" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd52" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd53" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd54" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd55" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd56" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd57" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd58" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd59" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd5a" />
@@ -643,72 +177,22 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd5d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd5e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd5f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd60" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd61" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd62" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd63" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd64" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd65" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd66" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd67" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd68" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd69" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6a" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd6f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd70" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd71" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd72" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd73" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd74" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd75" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd76" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd77" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd78" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd79" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7b" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd7f" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd80" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd81" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd82" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd83" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd86" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd89" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8c" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8d" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd8f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd90" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd91" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd92" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd93" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd94" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd95" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd96" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd97" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd98" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd99" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9b" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9d" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dd9f" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda5" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda6" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dda8" />
@@ -717,102 +201,54 @@
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddab" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddac" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddad" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddae" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddaf" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb0" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb4" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb5" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb7" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddb9" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddba" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddbb" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddbc" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddbd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddbe" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddbf" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc0" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddc9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddca" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddcb" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddcc" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddcd" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddce" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddcf" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd0" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd1" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd2" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd3" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd4" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd5" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd6" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd7" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd8" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddd9" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002ddda" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dddb" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dddc" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002dddd" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df58" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df5a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df5c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df5e" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df60" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df62" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df64" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df66" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df68" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df6a" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df6c" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df6e" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df70" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df72" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df74" />
       <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df75" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df76" />
-      <instance id="e0ffe7dc-790e-41c4-8554-81224671250b-0002df77" />
       <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c29" />
       <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c2b" />
       <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c2d" />
-      <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c2f" />
-      <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c31" />
-      <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c37" />
       <instance id="518fdb40-b7e6-4dcc-a46d-3a9405d0b0fd-00035c43" />
     </Dynamo.Nodes.dynMultipleCurvesBySelection>
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="1bf0abbd-bd07-4e80-92aa-d2f9e596cbcc" nickname="File Path" x="1671.41419532413" y="1403.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="01aaa3e1-dc8e-4681-85d3-9adcb6cc0aa9" nickname="File Path" x="2137.41419532413" y="1429.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Python\drop_ceiling_optimization_v5.py" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="6ab64b4f-1392-4626-90c4-a5afa430b907" nickname="Read Text File" x="1922.0427667527" y="1403.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="696d06f5-0709-4947-a4b7-8280c8af5faa" nickname="Python Script From String" x="96.195147705077" y="1566.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="4f6a5ec9-3f0c-4269-9158-e1dc630f02f0" nickname="File Path" x="-316.604852294922" y="1566.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="9acef86f-ea19-41f4-a126-05d390b0db48" nickname="Read Text File" x="2388.0427667527" y="1429.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="1933408f-e9b1-4723-9947-07c611054ae2" nickname="Python Script From String" x="562.195147705077" y="1592.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="6663366c-add0-455a-a098-503283a8f37d" nickname="File Path" x="149.395147705078" y="1592.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.String value="C:\dev\Generative-drop-ceiling\Python\overall_geometry_boundingbox.py" />
     </Dynamo.Nodes.dynStringFilename>
-    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="6d83da7b-a307-4869-8214-cfffe60132a2" nickname="Read Text File" x="-69.404852294923" y="1566.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="e504c67e-c943-4622-8727-d281c55ee7df" nickname="Watch" x="272.963461933439" y="1565.75111111111" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="caaf87fe-1c3e-4c77-88ed-25f1469c9c32" nickname="Draw" x="646.28442456941" y="1563.92125060125" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" nickname="List" x="1618.48550497151" y="1577.41871994672" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="f4570795-e10d-4713-b8d8-fe5e723e82be" nickname="Read Text File" x="396.595147705077" y="1592.45333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="6bc16673-a8be-413c-a351-7a82eaf024f2" nickname="Watch" x="738.963461933439" y="1591.75111111111" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="94b2e86a-81b5-4a20-9c74-01310a0f9bf5" nickname="Draw" x="1112.28442456941" y="1589.92125060125" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="0aa80840-66e4-4875-8f7e-174de1dd39fa" nickname="List" x="2084.48550497151" y="1603.41871994672" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Input name="index0" />
       <Input name="index1" />
       <Input name="index2" />
+      <Input name="index3" />
     </Dynamo.Nodes.dynNewList>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="56fdb5d8-d115-480c-9a2f-c61740ca50b0" nickname="Watch" x="1737.24585256188" y="1747.08983105783" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="f1102c75-ad37-4677-b4ba-372c18caf6de" nickname="Python Script From String" x="2149.91138068068" y="1403.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="d2d46068-74cd-4a47-91d0-439879ab06a5" nickname="Number Slider" x="1214.98593696478" y="1655.73935486736" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="ec2e99aa-18d0-407b-b3f5-7b46c55045aa" nickname="Watch" x="2203.24585256188" y="1773.08983105783" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="50e28bfb-c62e-4694-b4ed-cb5aeff70d24" nickname="Python Script From String" x="2615.91138068068" y="1429.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynDoubleSliderInput type="Dynamo.Nodes.dynDoubleSliderInput" guid="d49a6074-d4e1-412a-b336-e6d4fcc34ef4" nickname="Number Slider" x="1726.58593696478" y="1669.73935486736" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <System.Double value="10" min="0" max="200" />
     </Dynamo.Nodes.dynDoubleSliderInput>
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="45e5afe1-4f63-4896-8791-11283c9b9c12" nickname="Python Script" x="1964.81970319855" y="1649.66691619492" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="52089c84-9b27-4b93-b1e8-79e8ccebf1b5" nickname="Python Script" x="2430.81970319855" y="1675.66691619492" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
       <Script>#The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -830,44 +266,38 @@ ylength = max_point.x() - min_point.y()
 #Assign your output to the OUT variable
 OUT = xLength</Script>
     </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="dc50bf8a-b6b0-4a01-875a-29997c4e4c5b" nickname="Watch" x="2277.18553510156" y="1531.12475169276" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="cbaab805-12d9-4fc7-a880-203b83099b9b" nickname="Draw" x="2406.2337050665" y="1403.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
-    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="a78b7abe-0840-4762-83d3-e8c4ecfadc25" nickname="Watch 3D" x="2587.94799078078" y="1403.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
-    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="f07068ee-a33a-415d-a7df-eae64df07b23" nickname="Python Script" x="785.080024027925" y="1106.76870584209" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
-      <Script>#The input to this node will be stored in the IN variable.
-dataEnteringNode = IN
-
-solids = IN[3]
-#Assign your output to the OUT variable
-OUT = solids</Script>
-    </Dynamo.Nodes.dynPython>
-    <Dynamo.Nodes.dynElementSolid type="Dynamo.Nodes.dynElementSolid" guid="529d60c9-e031-41a7-b1ae-a0053a9628ae" nickname="Extract Solid from Element" x="945.08002402792" y="1107.91156298494" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="71e49c1a-9355-4498-bba1-7e25811fe08f" nickname="Watch" x="2743.18553510156" y="1557.12475169276" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="d9f5bd1f-e661-4d42-88e2-bb3defe239de" nickname="Draw" x="2872.2337050665" y="1429.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="4501e9dc-7bc5-48ce-8e79-eae7431ed9c2" nickname="Watch 3D" x="3053.94799078078" y="1429.56761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="2919c49f-3dc8-42d0-83dc-c5403c7d1680" nickname="String" x="1727.99458319306" y="1745.81026395826" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test_Point_list5.txt" />
+    </Dynamo.Nodes.dynStringInput>
   </dynElements>
   <dynConnectors>
-    <Dynamo.Connectors.dynConnectorModel start="87f494e4-4f3c-41c5-9399-e5aa14fcfd05" start_index="0" end="fa7fa544-4f11-412e-b33c-a7cc28037f70" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="fa7fa544-4f11-412e-b33c-a7cc28037f70" start_index="0" end="80551657-a7c9-413d-a75a-43f46747eaa7" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="80551657-a7c9-413d-a75a-43f46747eaa7" start_index="0" end="771ce68e-c859-4f6e-ba54-72fc7c1172c7" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="80551657-a7c9-413d-a75a-43f46747eaa7" start_index="0" end="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" end_index="2" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="39e8e1a8-5b48-4bff-8a3b-a66835225a46" start_index="0" end="a2a3d9f5-45f4-448c-8460-a8f3a04e8c61" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="7191a169-8bcb-49a3-880e-ae82f31a4731" start_index="0" end="414b7ba0-127e-47c3-99c3-cf5e20032f22" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="414b7ba0-127e-47c3-99c3-cf5e20032f22" start_index="0" end="39e8e1a8-5b48-4bff-8a3b-a66835225a46" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="a2a3d9f5-45f4-448c-8460-a8f3a04e8c61" start_index="0" end="80551657-a7c9-413d-a75a-43f46747eaa7" end_index="1" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="feb41d94-d5ae-4643-bafc-1863f94ad9ff" start_index="0" end="39e8e1a8-5b48-4bff-8a3b-a66835225a46" end_index="1" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="feb41d94-d5ae-4643-bafc-1863f94ad9ff" start_index="0" end="696d06f5-0709-4947-a4b7-8280c8af5faa" end_index="1" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="1bf0abbd-bd07-4e80-92aa-d2f9e596cbcc" start_index="0" end="6ab64b4f-1392-4626-90c4-a5afa430b907" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="6ab64b4f-1392-4626-90c4-a5afa430b907" start_index="0" end="f1102c75-ad37-4677-b4ba-372c18caf6de" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="696d06f5-0709-4947-a4b7-8280c8af5faa" start_index="0" end="e504c67e-c943-4622-8727-d281c55ee7df" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="4f6a5ec9-3f0c-4269-9158-e1dc630f02f0" start_index="0" end="6d83da7b-a307-4869-8214-cfffe60132a2" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="6d83da7b-a307-4869-8214-cfffe60132a2" start_index="0" end="696d06f5-0709-4947-a4b7-8280c8af5faa" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="e504c67e-c943-4622-8727-d281c55ee7df" start_index="0" end="caaf87fe-1c3e-4c77-88ed-25f1469c9c32" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="e504c67e-c943-4622-8727-d281c55ee7df" start_index="0" end="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" start_index="0" end="56fdb5d8-d115-480c-9a2f-c61740ca50b0" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" start_index="0" end="f1102c75-ad37-4677-b4ba-372c18caf6de" end_index="1" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="f1102c75-ad37-4677-b4ba-372c18caf6de" start_index="0" end="dc50bf8a-b6b0-4a01-875a-29997c4e4c5b" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="f1102c75-ad37-4677-b4ba-372c18caf6de" start_index="0" end="cbaab805-12d9-4fc7-a880-203b83099b9b" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="d2d46068-74cd-4a47-91d0-439879ab06a5" start_index="0" end="b8acdeaf-de81-4688-8ac0-3d7d32b3c4f9" end_index="1" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="cbaab805-12d9-4fc7-a880-203b83099b9b" start_index="0" end="a78b7abe-0840-4762-83d3-e8c4ecfadc25" end_index="0" portType="0" />
-    <Dynamo.Connectors.dynConnectorModel start="f07068ee-a33a-415d-a7df-eae64df07b23" start_index="0" end="529d60c9-e031-41a7-b1ae-a0053a9628ae" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="fe59648c-481b-4b13-820d-5d6d595fd210" start_index="0" end="e1d92fc7-f5bb-4b99-9549-9e70a6eae560" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="e1d92fc7-f5bb-4b99-9549-9e70a6eae560" start_index="0" end="8082cb1d-74d3-440f-9eb2-34a6a047471f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="8082cb1d-74d3-440f-9eb2-34a6a047471f" start_index="0" end="060421f5-d03b-43ef-9278-a14b7db3925f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="8082cb1d-74d3-440f-9eb2-34a6a047471f" start_index="0" end="0aa80840-66e4-4875-8f7e-174de1dd39fa" end_index="2" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="1972529a-2339-44fe-a6b8-573c8c725048" start_index="0" end="80d4337e-9160-434f-bea1-ddc32d53cf1b" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="3b1bf47d-0939-4300-b8ff-14bf08479324" start_index="0" end="f6bb2b88-4cba-4275-ba56-b5e0b3bf8848" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f6bb2b88-4cba-4275-ba56-b5e0b3bf8848" start_index="0" end="1972529a-2339-44fe-a6b8-573c8c725048" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="80d4337e-9160-434f-bea1-ddc32d53cf1b" start_index="0" end="8082cb1d-74d3-440f-9eb2-34a6a047471f" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="956e40db-7a67-464a-ad4c-fa1878e288a5" start_index="0" end="1972529a-2339-44fe-a6b8-573c8c725048" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="956e40db-7a67-464a-ad4c-fa1878e288a5" start_index="0" end="1933408f-e9b1-4723-9947-07c611054ae2" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="01aaa3e1-dc8e-4681-85d3-9adcb6cc0aa9" start_index="0" end="9acef86f-ea19-41f4-a126-05d390b0db48" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="9acef86f-ea19-41f4-a126-05d390b0db48" start_index="0" end="50e28bfb-c62e-4694-b4ed-cb5aeff70d24" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="1933408f-e9b1-4723-9947-07c611054ae2" start_index="0" end="6bc16673-a8be-413c-a351-7a82eaf024f2" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="6663366c-add0-455a-a098-503283a8f37d" start_index="0" end="f4570795-e10d-4713-b8d8-fe5e723e82be" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="f4570795-e10d-4713-b8d8-fe5e723e82be" start_index="0" end="1933408f-e9b1-4723-9947-07c611054ae2" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="6bc16673-a8be-413c-a351-7a82eaf024f2" start_index="0" end="94b2e86a-81b5-4a20-9c74-01310a0f9bf5" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="6bc16673-a8be-413c-a351-7a82eaf024f2" start_index="0" end="0aa80840-66e4-4875-8f7e-174de1dd39fa" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="0aa80840-66e4-4875-8f7e-174de1dd39fa" start_index="0" end="ec2e99aa-18d0-407b-b3f5-7b46c55045aa" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="0aa80840-66e4-4875-8f7e-174de1dd39fa" start_index="0" end="50e28bfb-c62e-4694-b4ed-cb5aeff70d24" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="50e28bfb-c62e-4694-b4ed-cb5aeff70d24" start_index="0" end="71e49c1a-9355-4498-bba1-7e25811fe08f" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="50e28bfb-c62e-4694-b4ed-cb5aeff70d24" start_index="0" end="d9f5bd1f-e661-4d42-88e2-bb3defe239de" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="d49a6074-d4e1-412a-b336-e6d4fcc34ef4" start_index="0" end="0aa80840-66e4-4875-8f7e-174de1dd39fa" end_index="1" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="d9f5bd1f-e661-4d42-88e2-bb3defe239de" start_index="0" end="4501e9dc-7bc5-48ce-8e79-eae7431ed9c2" end_index="0" portType="0" />
+    <Dynamo.Connectors.dynConnectorModel start="2919c49f-3dc8-42d0-83dc-c5403c7d1680" start_index="0" end="0aa80840-66e4-4875-8f7e-174de1dd39fa" end_index="3" portType="0" />
   </dynConnectors>
   <dynNotes />
 </dynWorkspace>

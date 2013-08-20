@@ -62,15 +62,11 @@ reference_geo = []
 reference_geo.extend(IN[2]) #standard geom to avoid.
 reference_geo.append(IN[0][2]) #top_surface
 
-"""
-xlength = IN[0]
-ylength = IN[1]
-spacing = IN[2]
-reference_geo = IN[3]
-"""
 xlength = max_point.x() - min_point.x()
 ylength = max_point.y() - min_point.y()
 #get geometery from get_geo.
+
+file_name = IN[3]
 
 x_number = round(xlength/panel_sizing)
 y_number = round(ylength/panel_sizing)
@@ -202,7 +198,7 @@ for i in range(int(x_number) ):
 		output_debug_new.append( panel.polygon)
 
 
-f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test_Point_list4.txt", "w")
+f = open(file_name, "w")
 
 bspline_surfacelist = []
 for i in range(int(x_number)+1):

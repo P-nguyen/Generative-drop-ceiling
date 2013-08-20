@@ -10,7 +10,8 @@ from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
-grid = IN
+grid = IN[0]
+file_name = IN[2]
 count = None
 
 lens = []
@@ -186,7 +187,21 @@ def find_panel(solids, centroid):
             
     return final_solid
             
+def create_connection_plate( Point_A, Point_B, vector, setback):
     
+    curve = Line.by_start_point_end_point (Point_A, Point_B)
+    dist = curve.length ()
+    pt1 = curve.point_at_distance (setback)
+    pt2 = curve.point_at_distance (dist - setback)
+    
+    v1 = move_point_byvector( pt1, vector, -plate_protrusion ) #-
+    v2 = move_point_byvector( pt2, vector, -plate_protrusion ) #-
+    v3 = move_point_byvector( pt2, vector, panel_thickness ) #+ The 1 is for  the hanger? do we need it? 
+    v4 = move_point_byvector( pt1, vector, panel_thickness ) #+
+    
+    Surface = Polygon.by_points( PointList([v1,v2,v3,v4]) )
+    return Surface
+
 def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     i = point_indexs[0]
     j = point_indexs[1]
@@ -197,6 +212,7 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     center_norm = polygons[i][j].normal_at_parameter (0.5, 0.5)
     cutting_planes = []
     
+    #plates = []
     #points = []
     #poly1
     if j-1 >= 0: 
@@ -205,6 +221,7 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[1], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
+        #plates.append(create_connection_plate( poly_points[0], poly_points[1], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[1].x(), poly_points[1].y(), poly_points[1].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -219,6 +236,7 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[2], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[1], poly_points[2], vertical_point ))
+        #plates.append(create_connection_plate( poly_points[1], poly_points[2], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[2].x(), poly_points[2].y(), poly_points[2].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -232,6 +250,7 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[3], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[2], poly_points[3], vertical_point ))
+        #plates.append(create_connection_plate( poly_points[2], poly_points[3], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[3].x(), poly_points[3].y(), poly_points[3].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -244,7 +263,8 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
 
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[0], edge_normal, 10 )
-        cutting_planes.append(Plane.by_three_points( poly_points[3], poly_points[0], vertical_point ))       
+        cutting_planes.append(Plane.by_three_points( poly_points[3], poly_points[0], vertical_point ))   
+        #plates.append(create_connection_plate( poly_points[3], poly_points[0], edge_normal, setback) )    
     else:
         vertical_point = Point.by_coordinates(poly_points[0].x(), poly_points[0].y(), poly_points[0].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -259,7 +279,12 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
 
 ####Main####
 cuttoff_tolerance = .04
-panel_thickness = 0.166
+panel_thickness = IN[1] / 12  #for DYNAMO SANDBOX  # for REVIT FEET 0.166
+
+#plate specific variables
+plate_protrusion = 0.25 # how much the plate pops out // look at DEF create_connection_plate
+setback = 1 # shortens the plate to avoid conflict at corners
+
 planar_process = False
 
 while planar_process == False:
@@ -281,16 +306,18 @@ for i in range(len(grid)-1 ):
 
 
 debug_solids = []
-
+#debug_plates = []
 #create new grid of points that are correctly offset from the original pointlist.
 for i in range(len(polygon_list)):
     for j in range(len(polygon_list[0])):
        #debug_planes.extend( intersect_plane( polygon_list, [i,j] ) )
-       debug_solids.append( intersect_plane_to_solid( polygon_list, [i,j], panel_thickness ) )
+       result = intersect_plane_to_solid( polygon_list, [i,j], panel_thickness )
+       debug_solids.append( result )
+       #debug_plates.extend( result[1])
 
 ################################################################################################################
 #output txt file.
-f = open("C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile4_1.txt", "w")
+f = open( file_name, "w")
 
 for i in range(len(grid)):
     for j in range(len(grid[0])):
@@ -302,4 +329,4 @@ for i in range(len(grid)):
 f.close()
 ################################################################################################################
 
-OUT = debug_solids#polygon_list# ,debug_planes
+OUT = debug_solids, polygon_list# ,debug_planes

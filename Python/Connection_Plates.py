@@ -44,8 +44,8 @@ def create_connection_plate( Point_A, Point_B, vector, setback):
     
     v1 = move_point_byvector( pt1, vector, -plate_protrusion ) #-
     v2 = move_point_byvector( pt2, vector, -plate_protrusion ) #-
-    v3 = move_point_byvector( pt2, vector, panel_thickness ) #+ The 1 is for  the hanger? do we need it? 
-    v4 = move_point_byvector( pt1, vector, panel_thickness ) #+
+    v3 = move_point_byvector( pt2, vector, panel_thickness + plate_upper_extension) #+ The 1 is for  the hanger? do we need it? 
+    v4 = move_point_byvector( pt1, vector, panel_thickness + plate_upper_extension ) #+
     
     Surface = Polygon.by_points( PointList([v1,v2,v3,v4]) )
     return Surface
@@ -123,7 +123,9 @@ panel_thickness = IN[1] /12 #for DYNAMO SANDBOX  # for REVIT FEET 0.166
 
 #plate specific variables
 plate_protrusion = 0.25 # how much the plate pops out // look at DEF create_connection_plate
+plate_upper_extension = 0.416 #revit conversion. // look at DEF create_connection_plate
 setback = 1 # shortens the plate to avoid conflict at corners
+
 existing_plates = []
 
 

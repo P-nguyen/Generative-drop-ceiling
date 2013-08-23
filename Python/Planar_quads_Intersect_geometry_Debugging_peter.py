@@ -35,17 +35,8 @@ def planar_quads( gridlist, point_indexs ):
         except:
             closest_point = gridlist[i][j]
         new_points.append(closest_point)
-        """
-        try:
-            dist = gridlist[i][j].distance_to(closest_point)
-        except Exception:
-            dist = 0
-        point_distances.append(dist)
-        #plane1_normal = plane1.normal()
-        """
         
     #plane 2
-    #if i < len(gridlist) and j > 0: #grid[i+1][j-1]:
     try:
         plane = Plane.by_three_points( gridlist[i+1][j], gridlist[i+1][j-1], gridlist[i][j-1] )
     except ValueError:
@@ -56,15 +47,8 @@ def planar_quads( gridlist, point_indexs ):
         except:
             closest_point = gridlist[i][j]
         new_points.append(closest_point)
-        """
-        try:
-            dist = gridlist[i][j].distance_to(closest_point)
-        except Exception:
-            dist = 0
-        point_distances.append(dist)
-        """
+        
     #plane 3 
-    #if i < len(gridlist) and j < len(gridlist[0]):  #grid[i+1][j+1]:
     try:
         plane = Plane.by_three_points( gridlist[i][j+1], gridlist[i+1][j+1], gridlist[i+1][j] )  
     except ValueError:
@@ -75,15 +59,8 @@ def planar_quads( gridlist, point_indexs ):
         except:
             closest_point = gridlist[i][j]
         new_points.append(closest_point)
-        """
-        try:
-            dist = gridlist[i][j].distance_to(closest_point)
-        except Exception:
-            dist = 0
-        point_distances.append(dist)
-        """
+        
     #plane 4
-    #if i > 0 and j < len(gridlist[0]): #grid[i-1][j+1]:
     try:
         plane = Plane.by_three_points( gridlist[i-1][j], gridlist[i-1][j+1], gridlist[i][j+1] )
     except ValueError:
@@ -94,13 +71,6 @@ def planar_quads( gridlist, point_indexs ):
         except:
             closest_point = gridlist[i][j]
         new_points.append(closest_point)
-        """
-        try:
-            dist = gridlist[i][j].distance_to(closest_point)
-        except Exception:
-            dist = 0
-        point_distances.append(dist)
-        """
     
     new_points.append(gridlist[i][j])
     #point_distances.append(0.0) #to account for the extra point.
@@ -186,21 +156,6 @@ def find_panel(solids, centroid):
             final_solid = obj
             
     return final_solid
-            
-def create_connection_plate( Point_A, Point_B, vector, setback):
-    
-    curve = Line.by_start_point_end_point (Point_A, Point_B)
-    dist = curve.length ()
-    pt1 = curve.point_at_distance (setback)
-    pt2 = curve.point_at_distance (dist - setback)
-    
-    v1 = move_point_byvector( pt1, vector, -plate_protrusion ) #-
-    v2 = move_point_byvector( pt2, vector, -plate_protrusion ) #-
-    v3 = move_point_byvector( pt2, vector, panel_thickness ) #+ The 1 is for  the hanger? do we need it? 
-    v4 = move_point_byvector( pt1, vector, panel_thickness ) #+
-    
-    Surface = Polygon.by_points( PointList([v1,v2,v3,v4]) )
-    return Surface
 
 def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     i = point_indexs[0]
@@ -221,7 +176,6 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[1], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[0], poly_points[1], vertical_point ))
-        #plates.append(create_connection_plate( poly_points[0], poly_points[1], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[1].x(), poly_points[1].y(), poly_points[1].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -236,7 +190,6 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[2], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[1], poly_points[2], vertical_point ))
-        #plates.append(create_connection_plate( poly_points[1], poly_points[2], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[2].x(), poly_points[2].y(), poly_points[2].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -250,7 +203,6 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[3], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[2], poly_points[3], vertical_point ))
-        #plates.append(create_connection_plate( poly_points[2], poly_points[3], edge_normal, setback) )
     else:
         vertical_point = Point.by_coordinates(poly_points[3].x(), poly_points[3].y(), poly_points[3].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -264,7 +216,6 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
         edge_normal = add_two_vectors( center_norm, adjacent_norm )
         vertical_point = move_point_byvector(poly_points[0], edge_normal, 10 )
         cutting_planes.append(Plane.by_three_points( poly_points[3], poly_points[0], vertical_point ))   
-        #plates.append(create_connection_plate( poly_points[3], poly_points[0], edge_normal, setback) )    
     else:
         vertical_point = Point.by_coordinates(poly_points[0].x(), poly_points[0].y(), poly_points[0].z())
         vertical_point.set_z(vertical_point.z() + 10)
@@ -279,11 +230,8 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
 
 ####Main####
 cuttoff_tolerance = .04
-panel_thickness = IN[1] / 12  #for DYNAMO SANDBOX  # for REVIT FEET 0.166
+panel_thickness = IN[1]  #for DYNAMO SANDBOX  # for REVIT FEET 0.166
 
-#plate specific variables
-plate_protrusion = 0.25 # how much the plate pops out // look at DEF create_connection_plate
-setback = 1 # shortens the plate to avoid conflict at corners
 
 planar_process = False
 

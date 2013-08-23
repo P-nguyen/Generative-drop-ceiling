@@ -119,12 +119,12 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     return plates
 
 ####Main####
-panel_thickness = IN[1] /12 #for DYNAMO SANDBOX  # for REVIT FEET 0.166
+panel_thickness = IN[1] #for DYNAMO SANDBOX  # for REVIT FEET 0.166
 
 #plate specific variables
-plate_protrusion = 0.25 # how much the plate pops out // look at DEF create_connection_plate
-plate_upper_extension = 0.416 #revit conversion. // look at DEF create_connection_plate
-setback = 1 # shortens the plate to avoid conflict at corners
+plate_protrusion = 0.083 # how much the plate pops out // look at DEF create_connection_plate
+plate_upper_extension = 0.333 #revit conversion. // look at DEF create_connection_plate
+setback = .5 # shortens the plate to avoid conflict at corners
 
 existing_plates = []
 

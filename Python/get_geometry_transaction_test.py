@@ -7,7 +7,7 @@ from Autodesk.LibG import *
 
 from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 
-elements = IN[3]
+elements = IN
 surfaces = []
 
 def create_surface(max, min):

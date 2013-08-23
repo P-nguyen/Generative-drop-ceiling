@@ -51,7 +51,7 @@ def enlarge_polygon( polygon ):
         vectest = Vector.from_xyz(vectorx, vectory, vectorz)
         vectest.normalize()
         
-        point.append(move_point_byvector( vertex_list[i], vectest, .125 ))
+        point.append(move_point_byvector( vertex_list[i], vectest, 0.2 ))
         
     Ptlist = PointList([ point[0], point[1], point[2], point[3] ])    
     new_polygon = Polygon.by_points(Ptlist)
@@ -82,13 +82,13 @@ def controlled_random_thickness( total_thickness, random ):
 		final_thickness = 0.0
 		
 	if 0.35 < rand_num <= 0.75:
-		final_thickness = total_thickness * 0.25
+		final_thickness = total_thickness * 0.3
 		
 	if 0.75 < rand_num <= 0.9:
-		final_thickness = total_thickness * 0.5
+		final_thickness = total_thickness * 0.4
 		
 	if 0.9 < rand_num <= 1.0:
-		final_thickness = total_thickness * 0.75
+		final_thickness = total_thickness * 0.5
 		# cut through panel.
 
 	return final_thickness
@@ -154,8 +154,11 @@ for solid in input_solids:
 			
 	final_solid = solid
 	panels = []
+	debug = []
 	#debug_solids = []
 	#Thickend_panel = []
+	#f = open( "C:\dev\Generative-drop-ceiling\Final_mockup\debug_testfile.txt", "w")
+	
 	for i in range(int(div_number) ):
 		for j in range(int(div_number) ):
 			#panels = Polygon.by_points(PointList([bottom_grid[i][j], bottom_grid[i+1][j], bottom_grid[i+1][j+1], bottom_grid[i][j+1]])) 
@@ -168,27 +171,34 @@ for solid in input_solids:
 					continue
 				if len(panels) > 1:
 					thickness_value = thickness_value + (thickness/6)
-					
+
 				panel = enlarge_polygon( panel )
-				
 				Thickend_panel = panel.thicken(thickness_value)
-				try:
-					final_solid = final_solid.subtract_from(Thickend_panel, False, False, False)
-				except:
-					continue
-				try:	
-					final_solid = final_solid[0]
-				except:
-					continue
+				
+				if Thickend_panel:	
+					test_solid = final_solid.subtract_from(Thickend_panel, True,True,True)
+					
+					try:
+						final_solid = test_solid[0]
+					except:
+						continue
+					"""
+					f.write( str(final_solid))
+					f.write("\n")
+					"""
+				#debug.append(final_solid)
+				
 				#debug.append(final_solid)
 				#debug_solids.append( Thickend_panel)
-	
+				
+			
 	final_solid_list.append(final_solid)
 	
-	count += 1
-	if count >= 150:
+	"""
+	if count >= 3:
 		break
-
-	
+	count +=1
+	"""
+#f.close()	
 #Assign your output to the OUT variable
-OUT =  final_solid_list
+OUT = final_solid_list

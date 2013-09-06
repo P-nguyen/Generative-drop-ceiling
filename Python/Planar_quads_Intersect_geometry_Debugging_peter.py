@@ -1,11 +1,4 @@
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
 from Autodesk.LibG import *
-
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
 
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
@@ -99,6 +92,16 @@ def planar_quads( gridlist, point_indexs ):
     
     return [final_point, tolerence ]
 
+def vector_create( point_to , point_from ):
+   
+    vec_x = (point_to.x() - point_from.x()) / 2 
+    vec_y = (point_to.y() - point_from.y()) / 2 
+    vec_z = (point_to.z() - point_from.z()) / 2 
+    
+    final_vec = Vector.from_xyz( vec_x, vec_y, vec_z )
+    
+    return final_vec
+
 def move_point_byvector( point, vector, magnitude ):
     vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
     vector_copy.normalize()
@@ -157,11 +160,41 @@ def find_panel(solids, centroid):
             
     return final_solid
 
+def create_hole( object, point, hole_radius ):
+    cutting_sphere = Sphere.by_center_radius (point, hole_radius)
+    final_solid = object.subtract_from(cutting_sphere) 
+        
+    return final_solid[0]
+
+def create_connection_holes(polygon):
+    vertices = []
+        
+    poly_vertices = polygon.vertices ()
+    norm = polygon.normal_at_parameter ( 0.5, 0.5 )
+    for vert in poly_vertices:
+        vertices.append(vert)
+    vertices.extend( [vertices[0], vertices[1]] )
+        
+    dev_surface = enlarge_polygon(polygon)
+    for i in range(4):
+        vec = vector_create( vertices[i+2] , vertices[i+1] )
+        line = Line.by_start_point_end_point(vertices[i], vertices[i+1])
+        holeA = line.point_at_parameter (0.25)
+        holeB = line.point_at_parameter (0.75)
+        holeA_moved = move_point_byvector( holeA, vec, 0.333 )
+        holeB_moved = move_point_byvector( holeB, vec, 0.333 )
+        dev_surface = create_hole( dev_surface, holeA_moved, 0.0333 )
+        dev_surface = create_hole( dev_surface, holeB_moved, 0.0333 )
+    
+        
+    return dev_surface
+
 def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     i = point_indexs[0]
     j = point_indexs[1]
-    large_polygon = enlarge_polygon(polygons[i][j])
-    solid = large_polygon.thicken(panel_thickness)
+    #large_polygon = enlarge_polygon(polygons[i][j])
+    dev_surf = large_polygon = enlarge_polygon(polygons[i][j]) #create_connection_holes(polygons[i][j])
+    solid = dev_surf.thicken(panel_thickness)
     
     poly_points = polygons[i][j].vertices()
     center_norm = polygons[i][j].normal_at_parameter (0.5, 0.5)
@@ -228,6 +261,8 @@ def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
     
     return find_panel(test, centroid)
 
+
+
 ####Main####
 cuttoff_tolerance = .04
 panel_thickness = IN[1]  #for DYNAMO SANDBOX  # for REVIT FEET 0.166
@@ -250,7 +285,6 @@ for i in range(len(grid)-1 ):
      for j in range(len(grid[0])-1 ):
          new_polygon_pointlist = PointList([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
          polygon_list[i][j] = Polygon.by_points(new_polygon_pointlist)
-         #polygon_list.append(Polygon.by_points(new_polygon_pointlist))
 
 
 debug_solids = []
@@ -277,4 +311,4 @@ for i in range(len(grid)):
 f.close()
 ################################################################################################################
 
-OUT = debug_solids, polygon_list# ,debug_planes
+OUT = debug_solids, polygon_list

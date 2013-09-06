@@ -1,20 +1,8 @@
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
 from Autodesk.LibG import *
 
-# General TODO:
-## Remove commented-out code. Every line of code should server a purpose, and every function should be "finished"
-
-
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
-#class is needed for each point? 
-	#class info contains the point, and a boolean telling if it is still moveable
 class PointCheck:
 	def __init__(self, _point, _panel_size):
 		self.point = _point
@@ -23,8 +11,7 @@ class PointCheck:
 		self.panel_size = _panel_size
 		self.top_point = None
 	
-	# PATRICK NOTE:	
-	# TODO: change to cuboid intersection, rather than radius
+	
 	def objects_within_proximity( self, geometry_list ):	#stores whatever ceiling objects are with in proximity
 		lowest_z = None
 		
@@ -37,11 +24,10 @@ class PointCheck:
 				continue
 			
 			self.stored_geometry.append(object)
-			#self.stored_points.append([ test_point, object_point, object_point.z() ])
 			self.stored_points.append([object_point, object_point.z()])
-
-		return 
-				
+			
+		return
+	
 	def set_closest_geometry( self, geometry_list ):  #this one only finds the closest point. we need one that finds the proximitiy.
 		
 		self.objects_within_proximity(geometry_list)
@@ -89,103 +75,6 @@ for i in range(int(x_number) + 1):
 
 
 
-class Check_SurfacePanel_intersection:
-
-	def __init__(self, point_checks): #point_check is  alist of points. or [pointcheks]
-		self.point_checks = point_checks
-		p1 = point_checks[0].top_point
-		p2 = point_checks[1].top_point
-		p3 = point_checks[2].top_point
-		p4 = point_checks[3].top_point
-		self.polygon_pointlist = PointList([p1, p2, p3, p4])
-		self.polygon = Polygon.by_points(self.polygon_pointlist)
-		self.is_invalid = False
-		
-		self.intersecting_geometry = []
-		self.index_points = []
-	
-	def cull_duplicates( self, object_list ):
-		seen = set()
-		seen_add = seen.add
-		return [ x for x in object_list if x not in seen and not seen_add(x)]
-   
-	def find_intersecting_geometry_list(self):
-		full_geometry_list = []
-		for geometry in self.point_checks:
-			full_geometry_list.extend(geometry.stored_geometry)
-		
-		clean_geometry_list = self.cull_duplicates(full_geometry_list)
-		
-		for object in clean_geometry_list:
-			boolean_intersect = object.does_intersect(self.polygon)
-			if boolean_intersect == True:
-				self.intersecting_geometry.append(object)
-				self.is_invalid = True
-		return 
-	
-	def find_corresponding_point(self,geometry):
-		shortest_dist = None
-		
-		for i in range(len(self.point_checks)):
-			closest_point_on_object = geometry.get_closest_point(self.point_checks[i].top_point)
-			dist = self.point_checks[i].top_point.distance_to(closest_point_on_object)
-		
-			if shortest_dist == None:
-				shortest_dist = dist
-				index_to_move = i
-				continue
-			
-			if dist <= shortest_dist:
-				index_to_move = i
-			 
-		return index_to_move
-	# PATRICK NOTE:
-	# TODO: replace number with Enum, see below
-	def does_intersect(self, number):
-
-		for object in self.intersecting_geometry:
-			boolean_intersect = object.does_intersect(self.polygon)
-			if boolean_intersect == True and number == 0:
-				self.is_invalid = True
-				continue
-			
-			if boolean_intersect == True and number == 1:
-				self.is_invalid = True
-				self.index_points.append(self.find_corresponding_point(object))
-			
-		#self.is_invalid = geo1.does_intersect(self.polygon) or geo2.does_intersect(self.polygon) or geo3.does_intersect(self.polygon) or geo4.does_intersect(self.polygon)
-		return 
-	
-	
-	#create boolean for up or down. SO if it starts out as false, them move it up point.? if true move down points?
-	# PATRICK NOTE:
-	# TODO: replace bool / number with Enum, E.G.:
-	# class MovementDirection:
-        #	Up, Down, NotMoving = range(3)
-	# and use: MovementDirection.Up instead or "1" or "0"
-	def adjust_point(self):
-		
-		self.find_intersecting_geometry_list()
-		self.does_intersect(1)
-		
-		if not self.index_points:
-			return
-		
-		# PATRICK NOTE:
-		# This doesn't seem like an ideal solution. Incrementing by only 1 could take a really long time in certain 
-		# circumstances. Ideally you could establish an upper and lower bound, then progress between those bounds
-		# by halving each time, or something similar. By halving the distance each time, you could potentially search
-		# distances to millions of billions of units in 21 steps. In computer science this is called "log(n)" performance
-		while self.is_invalid == True:
-			for index in self.index_points:
-				self.point_checks[index].top_point.set_z(self.point_checks[index].top_point.z() - 1)
-			self.polygon.update_vertices(self.polygon_pointlist)
-			self.is_invalid = False
-			self.does_intersect(0)
-			
-		return #self.point_checks[0].top_point
-
-
 #########################################################
 
 output_debug_new = []		
@@ -193,9 +82,8 @@ output_debug_new = []
 
 for i in range(int(x_number) ):
 	for j in range(int(y_number) ):
-		panel = Check_SurfacePanel_intersection([grid[i][j], grid[i+1][j], grid[i+1][j+1], grid[i][j+1]])
-		#panel.adjust_point()
-		output_debug_new.append( panel.polygon)
+		panel = Polygon.by_points(PointList([grid[i][j].top_point, grid[i+1][j].top_point, grid[i+1][j+1].top_point, grid[i][j+1].top_point]))
+		output_debug_new.append( panel)
 
 
 f = open(file_name, "w")

@@ -1,14 +1,5 @@
-import System
-from System import *
-import math
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
 from Autodesk.LibG import *
 
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector,Solid
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
 
@@ -44,7 +35,7 @@ def move_point_byvector( point, vector, magnitude ):
 
 def random_points_on_surf( Bspline_surface ):
     random_gen = Random()
-    for j in range(8):
+    for j in range(10):
         rand_num1 = (random_gen.Next(125, 875))/1000.0
         rand_num2 = (random_gen.Next(125, 875))/1000.0
         
@@ -105,7 +96,7 @@ for i in range( len(surfaces) ):
             new_point = move_point_byvector( point, vec, 20 )
     		#objs.append(Cone.by_points_radius( light , new_point, 0.1, 3.0))
             
-            cutting_cone = Cone.by_points_radius( light , new_point,(rand.Next(300, 500)/1000.0), (rand.Next(500, 2000)/1000.0) )
+            cutting_cone = Cone.by_points_radius( light , new_point,(rand.Next(150, 250)/1000.0), (rand.Next(250, 1000)/1000.0) )
             final_solid = final_solid.subtract_from(cutting_cone, True, True, True)    
             final_solid = final_solid[0]
     

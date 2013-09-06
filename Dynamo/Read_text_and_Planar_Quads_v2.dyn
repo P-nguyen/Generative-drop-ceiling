@@ -1,0 +1,428 @@
+<dynWorkspace X="187.221637395393" Y="185.818176831764" zoom="1.1" Description="" Category="" Name="Home">
+  <dynElements>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="a0584707-3c73-4f08-9834-bbe7fe3a9a78" nickname="Python Script From String" x="631.93171590169" y="836.973333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="9c1a6ee9-4d1e-44e5-91ef-6aae15999a19" nickname="File Path" x="86.407906377883" y="832.973333333334" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Read_txtfile_for_pointlist.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="2f087043-731e-4e44-bd9e-2ade02efd23a" nickname="Read Text File" x="418.59838256836" y="832.973333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="29fc86b4-396d-405d-8976-3416368ebceb" nickname="File Path" x="81.128481038411" y="913.586666666666" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Exported_TxtFiles\Test.txt" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="6140d204-cc37-471f-a6f4-f26a389210b3" nickname="Read Text File" x="422.59838256836" y="911.64" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="495e11b9-ac57-465c-bd50-aa6619fc6fe1" nickname="Draw" x="2314.94123971122" y="40" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="946add28-10d1-420b-84fb-df254e0c28cd" nickname="Watch" x="822.46181437174" y="838.99619047619" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="54043357-9bee-49c0-ab69-f1b247ad09a8" nickname="Watch 3D" x="2497.54752865746" y="40" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="a735912d-014d-42a4-bdaf-33725dd066b0" nickname="Python Script From String" x="1327.13171590169" y="566.344761904762" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="6b81a4ff-57e4-4e19-b45f-148c76bb6829" nickname="File Path" x="772.46504923503" y="565.773333333334" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Planar_quads_Intersect_geometry_Debugging_peter.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="b0367a81-ce17-406d-b979-e0f96ae30451" nickname="Read Text File" x="1105.79838256836" y="565.773333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="22fef23f-12e3-404c-a45e-38ecc402cccd" nickname="Python Script" x="2444.08029959459" y="480" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>import sys
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
+
+#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+polygon_list = IN[0]
+
+def move_point_byvector( point, vector, magnitude ):
+    vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
+    vector_copy.normalize()
+       
+    newpoint = [0,0,0]
+    newpoint[0] = point.x() + (vector_copy.x() * magnitude)
+    newpoint[1] = point.y() + (vector_copy.y() * magnitude)
+    newpoint[2] = point.z() + (vector_copy.z() * magnitude)
+    
+    finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
+    return finalpt
+
+def add_two_vectors( vector_1,vector_2 ):
+    vector_1.normalize()
+    vector_2.normalize()
+    
+    vec_x = (vector_1.x() + vector_2.x()) / 2 
+    vec_y = (vector_1.y() + vector_2.y()) / 2 
+    vec_z = (vector_1.z() + vector_2.z()) / 2 
+    
+    final_vec = Vector.from_xyz( vec_x, vec_y, vec_z )
+    
+    return final_vec
+            
+def create_connection_plate( Point_A, Point_B, vector, setback):
+    
+    curve = Line.by_start_point_end_point (Point_A, Point_B)
+    dist = curve.length ()
+    pt1 = curve.point_at_distance (setback)
+    pt2 = curve.point_at_distance (dist - setback)
+    
+    v1 = move_point_byvector( pt1, vector, -plate_protrusion ) #-
+    v2 = move_point_byvector( pt2, vector, -plate_protrusion ) #-
+    v3 = move_point_byvector( pt2, vector, panel_thickness ) #+ The 1 is for  the hanger? do we need it? 
+    v4 = move_point_byvector( pt1, vector, panel_thickness ) #+
+    
+    Surface = Polygon.by_points( PointList([v1,v2,v3,v4]) )
+    return Surface
+
+def check_if_plate_exist( new_plate, exisitng_plates ):
+	boolean = False
+	centroid_1 = new_plate.point_at_parameter( 0.5,0.5 )
+	
+	if existing_plates:
+		for plate in existing_plates:
+			centroid_2 = plate.point_at_parameter( 0.5,0.5 )
+			dist = centroid_1.distance_to(centroid_2)
+			if dist &lt; .5:
+				boolean = True
+			
+	return boolean
+	
+def intersect_plane_to_solid( polygons, point_indexs, panel_thickness ):
+    i = point_indexs[0]
+    j = point_indexs[1]
+    
+    poly_points = polygons[i][j].vertices()
+    center_norm = polygons[i][j].normal_at_parameter (0.5, 0.5)
+    
+    plates = []
+    #points = []
+    #poly1
+    if j-1 &gt;= 0: 
+        adjacent_norm = polygons[i][j-1].normal_at_parameter (0.5, 0.5)
+		
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[1], edge_normal, 10 )
+        test_plate = create_connection_plate( poly_points[0], poly_points[1], edge_normal, setback)
+        check = check_if_plate_exist( test_plate, existing_plates )
+        if check == False:
+			plates.append(test_plate)
+    
+    #poly2    
+    if i+1 &lt;= len(polygons)-1:
+        adjacent_norm = polygons[i+1][j].normal_at_parameter (0.5, 0.5)
+        
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[2], edge_normal, 10 )
+        test_plate = create_connection_plate( poly_points[1], poly_points[2], edge_normal, setback)
+        check = check_if_plate_exist( test_plate, existing_plates )
+        if check == False:
+        	plates.append(test_plate)
+    
+    #poly3 
+    if j+1 &lt;= len(polygons[0])-1:
+        adjacent_norm = polygons[i][j+1].normal_at_parameter (0.5, 0.5)
+        
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[3], edge_normal, 10 )
+        test_plate = create_connection_plate( poly_points[2], poly_points[3], edge_normal, setback)
+        check = check_if_plate_exist( test_plate, existing_plates )
+        if check == False:
+        	plates.append(test_plate)
+        
+    #poly4 
+    if i-1 &gt;= 0:
+        adjacent_norm = polygons[i-1][j].normal_at_parameter (0.5, 0.5)
+		
+        edge_normal = add_two_vectors( center_norm, adjacent_norm )
+        vertical_point = move_point_byvector(poly_points[0], edge_normal, 10 )
+        test_plate = create_connection_plate( poly_points[3], poly_points[0], edge_normal, setback)
+        check = check_if_plate_exist( test_plate, existing_plates )
+        if check == False:
+        	plates.append(test_plate)
+    
+    return plates
+
+####Main####
+panel_thickness = IN[1] /12 #for DYNAMO SANDBOX  # for REVIT FEET 0.166
+
+#plate specific variables
+plate_protrusion = 0.25 # how much the plate pops out // look at DEF create_connection_plate
+setback = 1 # shortens the plate to avoid conflict at corners
+existing_plates = []
+
+
+#debug_plates = []
+#create new grid of points that are correctly offset from the original pointlist.
+for i in range(len(polygon_list)):
+    for j in range(len(polygon_list[0])):
+       #debug_planes.extend( intersect_plane( polygon_list, [i,j] ) )
+       result = intersect_plane_to_solid( polygon_list, [i,j], panel_thickness )
+       existing_plates.extend(result)
+       #debug_plates.extend( result)
+
+
+OUT = existing_plates #polygon_list# ,debug_planes</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynDeCons type="Dynamo.Nodes.dynDeCons" guid="77c780ba-b03c-4844-8c66-6f0d8a9d02e5" nickname="Split List" x="1565.5878342393" y="428.425649694216" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="91027564-0fc3-47d6-ac38-455d0415acfb" nickname="Watch" x="1950.24497709645" y="40" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="594950ef-5767-4fc1-b2ce-9ae7cab39cc1" nickname="Watch" x="1939.76878662026" y="607.333333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFirst type="Dynamo.Nodes.dynFirst" guid="9f2fc06e-4a1a-481a-b657-eb66b23f7416" nickname="First of List" x="1809.36752835144" y="610" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="ae628838-5bb6-45a4-903c-4b0c85fc6f10" nickname="Draw" x="3068.26240728385" y="611" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="edbcfc5c-fb65-42a2-9aa4-77ad03da6208" nickname="Watch" x="2899.44180249327" y="734" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="b438e4a9-290b-4a0a-97e6-26da26539600" nickname="List" x="1267.67295138724" y="778.666937295506" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+      <Input name="index2" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="bff803eb-ae84-4d8c-be1d-7f4e20622a52" nickname="Output file name" x="1139.73542575497" y="1077.05914508771" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\maple_mockup\planarQuad_test.txt" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="8cb5c9f1-3ec0-4676-a156-b6fb65c49aba" nickname="Number" x="1138.25571209983" y="1009.59767322624" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0.666" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="2a05277e-7005-4de8-9641-022c0aef004a" nickname="List" x="2293.77713609142" y="947.643272071841" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynPythonString type="Dynamo.Nodes.dynPythonString" guid="034afc77-5901-4958-bb38-4fee94a62fb9" nickname="Python Script From String" x="2693.3265926102" y="598.715476595903" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringFilename type="Dynamo.Nodes.dynStringFilename" guid="fb9d52cf-0ed4-464c-aa47-67b4ccea0195" nickname="File Path" x="2277.3265926102" y="599.515476595903" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Connection_Plates.py" />
+    </Dynamo.Nodes.dynStringFilename>
+    <Dynamo.Nodes.dynFileReader type="Dynamo.Nodes.dynFileReader" guid="2a6233bd-013f-4b33-bc90-1a3b4fcc80a8" nickname="Read Text File" x="2519.3265926102" y="598.715476595903" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ExportSATNode type="Dynamo.Nodes.ExportSATNode" guid="840f477d-7c41-4bd4-b6d7-a790cf4d66c6" nickname="Export To SAT" x="5178.1636373148" y="521.707871978298" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="a5472a36-8384-47df-842a-09870dd41d05" nickname="String" x="4846.2549555262" y="409.378175008601" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\maple_mockup\connection_test.sat" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.ExportSATNode type="Dynamo.Nodes.ExportSATNode" guid="de77457c-36b4-4163-82b0-458e8c5dfc7b" nickname="Export To SAT" x="3279.98181913298" y="62.7381750086013" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="0b0d1a22-7d86-4644-8057-5e800ad2c2d3" nickname="Output File name&#xD;&#xA;" x="2950.2549555262" y="154.044841675268" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\maple_mockup\planar_test.sat" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="8b41bb33-f4a9-41e9-9c29-f1430102f70f" nickname="Python Script" x="4172.44945205495" y="610.814144809439" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>import sys
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
+
+#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+reference_surfaces = IN[0]
+tab_height = IN[1]
+screw_holes_radius = IN[2]
+
+def vector_create( point_to , point_from ):
+   
+    vec_x = (point_to.x() - point_from.x()) / 2 
+    vec_y = (point_to.y() - point_from.y()) / 2 
+    vec_z = (point_to.z() - point_from.z()) / 2 
+    
+    final_vec = Vector.from_xyz( vec_x, vec_y, vec_z )
+    
+    return final_vec
+    
+def move_point_byvector( point, vector, magnitude ):
+    vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
+    vector_copy.normalize()
+       
+    newpoint = [0,0,0]
+    newpoint[0] = point.x() + (vector_copy.x() * magnitude)
+    newpoint[1] = point.y() + (vector_copy.y() * magnitude)
+    newpoint[2] = point.z() + (vector_copy.z() * magnitude)
+    
+    finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
+    return finalpt
+
+def find_mid_point( point_1, Point_2):
+	
+	x = ( point_1.x() + Point_2.x() ) / 2
+	y = ( point_1.y() + Point_2.y() ) / 2
+	z = ( point_1.z() + Point_2.z() ) / 2
+	midpoint = Point.by_coordinates(x,y,z)
+	return midpoint
+
+def create_hole( object, point, hole_radius ):
+	cutting_sphere = Sphere.by_center_radius (point, hole_radius)
+	final_solid = object.subtract_from(cutting_sphere) 
+		
+	return final_solid[0]
+
+###MAIN###
+debug_srf = []
+for surface in reference_surfaces:
+	test = surface.vertices()
+	#norm = surface.normal_at_parameter (0.5, 0.5)
+	vec = vector_create( test[2] , test[1] )
+	midpoint = find_mid_point( test[2] , test[3] )
+	tab_point = move_point_byvector( midpoint, vec, tab_height )
+	
+	plate =  Polygon.by_points(PointList([test[0],test[1],test[2], tab_point, test[3]])) 
+	
+	wire_hanging_hole = find_mid_point( midpoint, tab_point )
+	debug_srf.append( create_hole( plate, wire_hanging_hole, screw_holes_radius ))
+	
+	
+	
+#Assign your output to the OUT variable
+OUT = debug_srf #test[1],test[2],surface</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9e4b7e64-8579-4b14-b24b-5e9c06ebd7d9" nickname="Watch" x="4159.31791090709" y="773.281677654227" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="9a0df04a-517c-4458-8bf1-b5af1bc1e460" nickname="Watch 3D" x="4601.37072385274" y="595.141995114543" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynNewList type="Dynamo.Nodes.dynNewList" guid="875a769a-4505-44ce-ac53-2f090ebf02f5" nickname="List" x="3995.91952833873" y="608.054376066925" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Input name="index0" />
+      <Input name="index1" />
+      <Input name="index2" />
+    </Dynamo.Nodes.dynNewList>
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="ef103d2c-7b7d-4758-b156-f7f00ca75965" nickname="Number" x="3825.20206802126" y="675.965487178036" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0.333" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="3a0e5740-495e-4b54-acdf-01b31511c238" nickname="Watch 3D" x="3312.04778103696" y="604.230972803521" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynDoubleInput type="Dynamo.Nodes.dynDoubleInput" guid="9e65e6b1-5aaf-4567-8401-79498a34d804" nickname="Number" x="3826.75762357682" y="751.632153844703" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="0.03333" />
+    </Dynamo.Nodes.dynDoubleInput>
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="24d54625-1ad7-4a18-9d5c-676e18d8dee3" nickname="Draw" x="4377.9493205193" y="591.38025974026" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="836dd654-0148-4e8f-a147-5ea4cc234a3d" nickname="Python Script" x="3822.03849800848" y="1159.47578643578" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+
+num = IN/12
+#Assign your output to the OUT variable
+OUT = num</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="dbebed7e-a074-4e89-8b66-73e9c6663fd1" nickname="Watch" x="3998.03849800847" y="1167.47578643578" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynPython type="Dynamo.Nodes.dynPython" guid="56c437c9-78b4-456b-a5e6-1acbfba1ed0e" nickname="Python Script" x="2588.19331843138" y="1570.50799245199" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>import sys
+path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
+sys.path.append(path)
+import clr
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
+
+#The input to this node will be stored in the IN variable.
+dataEnteringNode = IN
+polygonlist = IN
+
+def move_point_byvector( point, vector, magnitude ):
+    vector_copy = Vector.by_coordinates(vector.x(),vector.y(),vector.z())
+    vector_copy.normalize()
+       
+    newpoint = [0,0,0]
+    newpoint[0] = point.x() + (vector_copy.x() * magnitude)
+    newpoint[1] = point.y() + (vector_copy.y() * magnitude)
+    newpoint[2] = point.z() + (vector_copy.z() * magnitude)
+    
+    finalpt = Point.by_coordinates(newpoint[0], newpoint[1], newpoint[2])
+    return finalpt
+
+def vector_create( point_to , point_from ):
+   
+    vec_x = (point_to.x() - point_from.x()) / 2 
+    vec_y = (point_to.y() - point_from.y()) / 2 
+    vec_z = (point_to.z() - point_from.z()) / 2 
+    
+    final_vec = Vector.from_xyz( vec_x, vec_y, vec_z )
+    
+    return final_vec
+
+def create_hole( object, point, hole_radius ):
+	cutting_sphere = Sphere.by_center_radius (point, hole_radius)
+	final_solid = object.subtract_from(cutting_sphere) 
+		
+	return final_solid[0]
+
+vertices = []
+final_srfs = []
+
+for i in range(len(polygonlist)):
+	poly_vertices = polygonlist[i].vertices ()
+	norm = polygonlist[i].normal_at_parameter ( 0.5, 0.5 )
+	for vert in poly_vertices:
+		vertices.append(vert)
+	vertices.extend( [vertices[0], vertices[1]] )
+	
+	dev_surface = polygonlist[i]
+	for j in range(4):
+		vec = vector_create( vertices[j+2] , vertices[j+1] )
+		line = Line.by_start_point_end_point(vertices[j], vertices[j+1])
+		holeA = line.point_at_parameter (0.25)
+		holeB = line.point_at_parameter (0.75)
+		holeA_moved = move_point_byvector( holeA, vec, 0.333 )
+		holeB_moved = move_point_byvector( holeB, vec, 0.333 )
+		dev_surface = create_hole( dev_surface, holeA_moved, 0.0333 )
+		dev_surface = create_hole( dev_surface, holeB_moved, 0.0333 )
+	
+	dev_surface = dev_surface.thicken(0.125)
+	final_srfs.append(dev_surface)
+	vertices = []
+	
+#Assign your output to the OUT variable
+OUT = final_srfs</Script>
+    </Dynamo.Nodes.dynPython>
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="3e2ff46b-819f-4936-9e6b-edd0e906a3c1" nickname="Watch" x="2824.15839779646" y="1572.22227816628" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynFlattenList type="Dynamo.Nodes.dynFlattenList" guid="8a13a6d4-4ca1-4ce9-81ae-d7d556225795" nickname="Flatten Completely" x="2169.33990200799" y="1520.43966522366" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="ffa75c4e-03fd-4faa-adbe-8115e497f61d" nickname="Watch" x="2318.67323534132" y="1632.70633189033" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynWatch3D type="Dynamo.Nodes.dynWatch3D" guid="51afb4e3-3b1a-4f82-9b09-c88a3bec24ed" nickname="Watch 3D" x="3098.22256221074" y="1884.08918903319" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.ForceDrawNode type="Dynamo.Nodes.ForceDrawNode" guid="f23d8234-4d26-4468-ad8e-13ede60c308b" nickname="Draw" x="2839.74340564394" y="1871.64871284271" isVisible="true" isUpstreamVisible="true" lacing="Longest" />
+    <Dynamo.Nodes.dynWatch type="Dynamo.Nodes.dynWatch" guid="9c9b9189-3a4d-4ad1-acfa-04b12f5ed534" nickname="Watch" x="1374.24965810174" y="2.12043372500807" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="a7b819c9-409a-4e09-9119-47904ba071e3" nickname="String" x="83.9181551068365" y="747.107550550586" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Read_txtfile_for_pointlist" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="6f293e54-5c40-4bf4-bde8-b65f2ec98c17" nickname="String" x="80.1403773290591" y="993.55199499503" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Exported_TxtFiles\planarQuad_textfile5" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="773e66f9-392a-42bd-b0d5-c7f0280f3f3b" nickname="String" x="771.594627833193" y="646.04492428796" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Planar_quads_Intersect_geometry_Debugging_peter" />
+    </Dynamo.Nodes.dynStringInput>
+    <Dynamo.Nodes.dynStringInput type="Dynamo.Nodes.dynStringInput" guid="e9c79e16-29f8-4a5b-adfc-149e85d7a8d7" nickname="String" x="2275.90280854137" y="678.737653780689" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.String value="C:\dev\Generative-drop-ceiling\Python\Connection_Plates" />
+    </Dynamo.Nodes.dynStringInput>
+  </dynElements>
+  <dynConnectors>
+    <Dynamo.Models.dynConnectorModel start="a0584707-3c73-4f08-9834-bbe7fe3a9a78" start_index="0" end="946add28-10d1-420b-84fb-df254e0c28cd" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="9c1a6ee9-4d1e-44e5-91ef-6aae15999a19" start_index="0" end="2f087043-731e-4e44-bd9e-2ade02efd23a" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="2f087043-731e-4e44-bd9e-2ade02efd23a" start_index="0" end="a0584707-3c73-4f08-9834-bbe7fe3a9a78" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="29fc86b4-396d-405d-8976-3416368ebceb" start_index="0" end="6140d204-cc37-471f-a6f4-f26a389210b3" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="6140d204-cc37-471f-a6f4-f26a389210b3" start_index="0" end="a0584707-3c73-4f08-9834-bbe7fe3a9a78" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="495e11b9-ac57-465c-bd50-aa6619fc6fe1" start_index="0" end="54043357-9bee-49c0-ab69-f1b247ad09a8" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="946add28-10d1-420b-84fb-df254e0c28cd" start_index="0" end="b438e4a9-290b-4a0a-97e6-26da26539600" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="54043357-9bee-49c0-ab69-f1b247ad09a8" start_index="0" end="de77457c-36b4-4163-82b0-458e8c5dfc7b" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="a735912d-014d-42a4-bdaf-33725dd066b0" start_index="0" end="9c9b9189-3a4d-4ad1-acfa-04b12f5ed534" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="a735912d-014d-42a4-bdaf-33725dd066b0" start_index="0" end="77c780ba-b03c-4844-8c66-6f0d8a9d02e5" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="6b81a4ff-57e4-4e19-b45f-148c76bb6829" start_index="0" end="b0367a81-ce17-406d-b979-e0f96ae30451" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="b0367a81-ce17-406d-b979-e0f96ae30451" start_index="0" end="a735912d-014d-42a4-bdaf-33725dd066b0" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="77c780ba-b03c-4844-8c66-6f0d8a9d02e5" start_index="0" end="91027564-0fc3-47d6-ac38-455d0415acfb" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="77c780ba-b03c-4844-8c66-6f0d8a9d02e5" start_index="1" end="9f2fc06e-4a1a-481a-b657-eb66b23f7416" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="91027564-0fc3-47d6-ac38-455d0415acfb" start_index="0" end="495e11b9-ac57-465c-bd50-aa6619fc6fe1" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="594950ef-5767-4fc1-b2ce-9ae7cab39cc1" start_index="0" end="2a05277e-7005-4de8-9641-022c0aef004a" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="9f2fc06e-4a1a-481a-b657-eb66b23f7416" start_index="0" end="594950ef-5767-4fc1-b2ce-9ae7cab39cc1" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="ae628838-5bb6-45a4-903c-4b0c85fc6f10" start_index="0" end="3a0e5740-495e-4b54-acdf-01b31511c238" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="b438e4a9-290b-4a0a-97e6-26da26539600" start_index="0" end="a735912d-014d-42a4-bdaf-33725dd066b0" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="bff803eb-ae84-4d8c-be1d-7f4e20622a52" start_index="0" end="b438e4a9-290b-4a0a-97e6-26da26539600" end_index="2" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="8cb5c9f1-3ec0-4676-a156-b6fb65c49aba" start_index="0" end="b438e4a9-290b-4a0a-97e6-26da26539600" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="8cb5c9f1-3ec0-4676-a156-b6fb65c49aba" start_index="0" end="2a05277e-7005-4de8-9641-022c0aef004a" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="2a05277e-7005-4de8-9641-022c0aef004a" start_index="0" end="034afc77-5901-4958-bb38-4fee94a62fb9" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="034afc77-5901-4958-bb38-4fee94a62fb9" start_index="0" end="ae628838-5bb6-45a4-903c-4b0c85fc6f10" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="034afc77-5901-4958-bb38-4fee94a62fb9" start_index="0" end="edbcfc5c-fb65-42a2-9aa4-77ad03da6208" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="fb9d52cf-0ed4-464c-aa47-67b4ccea0195" start_index="0" end="2a6233bd-013f-4b33-bc90-1a3b4fcc80a8" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="2a6233bd-013f-4b33-bc90-1a3b4fcc80a8" start_index="0" end="034afc77-5901-4958-bb38-4fee94a62fb9" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="a5472a36-8384-47df-842a-09870dd41d05" start_index="0" end="840f477d-7c41-4bd4-b6d7-a790cf4d66c6" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="0b0d1a22-7d86-4644-8057-5e800ad2c2d3" start_index="0" end="de77457c-36b4-4163-82b0-458e8c5dfc7b" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="8b41bb33-f4a9-41e9-9c29-f1430102f70f" start_index="0" end="9e4b7e64-8579-4b14-b24b-5e9c06ebd7d9" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="8b41bb33-f4a9-41e9-9c29-f1430102f70f" start_index="0" end="24d54625-1ad7-4a18-9d5c-676e18d8dee3" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="9a0df04a-517c-4458-8bf1-b5af1bc1e460" start_index="0" end="840f477d-7c41-4bd4-b6d7-a790cf4d66c6" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="875a769a-4505-44ce-ac53-2f090ebf02f5" start_index="0" end="8b41bb33-f4a9-41e9-9c29-f1430102f70f" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="ef103d2c-7b7d-4758-b156-f7f00ca75965" start_index="0" end="875a769a-4505-44ce-ac53-2f090ebf02f5" end_index="1" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="3a0e5740-495e-4b54-acdf-01b31511c238" start_index="0" end="875a769a-4505-44ce-ac53-2f090ebf02f5" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="9e65e6b1-5aaf-4567-8401-79498a34d804" start_index="0" end="875a769a-4505-44ce-ac53-2f090ebf02f5" end_index="2" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="9e65e6b1-5aaf-4567-8401-79498a34d804" start_index="0" end="836dd654-0148-4e8f-a147-5ea4cc234a3d" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="24d54625-1ad7-4a18-9d5c-676e18d8dee3" start_index="0" end="9a0df04a-517c-4458-8bf1-b5af1bc1e460" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="836dd654-0148-4e8f-a147-5ea4cc234a3d" start_index="0" end="dbebed7e-a074-4e89-8b66-73e9c6663fd1" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="56c437c9-78b4-456b-a5e6-1acbfba1ed0e" start_index="0" end="3e2ff46b-819f-4936-9e6b-edd0e906a3c1" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="56c437c9-78b4-456b-a5e6-1acbfba1ed0e" start_index="0" end="f23d8234-4d26-4468-ad8e-13ede60c308b" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="8a13a6d4-4ca1-4ce9-81ae-d7d556225795" start_index="0" end="ffa75c4e-03fd-4faa-adbe-8115e497f61d" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="ffa75c4e-03fd-4faa-adbe-8115e497f61d" start_index="0" end="56c437c9-78b4-456b-a5e6-1acbfba1ed0e" end_index="0" portType="0" />
+    <Dynamo.Models.dynConnectorModel start="f23d8234-4d26-4468-ad8e-13ede60c308b" start_index="0" end="51afb4e3-3b1a-4f82-9b09-c88a3bec24ed" end_index="0" portType="0" />
+  </dynConnectors>
+  <dynNotes />
+</dynWorkspace>

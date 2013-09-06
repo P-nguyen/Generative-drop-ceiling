@@ -1,7 +1,5 @@
 dataEnteringNode = IN
 #The input to this node will be stored in the IN variable.
-#run sorter to get the geometry out into specific list, so supply/returns [0], columns [1], lights [2] and everythinelse [3]
-#potentially run 4 different get_geometery_transaction scripts and plug them into a list for the drop_ceiling_opt
 
 objects = IN
 

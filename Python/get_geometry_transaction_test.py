@@ -1,11 +1,4 @@
-﻿import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
-from Autodesk.LibG import *
-
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
+﻿from Autodesk.LibG import *
 
 elements = IN
 surfaces = []
@@ -25,7 +18,7 @@ for elem in elements:
     #trans = DynTransaction()
     #trans.Start()
      
-    opt = Options()
+    #opt = Options()
     
     id = elem.OwnerViewId
     document = elem.Document
@@ -40,4 +33,4 @@ for elem in elements:
     
     surfaces.append(create_surface(max, min))
 
-OUT = surfaces #p1,p2,p3,p4 #test #.Objects #[elem, geometry_list]
+OUT = surfaces 

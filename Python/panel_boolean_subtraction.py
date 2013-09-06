@@ -1,13 +1,4 @@
-import System
-from System import *
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
 from Autodesk.LibG import *
-
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector,Solid
 
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
@@ -82,13 +73,13 @@ def controlled_random_thickness( total_thickness, random ):
 		final_thickness = 0.0
 		
 	if 0.35 < rand_num <= 0.75:
-		final_thickness = total_thickness * 0.3
+		final_thickness = total_thickness * 0.3#3
 		
 	if 0.75 < rand_num <= 0.9:
-		final_thickness = total_thickness * 0.4
+		final_thickness = total_thickness * 0.5#4
 		
 	if 0.9 < rand_num <= 1.0:
-		final_thickness = total_thickness * 0.5
+		final_thickness = total_thickness * 0.75#5
 		# cut through panel.
 
 	return final_thickness
@@ -156,7 +147,7 @@ for solid in input_solids:
 	panels = []
 	debug = []
 	#debug_solids = []
-	#Thickend_panel = []
+	#Thicken_panel = []
 	#f = open( "C:\dev\Generative-drop-ceiling\Final_mockup\debug_testfile.txt", "w")
 	
 	for i in range(int(div_number) ):
@@ -173,10 +164,10 @@ for solid in input_solids:
 					thickness_value = thickness_value + (thickness/6)
 
 				panel = enlarge_polygon( panel )
-				Thickend_panel = panel.thicken(thickness_value)
+				Thicken_panel = panel.thicken(thickness_value)
 				
-				if Thickend_panel:	
-					test_solid = final_solid.subtract_from(Thickend_panel, True,True,True)
+				if Thicken_panel:	
+					test_solid = final_solid.subtract_from(Thicken_panel, True,True,True)
 					
 					try:
 						final_solid = test_solid[0]
@@ -189,16 +180,11 @@ for solid in input_solids:
 				#debug.append(final_solid)
 				
 				#debug.append(final_solid)
-				#debug_solids.append( Thickend_panel)
+				#debug_solids.append( Thicken_panel)
 				
 			
 	final_solid_list.append(final_solid)
 	
-	"""
-	if count >= 3:
-		break
-	count +=1
-	"""
 #f.close()	
 #Assign your output to the OUT variable
 OUT = final_solid_list

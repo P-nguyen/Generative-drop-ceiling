@@ -1,11 +1,4 @@
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
-import clr
-clr.AddReference('LibGNet')
 from Autodesk.LibG import *
-
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry,Vector
 
 #The input to this node will be stored in the IN variable.
 dataEnteringNode = IN
@@ -123,7 +116,7 @@ panel_thickness = IN[1] #for DYNAMO SANDBOX  # for REVIT FEET 0.166
 
 #plate specific variables
 plate_protrusion = 0.083 # how much the plate pops out // look at DEF create_connection_plate
-plate_upper_extension = 0.333 #revit conversion. // look at DEF create_connection_plate
+plate_upper_extension = 0.333 #. // look at DEF create_connection_plate
 setback = .5 # shortens the plate to avoid conflict at corners
 
 existing_plates = []
@@ -139,4 +132,4 @@ for i in range(len(polygon_list)):
        #debug_plates.extend( result)
 
 
-OUT = existing_plates #polygon_list# ,debug_planes
+OUT = existing_plates

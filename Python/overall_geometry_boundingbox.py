@@ -1,11 +1,18 @@
-import sys
-path = 'C:\\Users\\t_nguyp\\Desktop\\Dynamo\\Release'
-sys.path.append(path)
+# Default imports
 import clr
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+from Autodesk.Revit.DB import *
+import Autodesk
+import sys
+import clr
+path = r'C:\Autodesk\Dynamo\Core'
+exec_path = r'C:\Autodesk\Dynamo\Core\dll'
+sys.path.append(path)
+sys.path.append(exec_path)
 clr.AddReference('LibGNet')
 from Autodesk.LibG import *
 
-from Autodesk.LibG import Point,Line,Surface,Polygon,Geometry
 
 elementlist = IN
 

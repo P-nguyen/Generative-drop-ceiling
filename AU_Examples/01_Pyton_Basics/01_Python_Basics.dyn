@@ -1,0 +1,47 @@
+<Workspace Version="0.6.2.10622" X="-152.8" Y="22.6" zoom="1.2" Description="" Category="" Name="Home">
+  <Elements>
+    <Dynamo.Nodes.Python type="Dynamo.Nodes.Python" guid="c0f69b8a-aeed-459e-b065-5a07218a9eca" nickname="Python Script" x="574.833333333333" y="385.333333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script># Default imports
+import clr
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+from Autodesk.Revit.DB import *
+import Autodesk
+import sys
+import clr
+path = r'C:\Autodesk\Dynamo\Core'
+exec_path = r'C:\Autodesk\Dynamo\Core\dll'
+sys.path.append(path)
+sys.path.append(exec_path)
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+
+import math
+
+#The input to this node will be stored in the IN variable.
+input_number = IN
+
+# define a function with the "def" keyword, a name, and arguments
+def take_squareroot(number):
+	return math.sqrt(number)
+
+# call a function with a name an input argument
+squareroot = take_squareroot(input_number)
+
+# normal math operations are supported
+by_two = squareroot * 2
+
+#Assign your output to the OUT variable
+OUT = by_two</Script>
+    </Dynamo.Nodes.Python>
+    <Dynamo.Nodes.DoubleSliderInput type="Dynamo.Nodes.DoubleSliderInput" guid="cb0c651d-fd93-4378-b41f-45d2ed54111e" nickname="Number Slider" x="222.333333333333" y="385.333333333333" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="4.3549160671464" min="0" max="10" />
+    </Dynamo.Nodes.DoubleSliderInput>
+    <Dynamo.Nodes.Watch type="Dynamo.Nodes.Watch" guid="c924215f-771a-468c-8095-a29d203e3a51" nickname="Watch" x="725.25" y="382" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+  </Elements>
+  <Connectors>
+    <Dynamo.Models.ConnectorModel start="c0f69b8a-aeed-459e-b065-5a07218a9eca" start_index="0" end="c924215f-771a-468c-8095-a29d203e3a51" end_index="0" portType="0" />
+    <Dynamo.Models.ConnectorModel start="cb0c651d-fd93-4378-b41f-45d2ed54111e" start_index="0" end="c0f69b8a-aeed-459e-b065-5a07218a9eca" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+</Workspace>

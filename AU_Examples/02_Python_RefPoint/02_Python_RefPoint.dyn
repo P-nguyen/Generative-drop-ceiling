@@ -1,0 +1,44 @@
+<Workspace Version="0.6.2.14024" X="50.630952380953" Y="39.952380952381" zoom="1" Description="" Category="" Name="Home">
+  <Elements>
+    <Dynamo.Nodes.Python type="Dynamo.Nodes.Python" guid="a12cf7c9-ebde-4106-94d5-12ec21919e6f" nickname="Python Script" x="174.501162790698" y="215.2" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <Script>#derived from Nathan Miller's example http://theprovingground.wikidot.com/revit-api-py-curves
+# Default imports
+import clr
+clr.AddReference('RevitAPI')
+clr.AddReference('RevitAPIUI')
+from Autodesk.Revit.DB import *
+import Autodesk
+import sys
+import clr
+path = r'C:\Autodesk\Dynamo\Core'
+sys.path.append(path)
+clr.AddReference('LibGNet')
+from Autodesk.LibG import *
+import math
+
+doc = __revit__.ActiveUIDocument.Document
+app = __revit__.Application
+
+
+xyz = XYZ(1, 2, IN)
+ref_pt_1 = doc.FamilyCreate.NewReferencePoint(xyz)
+
+
+
+
+
+</Script>
+    </Dynamo.Nodes.Python>
+    <Dynamo.Nodes.Transaction type="Dynamo.Nodes.Transaction" guid="35817bca-39b1-4f5b-bb25-296cdac5a208" nickname="Transaction" x="363.00026896506" y="190.921383014931" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.Watch type="Dynamo.Nodes.Watch" guid="ab1514c6-c424-4acd-a722-59300f946327" nickname="Watch" x="377.869047619047" y="315.047619047619" isVisible="true" isUpstreamVisible="true" lacing="Disabled" />
+    <Dynamo.Nodes.DoubleInput type="Dynamo.Nodes.DoubleInput" guid="20cf6819-d164-4ba2-80f8-21bf6a6a0a58" nickname="Number" x="45.869047619047" y="214.047619047619" isVisible="true" isUpstreamVisible="true" lacing="Disabled">
+      <System.Double value="5" />
+    </Dynamo.Nodes.DoubleInput>
+  </Elements>
+  <Connectors>
+    <Dynamo.Models.ConnectorModel start="a12cf7c9-ebde-4106-94d5-12ec21919e6f" start_index="0" end="35817bca-39b1-4f5b-bb25-296cdac5a208" end_index="0" portType="0" />
+    <Dynamo.Models.ConnectorModel start="a12cf7c9-ebde-4106-94d5-12ec21919e6f" start_index="0" end="ab1514c6-c424-4acd-a722-59300f946327" end_index="0" portType="0" />
+    <Dynamo.Models.ConnectorModel start="20cf6819-d164-4ba2-80f8-21bf6a6a0a58" start_index="0" end="a12cf7c9-ebde-4106-94d5-12ec21919e6f" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+</Workspace>
